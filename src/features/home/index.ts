@@ -1,0 +1,9 @@
+export { Hero } from "./hero";
+export { About } from "./about";
+export { Categories } from "./categories";
+export { Fleet } from "./fleet";
+export { Services } from "./services";
+export { WhyChooseUs } from "./why-choose-us";
+export { Testimonials } from "./testimonials";
+export { CitiesGrid } from "./cities";
+export { FAQ } from "./faq";
