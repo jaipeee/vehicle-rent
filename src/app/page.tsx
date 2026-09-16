@@ -17,7 +17,6 @@ import {
   WhyChooseUs,
 } from "@/features/home";
 import { EnquiryForm } from "@/features/enquiry";
-import { Footer } from "@/components/layout/footer";
 
 export const revalidate = 3600; // ISR: refresh hourly
 
@@ -35,6 +34,7 @@ const dummyTestimonials: Testimonial[] = [
     message: "Booked a tempo traveller for our family trip to Manali — clean vehicle, punctual driver, no hidden costs. Highly recommend!",
     rating: 5,
     cityName: "Delhi",
+    imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
   },
   {
     id: "t2",
@@ -42,6 +42,7 @@ const dummyTestimonials: Testimonial[] = [
     message: "Used Indiventure for our corporate offsite. The bus was spacious and the whole process was hassle-free from booking to drop-off.",
     rating: 5,
     cityName: "Mumbai",
+    imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
   },
   {
     id: "t3",
@@ -97,7 +98,6 @@ export default async function HomePage() {
       <FAQ />
       <ContactSection />
       <ConsultationBanner />
-      <Footer/>
     </main>
   );
 }

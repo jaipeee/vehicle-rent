@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Quote, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Testimonial } from "@/lib/types";
@@ -34,9 +35,15 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
               <p className="mt-4 italic text-slate-600">&ldquo;{t.message}&rdquo;</p>
 
               <div className="mt-6 flex items-center justify-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400 font-bold text-white">
-                  {t.name.charAt(0)}
-                </div>
+                {t.imageUrl ? (
+                  <div className="relative h-10 w-10 overflow-hidden rounded-full">
+                    <Image src={t.imageUrl} alt={t.name} fill className="object-cover" />
+                  </div>
+                ) : (
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400 font-bold text-white">
+                    {t.name.charAt(0)}
+                  </div>
+                )}
                 <div className="text-left">
                   <p className="font-semibold text-slate-900">{t.name}</p>
                   {t.cityName && <p className="text-xs text-slate-400">{t.cityName}</p>}
