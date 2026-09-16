@@ -1,18 +1,23 @@
-import type { City, Testimonial, Vehicle } from "@/lib/types";
+import type { City, Testimonial } from "@/lib/types";
 import { apiFetch } from "@/lib/api";
 import {
   About,
+  AdvisorBanner,
+  BlogSection,
   Categories,
   CitiesGrid,
+  ConsultationBanner,
+  ContactSection,
   FAQ,
   Fleet,
   Hero,
+  HowItWorks,
   Services,
   Testimonials,
   WhyChooseUs,
 } from "@/features/home";
 import { EnquiryForm } from "@/features/enquiry";
-import {Footer} from "@/components/layout/footer/index"
+import { Footer } from "@/components/layout/footer";
 
 export const revalidate = 3600; // ISR: refresh hourly
 
@@ -21,64 +26,6 @@ export const metadata = {
   description:
     "Reliable tempo traveller, luxury car, and bus rentals for corporate events, weddings, and outstation trips across India.",
 };
-
-// Dummy fleet data — swap for a real /vehicles fetch once your catalog is ready.
-const dummyVehicles: Vehicle[] = [
-  {
-    id: "tempo-12",
-    name: "12 Seater Tempo Traveller",
-    category: "Tempo Traveller",
-    seatCapacity: 12,
-    description: "Comfortable and spacious tempo traveller, perfect for family trips, group tours, and outstation travel.",
-    priceFrom: 4500,
-    imageUrl: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: "tempo-17",
-    name: "17 Seater Tempo Traveller",
-    category: "Tempo Traveller",
-    seatCapacity: 17,
-    description: "Premium 17-seater tempo traveller with comfortable seating, ample luggage space, and AC.",
-    priceFrom: 5500,
-    imageUrl: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: "tempo-20",
-    name: "20 Seater Tempo Traveller",
-    category: "Tempo Traveller",
-    seatCapacity: 20,
-    description: "Ideal for large groups, corporate trips, weddings, and long-distance journeys.",
-    priceFrom: 6500,
-    imageUrl: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: "luxury-car",
-    name: "Toyota Innova Crysta",
-    category: "Luxury Car",
-    seatCapacity: 7,
-    description: "Premium and comfortable SUV suitable for family vacations, airport transfers, and corporate travel.",
-    priceFrom: 3500,
-    imageUrl: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: "sedan",
-    name: "Toyota Etios",
-    category: "Sedan",
-    seatCapacity: 4,
-    description: "Reliable and economical sedan for city travel, airport transfers, and outstation journeys.",
-    priceFrom: 2200,
-    imageUrl: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: "luxury-bus",
-    name: "Luxury Bus",
-    category: "Bus",
-    seatCapacity: 35,
-    description: "Spacious luxury bus for weddings, corporate events, school trips, and large group tours.",
-    priceFrom: 9000,
-    imageUrl: "https://images.unsplash.com/photo-1578645510447-e20b4311e3ce?auto=format&fit=crop&w=1200&q=80",
-  },
-];
 
 // Dummy testimonials — swap once real ones are added (no create-testimonial UI yet, see earlier note).
 const dummyTestimonials: Testimonial[] = [
@@ -111,7 +58,6 @@ export default async function HomePage() {
     apiFetch<Testimonial[]>("/testimonials"),
   ]);
 
-  const vehicles = dummyVehicles;
   const testimonialsData = testimonials.length > 0 ? testimonials : dummyTestimonials;
 
   return (
@@ -119,7 +65,7 @@ export default async function HomePage() {
       <Hero />
 
       {/* Get a Quote — floats over the hero's bottom edge, same technique as the navbar */}
-       <div
+      <div
         id="get-a-quote"
         className="
           relative
@@ -140,12 +86,17 @@ export default async function HomePage() {
 
       <About />
       <Categories />
-      <Fleet vehicles={vehicles} />
+      <Fleet />
       <Services />
+      <HowItWorks />
+      <AdvisorBanner />
       <WhyChooseUs />
       <Testimonials testimonials={testimonialsData} />
       <CitiesGrid cities={cities} />
+      <BlogSection />
       <FAQ />
+      <ContactSection />
+      <ConsultationBanner />
       <Footer/>
     </main>
   );
