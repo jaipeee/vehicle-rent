@@ -93,10 +93,10 @@ export default async function HomePage() {
       </div>
 
       <About />
+      <HowItWorks />
       <Categories />
       <Fleet />
       <Services />
-      <HowItWorks />
       <AdvisorBanner />
       <WhyChooseUs />
       <Testimonials testimonials={testimonialsData} />
