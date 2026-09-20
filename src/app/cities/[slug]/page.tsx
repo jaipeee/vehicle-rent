@@ -68,7 +68,7 @@ export default async function CityPage({ params }: CityPageProps) {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-16">
+      <section id="get-a-quote" className="bg-slate-50 py-16">
         <div className="mx-auto max-w-3xl px-4 lg:px-8">
           <h2 className="text-center text-2xl font-bold text-emerald-900 sm:text-3xl">
             Get a Quote for {city.name}

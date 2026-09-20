@@ -1,0 +1,1 @@
+export { FloatingCta } from "./floating-cta";

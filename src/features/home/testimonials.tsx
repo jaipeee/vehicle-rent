@@ -1,7 +1,9 @@
 import Image from "next/image";
-import { Quote, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Testimonial } from "@/lib/types";
+
+const FALLBACK_COVER = "/placeholder/testimonial-cover.jpg";
 
 export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) {
   if (!testimonials.length) return null;
@@ -15,40 +17,48 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
         <p className="mt-3 text-center text-slate-500">Real experiences from real travellers.</p>
         <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-amber-400" />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t) => (
-            <div key={t.id} className="relative rounded-2xl bg-white p-8 text-center shadow-sm">
-              <Quote className="absolute left-6 top-6 h-8 w-8 text-amber-100" fill="currentColor" />
+            <div key={t.id}>
+              <div className="relative">
+                <div className="relative h-56 w-full overflow-hidden rounded-2xl">
+                  <Image src={t.coverImage ?? FALLBACK_COVER} alt={t.name} fill className="object-cover" />
+                </div>
 
-              <div className="flex justify-center gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className={cn(
-                      "h-4 w-4",
-                      i < Math.round(t.rating) ? "fill-amber-400 text-amber-400" : "fill-slate-200 text-slate-200"
-                    )}
-                  />
-                ))}
-              </div>
-
-              <p className="mt-4 italic text-slate-600">&ldquo;{t.message}&rdquo;</p>
-
-              <div className="mt-6 flex items-center justify-center gap-3">
-                {t.imageUrl ? (
-                  <div className="relative h-10 w-10 overflow-hidden rounded-full">
-                    <Image src={t.imageUrl} alt={t.name} fill className="object-cover" />
+                {/* Avatar + name + role + rating card, overlapping the bottom of the photo */}
+                <div className="absolute -bottom-8 left-4 right-4 flex items-center gap-3 rounded-xl bg-white p-3 shadow-md">
+                  {t.imageUrl ? (
+                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
+                      <Image src={t.imageUrl} alt={t.name} fill className="object-cover" />
+                    </div>
+                  ) : (
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-400 font-bold text-white">
+                      {t.name.charAt(0)}
+                    </div>
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate font-semibold text-slate-900">{t.name}</p>
+                    <div className="flex flex-wrap items-center gap-x-2">
+                      {(t.role ?? t.cityName) && (
+                        <span className="truncate text-xs italic text-slate-500">{t.role ?? t.cityName}</span>
+                      )}
+                      <span className="flex">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star
+                            key={i}
+                            className={cn(
+                              "h-3 w-3",
+                              i < Math.round(t.rating) ? "fill-amber-400 text-amber-400" : "fill-slate-200 text-slate-200"
+                            )}
+                          />
+                        ))}
+                      </span>
+                    </div>
                   </div>
-                ) : (
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400 font-bold text-white">
-                    {t.name.charAt(0)}
-                  </div>
-                )}
-                <div className="text-left">
-                  <p className="font-semibold text-slate-900">{t.name}</p>
-                  {t.cityName && <p className="text-xs text-slate-400">{t.cityName}</p>}
                 </div>
               </div>
+
+              <p className="mt-10 text-sm leading-relaxed text-slate-600">{t.message}</p>
             </div>
           ))}
         </div>

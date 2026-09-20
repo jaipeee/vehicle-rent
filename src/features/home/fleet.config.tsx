@@ -18,7 +18,8 @@ export interface FleetService {
   title: string;
   subtitle: string;
   description: string;
-  images: string[]; // exactly 5, cycled on hover
+  images: string[]; // exactly 5 background photos, cycled every 1.6s on hover
+  vehicleImage: string; // transparent-background PNG cutout, floats over the panel
   amenities: { label: string; icon: LucideIcon }[];
 }
 
@@ -37,6 +38,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80",
     ],
+    vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1789837055/vecteezy_red-car-suv-vehicle-transport_70119057.png",
     amenities: [
       { label: "AC Cabin", icon: Wind },
       { label: "Experienced Driver", icon: UserCheck },
@@ -59,6 +61,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80",
     ],
+    vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1789837055/vecteezy_red-car-suv-vehicle-transport_70119057.png",
     amenities: [
       { label: "AC Cabin", icon: Wind },
       { label: "Pushback Seats", icon: Armchair },
@@ -81,6 +84,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=80",
     ],
+    vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1789837055/vecteezy_red-car-suv-vehicle-transport_70119057.png",
     amenities: [
       { label: "AC & Non-AC", icon: Wind },
       { label: "Pushback Seats", icon: Armchair },
@@ -103,6 +107,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1494905998402-395d579af36f?auto=format&fit=crop&w=1200&q=80",
     ],
+    vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1789837055/vecteezy_red-car-suv-vehicle-transport_70119057.png",
     amenities: [
       { label: "Premium Interiors", icon: Sparkles },
       { label: "Chauffeur Service", icon: UserCheck },

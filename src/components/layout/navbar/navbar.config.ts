@@ -15,7 +15,7 @@ export interface NavItem {
 // Placeholder data — replace hrefs/labels/children once real site content is ready.
 export const NAV_ITEMS: NavItem[] = [
   {
-    label: "About Us",
+    label: "Home",
     href: "/about",
     icon: Home,
   },
@@ -44,6 +44,7 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/info",
     icon: Info,
     children: [
+      { label: "About Us", href: "/info/AboutUs" },
       { label: "FAQ", href: "/info/faq" },
       { label: "Terms & Conditions", href: "/info/terms" },
     ],

@@ -28,6 +28,8 @@ export interface Testimonial {
   name: string;
   message: string;
   rating: number;
-  imageUrl?: string;
+  imageUrl?: string; // small avatar
+  coverImage?: string; // large trip/group photo shown at the top of the card
+  role?: string; // e.g. "CEO, PPM Logistics" or "Frequent Traveller"
   cityName?: string;
 }
