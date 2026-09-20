@@ -9,7 +9,7 @@ interface CityPageProps {
 }
 
 export async function generateStaticParams() {
-  const cities = await apiFetch<City[]>("/cities");
+  const cities = await apiFetch<City[]>("/cities").catch(() => []);
   return cities.map((c) => ({ slug: c.slug }));
 }
 

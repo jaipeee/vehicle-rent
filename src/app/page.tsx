@@ -17,6 +17,7 @@ import {
   WhyChooseUs,
 } from "@/features/home";
 import { EnquiryForm } from "@/features/enquiry";
+import { Footer } from "@/components/layout/footer";
 
 export const revalidate = 3600; // ISR: refresh hourly
 
@@ -61,8 +62,8 @@ const dummyTestimonials: Testimonial[] = [
 
 export default async function HomePage() {
   const [cities, testimonials] = await Promise.all([
-    apiFetch<City[]>("/cities"),
-    apiFetch<Testimonial[]>("/testimonials"),
+    apiFetch<City[]>("/cities").catch(() => []),
+    apiFetch<Testimonial[]>("/testimonials").catch(() => []),
   ]);
 
   const testimonialsData = testimonials.length > 0 ? testimonials : dummyTestimonials;

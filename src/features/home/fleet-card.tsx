@@ -39,7 +39,7 @@ export function FleetCard({ service }: { service: FleetService }) {
       className="relative overflow-visible rounded-[22px] bg-white p-[18px] pt-10 shadow-sm"
     >
       <div
-        className="relative flex h-[230px] overflow-hidden rounded-[18px]"
+        className="relative flex h-[200px] overflow-hidden rounded-[18px]"
         style={{ backgroundColor: "#E9F0FB" }}
       >
         {/* Text panel — blurs and fades while the car sits over it */}
@@ -67,7 +67,7 @@ export function FleetCard({ service }: { service: FleetService }) {
             `hovered` is true, so there's no ambiguity about "what's showing" when
             the cursor isn't over the card — nothing is, just the blue background. */}
         <div
-          className="absolute inset-y-0 right-0 z-[1] w-[65%] overflow-hidden rounded-[18px]"
+          className="absolute inset-y-0 right-0 z-[1] w-[50%] overflow-hidden rounded-[18px]"
           style={{ backgroundColor: "#1863E0" }}
         >
           {hovered && (
@@ -85,8 +85,8 @@ export function FleetCard({ service }: { service: FleetService }) {
       {/* Vehicle cutout — floats just above the card, slides onto the text on hover */}
       <div
         className={cn(
-          "pointer-events-none absolute -top-6 mt-30 mr-10 right-2 z-20 w-[53%] transition-transform duration-700 ease-out sm:-top-8",
-          hovered && "-translate-x-[84%]"
+          "pointer-events-none absolute -top-6 mt-15 right-15 z-20 w-[63%] transition-transform duration-700 ease-out sm:-top-8",
+          hovered && "-translate-x-[50%]"
         )}
       >
         <div className="relative aspect-[4/3] w-full">

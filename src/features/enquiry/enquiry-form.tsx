@@ -255,29 +255,40 @@ export function EnquiryForm() {
 
         {/* Submit */}
         <Button
-          type="submit"
-          disabled={isSubmitting}
-          className={cn(
-            `
-              h-14
-              w-full
-              rounded-xl
-              bg-orange-500
-              px-8
-              text-base
-              font-bold
-              text-white
-              shadow-md
-              transition-all
-              hover:bg-orange-600
-              hover:shadow-lg
-              lg:w-auto
-              lg:min-w-[170px]
-            `
-          )}
-        >
-          {isSubmitting ? "Submitting..." : "SUBMIT"}
-        </Button>
+  type="submit"
+  disabled={isSubmitting}
+  className={cn(
+    `
+      group
+      pointer-events-auto
+      relative
+      h-14
+      w-full
+      overflow-hidden
+      rounded-xl
+      bg-[#ea7236]
+      px-8
+      text-white
+      shadow-md
+      transition-all
+      hover:shadow-lg
+      disabled:pointer-events-none
+      disabled:opacity-70
+      lg:w-auto
+      lg:min-w-[170px]
+    `
+  )}
+>
+  <span className="absolute left-0 top-0 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
+  <span className="absolute bottom-0 left-1/4 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
+  <span className="absolute right-1/4 top-0 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
+  <span className="absolute bottom-0 right-0 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
+
+  <span className="relative z-10 text-xl font-bold">
+    {isSubmitting ? "Submitting..." : "SUBMIT"}
+  </span>
+</Button>
+
       </form>
 
       {/* Errors */}
