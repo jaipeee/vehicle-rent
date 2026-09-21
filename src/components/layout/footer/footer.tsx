@@ -61,11 +61,11 @@ function LinkColumn({ title, links }: { title: string; links: { label: string; h
 export function Footer() {
   return (
     <footer className="bg-emerald-950 text-emerald-100">
-      <div className="mx-auto max-w-7xl px-4 pb-10 pt-16 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 pb-10 pt-8 lg:px-8">
         {/* Top row: logo/blurb, address, contact, socials */}
         <div className="grid gap-10 border-b border-emerald-900 pb-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-white p-1.5">
+            <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-xl bg-white ">
               <Image src={LOGO_SRC} alt={LOGO_ALT} width={48} height={48} className="h-full w-full object-contain" />
             </div>
             <p className="mt-4 text-sm text-emerald-200/80">
@@ -78,7 +78,9 @@ export function Footer() {
             <h3 className="font-semibold text-white">Office Address</h3>
             <div className="mt-4 flex gap-2 text-sm text-emerald-200/80">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-              <p>123 Business Hub, Connaught Place, New Delhi, 110001</p>
+              <p>Ground Floor, Block- b, G-04, Plot no - 41, Sector 63, Noida, Uttar Pradesh 201309
+
+              </p>
             </div>
           </div>
 

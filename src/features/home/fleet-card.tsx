@@ -126,10 +126,14 @@ export function FleetCard({ service }: { service: FleetService }) {
           </button>
           <button
             type="button"
-            className="rounded-xl px-[22px] py-[13px] text-sm font-semibold transition-transform hover:-translate-y-0.5"
-            style={{ backgroundColor: "#F2A93B", color: "#0B2A4A", boxShadow: "0 8px 16px rgba(242,169,59,0.35)" }}
+            className="group relative overflow-hidden rounded-xl px-[22px] py-[13px] shadow-md transition-all hover:shadow-lg"
+            style={{ backgroundColor: "#ea7236" }}
           >
-            Book Now
+            <span className="absolute left-0 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+            <span className="absolute bottom-0 left-1/4 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+            <span className="absolute right-1/4 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+            <span className="absolute bottom-0 right-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+            <span className="relative z-10 text-sm font-semibold text-white">Book Now</span>
           </button>
         </div>
       </div>

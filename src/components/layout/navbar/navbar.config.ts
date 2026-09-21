@@ -54,8 +54,8 @@ export const NAV_ITEMS: NavItem[] = [
 export const CITIES = ["Delhi", "Mumbai", "Bangalore", "Pune", "Hyderabad"];
 
 export const CONTACT_PHONE = {
-  display: "(+91) 83 6968 1231",
-  href: "tel:+918369681231",
+  display: "(+91) 83 6968 7417",
+  href: "tel:+918369687417",
 };
 
 // Placeholder — point this at your real logo file once you have one.
