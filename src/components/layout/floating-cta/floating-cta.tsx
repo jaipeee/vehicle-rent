@@ -3,7 +3,6 @@
 import { Phone, Mail, CalendarDays, type LucideIcon } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
 import type { IconType } from "react-icons";
-import { cn } from "@/lib/utils";
 import { CONTACT_PHONE } from "@/components/layout/navbar/navbar.config";
 
 // Placeholders — update with your real WhatsApp number and support email.
@@ -14,44 +13,20 @@ interface CtaAction {
   label: string;
   href: string;
   icon: LucideIcon | IconType;
-  bg: string;
-  textDark?: boolean;
   external?: boolean;
 }
 
 const ACTIONS: CtaAction[] = [
-  {
-    label: "Call Us",
-    href: CONTACT_PHONE.href,
-    icon: Phone,
-    bg: "bg-emerald-700 hover:bg-emerald-800",
-  },
-  {
-    label: "WhatsApp",
-    href: `https://wa.me/${WHATSAPP_NUMBER}`,
-    icon: FaWhatsapp,
-    bg: "bg-[#25D366] hover:bg-[#1ebe57]",
-    external: true,
-  },
-  {
-    label: "Email Us",
-    href: `mailto:${CONTACT_EMAIL}`,
-    icon: Mail,
-    bg: "bg-slate-700 hover:bg-slate-800",
-  },
-  {
-    label: "Get a Quote",
-    href: "/#get-a-quote",
-    icon: CalendarDays,
-    bg: "bg-amber-400 hover:bg-amber-300",
-    textDark: true,
-  },
+  { label: "Call Us", href: CONTACT_PHONE.href, icon: Phone },
+  { label: "WhatsApp", href: `https://wa.me/${WHATSAPP_NUMBER}`, icon: FaWhatsapp, external: true },
+  { label: "Email Us", href: `mailto:${CONTACT_EMAIL}`, icon: Mail },
+  { label: "Get a Quote", href: "/#get-a-quote", icon: CalendarDays },
 ];
 
 export function FloatingCta() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-      {ACTIONS.map(({ label, href, icon: Icon, bg, textDark, external }) => (
+      {ACTIONS.map(({ label, href, icon: Icon, external }) => (
         <a
           key={label}
           href={href}
@@ -62,14 +37,12 @@ export function FloatingCta() {
           <span className="translate-x-2 whitespace-nowrap rounded-lg bg-emerald-950 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-md transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
             {label}
           </span>
-          <span
-            className={cn(
-              "flex h-12 w-12 shrink-0 items-center justify-center rounded-full shadow-lg transition-transform duration-200 group-hover:scale-110",
-              bg,
-              textDark ? "text-emerald-950" : "text-white"
-            )}
-          >
-            <Icon className="h-5 w-5" />
+          <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#ea7236] text-white shadow-lg transition-transform duration-200 group-hover:scale-110">
+            <span className="absolute left-0 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+            <span className="absolute bottom-0 left-1/4 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+            <span className="absolute right-1/4 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+            <span className="absolute bottom-0 right-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+            <Icon className="relative z-10 h-5 w-5" />
           </span>
         </a>
       ))}
