@@ -58,6 +58,15 @@ const dummyTestimonials: Testimonial[] = [
     cityName: "Pune",
     coverImage: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
   },
+  {
+    id: "t3",
+    name: "Ankit Verma",
+    role: "Frequent Traveller",
+    message: "Great experience for our wedding transport — decorated cars looked amazing and everything ran exactly on schedule.",
+    rating: 4,
+    cityName: "Pune",
+    coverImage: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+  },
 ];
 
 export default async function HomePage() {
