@@ -27,7 +27,7 @@ const playfair = Playfair_Display({
 // Placeholder slides — swap images for real vehicle photos, edit copy per slide.
 const SLIDES: Slide[] = [
   {
-    image: "/assets/hero-1.png",
+    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1790181482/indiventra_hero_banner_convert.io.webp",
     heading: "Welcome to Indiventure Tour & Travel",
     subheading: "Comfortable, reliable rentals for corporate trips, events, and outstation travel.",
   },
