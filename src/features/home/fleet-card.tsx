@@ -68,7 +68,7 @@ export function FleetCard({ service }: { service: FleetService }) {
             the cursor isn't over the card — nothing is, just the blue background. */}
         <div
           className="absolute inset-y-0 right-0 z-[1] w-[50%] overflow-hidden rounded-[18px]"
-          style={{ backgroundColor: "#1863E0" }}
+          style={{ backgroundColor: "#ea7236" }}
         >
           {hovered && (
             <Image
@@ -110,7 +110,7 @@ export function FleetCard({ service }: { service: FleetService }) {
               style={{ backgroundColor: "#E9F0FB", color: "#0B2A4A" }}
               className="flex items-center gap-1.5 rounded-full px-3 py-2 text-[0.85rem] font-medium"
             >
-              <Icon className="h-4 w-4" style={{ color: "#1863E0" }} />
+              <Icon className="h-4 w-4" style={{ color: "#ea7236" }} />
               {label}
             </li>
           ))}
