@@ -29,16 +29,16 @@ export const NAV_ITEMS: NavItem[] = [
       { label: "Minivan", href: "/vehicles/minivan" },
     ],
   },
-  {
-    label: "Services",
-    href: "/services",
-    icon: Wrench,
-    children: [
-      { label: "Airport Transfer", href: "/services/airport-transfer" },
-      { label: "Outstation", href: "/services/outstation" },
-      { label: "Local Rental", href: "/services/local-rental" },
-    ],
-  },
+  // {
+  //   label: "Services",
+  //   href: "/services",
+  //   icon: Wrench,
+  //   children: [
+  //     { label: "Airport Transfer", href: "/services/airport-transfer" },
+  //     { label: "Outstation", href: "/services/outstation" },
+  //     { label: "Local Rental", href: "/services/local-rental" },
+  //   ],
+  // },
   {
     label: "Info",
     href: "/info",
