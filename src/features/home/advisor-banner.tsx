@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 // Placeholder — swap /placeholder/advisor.jpg for a real photo of your team/advisor.
-const ADVISOR_PHOTO = "/placeholder/advisor.jpg";
+const ADVISOR_PHOTO = "https://res.cloudinary.com/yhuaios0/image/upload/v1790181270/main-sample.png";
 
 export function AdvisorBanner() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-10 lg:px-8">
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-800 to-emerald-700 shadow-xl">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#ea7236] to-[#a7623f] shadow-xl">
         <div className="grid items-center gap-8 sm:grid-cols-[1.2fr_1fr]">
           <div className="px-6 py-10 sm:px-10 lg:py-14">
             <h2 className="text-2xl font-extrabold leading-snug text-white sm:text-3xl">
@@ -27,7 +27,7 @@ export function AdvisorBanner() {
 
           <div className="relative hidden h-full min-h-[280px] sm:block">
             <Image src={ADVISOR_PHOTO} alt="Travel advisor" fill className="object-cover object-top" />
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-emerald-800 to-transparent" />
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#ea7236]to-transparent" />
           </div>
         </div>
       </div>

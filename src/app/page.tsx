@@ -37,7 +37,7 @@ const dummyTestimonials: Testimonial[] = [
     rating: 5,
     cityName: "Delhi",
     imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
-    coverImage: "https://images.unsplash.com/photo-1527254432035-4a9b0074c0e2?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1789583302/cld-sample.jpg",
   },
   {
     id: "t2",

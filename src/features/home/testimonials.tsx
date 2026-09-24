@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import type { Testimonial } from "@/lib/types";
 
-const FALLBACK_COVER = "/placeholder/testimonial-cover.jpg";
+const FALLBACK_COVER = "https://res.cloudinary.com/yhuaios0/image/upload/v1789583302/cld-sample.jpg";
 
 export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) {
   if (!testimonials.length) return null;

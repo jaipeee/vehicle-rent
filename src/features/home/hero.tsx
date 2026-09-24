@@ -41,16 +41,6 @@ const SLIDES: Slide[] = [
     heading: "Group Travel Made Easy",
     subheading: "Tempo travellers and buses for weddings, events, and large corporate trips.",
   },
-   {
-    image: "/assets/hero-3.png",
-    heading: "Group Travel Made Easy",
-    subheading: "Tempo travellers and buses for weddings, events, and large corporate trips.",
-  },
-   {
-    image: "/assets/hero-3.png",
-    heading: "Group Travel Made Easy",
-    subheading: "Tempo travellers and buses for weddings, events, and large corporate trips.",
-  },
 ];
 
 export function Hero() {
