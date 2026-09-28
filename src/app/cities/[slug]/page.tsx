@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { apiFetch } from "@/lib/api";
+import { apiFetch, ApiError } from "@/lib/api";
 import type { City } from "@/lib/types";
 import { EnquiryForm } from "@/features/enquiry";
 
 interface CityPageProps {
-  params: { slug: string };
+  // Next.js 15+/16: dynamic route params are a Promise and must be awaited.
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -14,7 +15,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: CityPageProps) {
-  const city = await apiFetch<City>(`/cities/${params.slug}`).catch(() => null);
+  const { slug } = await params;
+  const city = await apiFetch<City>(`/cities/${slug}`).catch(() => null);
   if (!city) return {};
 
   return {
@@ -26,7 +28,15 @@ export async function generateMetadata({ params }: CityPageProps) {
 export const revalidate = 3600;
 
 export default async function CityPage({ params }: CityPageProps) {
-  const city = await apiFetch<City>(`/cities/${params.slug}`).catch(() => null);
+  const { slug } = await params;
+
+  // Only a real 404 from the backend (city genuinely doesn't exist) becomes
+  // Next's notFound(). Any other error (backend down, 500, bad URL, etc.)
+  // is rethrown so it surfaces as a real error instead of a misleading 404.
+  const city = await apiFetch<City>(`/cities/${slug}`).catch((err) => {
+    if (err instanceof ApiError && err.status === 404) return null;
+    throw err;
+  });
 
   if (!city) notFound();
 

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import type { Testimonial } from "@/lib/types";
 
-const FALLBACK_COVER = "https://res.cloudinary.com/yhuaios0/image/upload/v1789583302/cld-sample.jpg";
+const FALLBACK_COVER = "/placeholder/testimonial-cover.jpg";
 
 export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) {
   if (!testimonials.length) return null;
@@ -28,8 +28,10 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
 
         <Carousel opts={{ align: "start", loop: testimonials.length > 3 }} className="mt-12">
           <CarouselContent>
-            {testimonials.map((t) => (
-              <CarouselItem key={t.id} className="sm:basis-1/2 lg:basis-1/3">
+            {testimonials.map((t, i) => (
+              // Index appended so a duplicated id (e.g. copy-pasted placeholder data)
+              // can't produce colliding React keys.
+              <CarouselItem key={`${t.id}-${i}`} className="sm:basis-1/2 lg:basis-1/3">
                 <div className="h-full px-1 pb-2">
                   <div className="relative">
                     <div className="relative h-56 w-full overflow-hidden rounded-2xl">
