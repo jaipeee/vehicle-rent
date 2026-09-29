@@ -335,17 +335,17 @@ export function Navbar() {
               justify-center
               overflow-hidden
               rounded-xl
-              ring-1
-              ring-black/5
+              
+              
               transition-transform
               duration-300
               ease-out
               group-hover:-translate-y-0.5
-              group-hover:shadow-xl
+              
               sm:h-11
               sm:w-11
-              lg:h-12
-              lg:w-12
+              lg:h-20
+              lg:w-40
             "
           >
             <Image

@@ -71,7 +71,7 @@ export default async function CityPage({ params }: CityPageProps) {
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
               <p className="absolute bottom-3 left-4 font-semibold text-white">{spot.name}</p>
             </div>
           ))}
