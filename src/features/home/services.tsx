@@ -47,7 +47,7 @@ export function Services() {
             <div className="relative h-56 w-full">
               <Image src={example.image} alt={example.title} fill className="object-cover" />
               <div className="absolute left-3 top-3 rounded-md bg-white px-2.5 py-1 shadow">
-                <span className="text-xs font-bold text-emerald-700">Indiventure</span>
+                <span className="text-xs font-bold text-emerald-700">Indiventra</span>
               </div>
             </div>
             <div className="p-6">

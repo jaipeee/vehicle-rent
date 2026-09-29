@@ -22,7 +22,7 @@ import { Footer } from "@/components/layout/footer";
 export const revalidate = 3600; // ISR: refresh hourly
 
 export const metadata = {
-  title: "Indiventure Tour & Travel | Tempo Traveller, Bus & Car Rentals",
+  title: "Indiventra Tour & Travel | Tempo Traveller, Bus & Car Rentals",
   description:
     "Reliable tempo traveller, luxury car, and bus rentals for corporate events, weddings, and outstation trips across India.",
 };
@@ -43,7 +43,7 @@ const dummyTestimonials: Testimonial[] = [
     id: "t2",
     name: "Priya Nair",
     role: "Corporate Travel Coordinator",
-    message: "Used Indiventure for our corporate offsite. The bus was spacious and the whole process was hassle-free from booking to drop-off.",
+    message: "Used Indiventra for our corporate offsite. The bus was spacious and the whole process was hassle-free from booking to drop-off.",
     rating: 5,
     cityName: "Mumbai",
     imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",

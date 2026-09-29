@@ -15,8 +15,8 @@ const jost = Jost({
 
 export const metadata: Metadata = {
   title: {
-    default: "Indiventure Tour & Travel",
-    template: "%s | Indiventure Tour & Travel",
+    default: "Indiventra Tour & Travel",
+    template: "%s | Indiventra Tour & Travel",
   },
   description:
     "Reliable tempo traveller, luxury car, and bus rentals for corporate events, weddings, and outstation trips across India.",

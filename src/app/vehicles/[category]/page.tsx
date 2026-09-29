@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: VehicleCategoryPageProps) {
   if (!category) return {};
 
   return {
-    title: `${category.label} on Rent | Indiventure Tour & Travel`,
+    title: `${category.label} on Rent | Indiventra Tour & Travel`,
     description: `Browse our ${category.label} available for rent, with transparent pricing and professional drivers.`,
   };
 }

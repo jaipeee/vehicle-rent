@@ -19,7 +19,7 @@ export const OCCASIONS: OccasionCategory[] = [
       {
         title: "Luxury Bus on Rent for Wedding",
         description:
-          "Indiventure offers spacious buses for wedding guests, seating 41 to 56 with reclining seats, panoramic windows, and onboard music — smooth, comfortable travel for the whole baraat.",
+          "Indiventra offers spacious buses for wedding guests, seating 41 to 56 with reclining seats, panoramic windows, and onboard music — smooth, comfortable travel for the whole baraat.",
         image: "https://images.unsplash.com/photo-1578645510447-e20b4311e3ce?auto=format&fit=crop&w=1200&q=80",
       },
       {

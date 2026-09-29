@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: CityPageProps) {
   if (!city) return {};
 
   return {
-    title: `Tempo Traveller & Bus Rental in ${city.name} | Indiventure Tour & Travel`,
+    title: `Tempo Traveller & Bus Rental in ${city.name} | Indiventra Tour & Travel`,
     description: `Book reliable tempo traveller, car, and bus rentals in ${city.name} for corporate trips, events, and outstation travel.`,
   };
 }
@@ -43,7 +43,7 @@ export default async function CityPage({ params }: CityPageProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Indiventure Tour & Travel",
+    name: "Indiventra Tour & Travel",
     areaServed: city.name,
     description: city.description,
   };

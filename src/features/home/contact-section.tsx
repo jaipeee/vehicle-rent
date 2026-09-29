@@ -193,7 +193,7 @@ export function ContactSection() {
 
               <label className="flex items-start gap-2 text-sm text-slate-600">
                 <Checkbox checked={agree} onCheckedChange={(v) => setAgree(!!v)} className="mt-0.5" />
-                <span>By submitting, I agree to Indiventure&apos;s Terms of Service and Privacy Policy.</span>
+                <span>By submitting, I agree to Indiventra&apos;s Terms of Service and Privacy Policy.</span>
               </label>
 
               <div className="flex items-center gap-3 rounded-xl border border-dashed border-slate-300 bg-slate-50 p-3">

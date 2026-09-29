@@ -28,7 +28,7 @@ const playfair = Playfair_Display({
 const SLIDES: Slide[] = [
   {
     image: "https://res.cloudinary.com/yhuaios0/image/upload/v1790181482/indiventra_hero_banner_convert.io.webp",
-    heading: "Welcome to Indiventure Tour & Travel",
+    heading: "Welcome to Indiventra Tour & Travel",
     subheading: "Comfortable, reliable rentals for corporate trips, events, and outstation travel.",
   },
   {

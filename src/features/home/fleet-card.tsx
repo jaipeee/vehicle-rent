@@ -85,8 +85,8 @@ export function FleetCard({ service }: { service: FleetService }) {
       {/* Vehicle cutout — floats just above the card, slides onto the text on hover */}
       <div
         className={cn(
-          "pointer-events-none absolute -top-6 mt-15 right-15 z-20 w-[63%] transition-transform duration-700 ease-out sm:-top-8",
-          hovered && "-translate-x-[50%]"
+          "pointer-events-none absolute -top-6 mt-15 right-15 z-20 w-[53%] transition-transform duration-700 ease-out sm:-top-8",
+          hovered && "-translate-x-[70%]"
         )}
       >
         <div className="relative aspect-[4/3] w-full">

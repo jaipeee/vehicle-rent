@@ -127,7 +127,7 @@ export function Footer() {
       </div>
 
       <div className="bg-amber-400 py-3 text-center text-xs font-medium text-emerald-950">
-        © {new Date().getFullYear()} Indiventure Tour &amp; Travel. All rights reserved.
+        © {new Date().getFullYear()} Indiventra Tour &amp; Travel. All rights reserved.
       </div>
     </footer>
   );

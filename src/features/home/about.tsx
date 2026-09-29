@@ -5,7 +5,7 @@ const ABOUT_VIDEO_ID = "MVYRGxM7NtU?si=H-etPJKH3gdVg1TU";
 
 // Placeholder copy — swap for your real company story once ready.
 const LEFT_PARAGRAPH =
-  "Indiventure Tour & Travel has spent years building a fleet you can trust — every vehicle is regularly serviced, every driver vetted, so your trip starts stress-free. Indiventure Tour & Travel has spent years building a fleet you can trust — every vehicle is regularly serviced, every driver vetted, so your trip starts stress-free. ";
+  "Indiventra Tour & Travel has spent years building a fleet you can trust — every vehicle is regularly serviced, every driver vetted, so your trip starts stress-free. Indiventra Tour & Travel has spent years building a fleet you can trust — every vehicle is regularly serviced, every driver vetted, so your trip starts stress-free. ";
 const RIGHT_PARAGRAPH =
   "From a single sedan for a corporate meeting to a full luxury bus for a wedding party, we scale to whatever your event needs, in every city we serve.";
 const BOTTOM_PARAGRAPH =
@@ -14,7 +14,7 @@ export function About() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
       <h2 className="text-center text-2xl font-bold text-emerald-900 sm:text-3xl">
-        About Indiventure Tour &amp; Travel
+        About Indiventra Tour &amp; Travel
       </h2>
 
       <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_minmax(0,640px)_1fr] lg:items-center lg:gap-10">
@@ -27,7 +27,7 @@ export function About() {
               <iframe
                 className="h-full w-full"
                 src={`https://www.youtube.com/embed/${ABOUT_VIDEO_ID}`}
-                title="About Indiventure Tour & Travel"
+                title="About Indiventra Tour & Travel"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />

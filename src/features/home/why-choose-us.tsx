@@ -6,7 +6,7 @@ interface Reason {
   points: string[];
 }
 
-// Original copy for Indiventure — structure inspired by common "why choose us"
+// Original copy for Indiventra — structure inspired by common "why choose us"
 // sections, not copied text.
 const REASONS: Reason[] = [
   {
@@ -70,7 +70,7 @@ export function WhyChooseUs() {
     <section className="bg-emerald-50 py-16">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <h2 className="text-center text-2xl font-bold text-emerald-900 sm:text-3xl">
-          Why Indiventure Is the Best Choice
+          Why Indiventra Is the Best Choice
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-slate-600">
           A reliable, customer-first travel partner across every city we serve.
