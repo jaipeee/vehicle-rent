@@ -291,10 +291,10 @@ export function Navbar() {
         max-w-[calc(100vw-1.5rem)]
         -translate-x-1/2
         rounded-3xl
-        bg-slate-100/30
+        bg-slate-900/20
         shadow-xl
         ring-1
-        ring-white/10
+        ring-white/30
         backdrop-blur-md
         sm:top-4
       "

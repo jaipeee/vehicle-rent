@@ -17,11 +17,11 @@ export function About() {
         About Indiventra Tour &amp; Travel
       </h2>
 
-      <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_minmax(0,640px)_1fr] lg:items-center lg:gap-10">
+      <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_minmax(0,580px)_1fr] lg:items-center lg:gap-10">
         <p className="text-slate-600 lg:text-right">{LEFT_PARAGRAPH}</p>
 
         {/* Video "surrounded" by a white framed card */}
-        <div className="mx-auto w-full max-w-2xl rounded-3xl border border-slate-100 bg-white p-3 shadow-xl">
+        <div className="mx-auto w-full max-w-2xl rounded-2xl border border-slate-100 bg-slate-900/40 p-1.5 shadow-xl">
           <div className="relative aspect-video overflow-hidden rounded-2xl bg-slate-100">
             {ABOUT_VIDEO_ID ? (
               <iframe

@@ -1,4 +1,5 @@
 export { Hero } from "./hero";
+export { PageHero } from "./page-hero";
 export { About } from "./about";
 export { Categories } from "./categories";
 export { Fleet } from "./fleet";

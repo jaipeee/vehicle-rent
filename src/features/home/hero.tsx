@@ -32,7 +32,7 @@ const SLIDES: Slide[] = [
     subheading: "Comfortable, reliable rentals for corporate trips, events, and outstation travel.",
   },
   {
-    image: "/assets/hero-2.png",
+    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1790713704/group-cars-_E2_80_A6ylish-reliable-honda-cars_1101683-2406.jpg",
     heading: "Travel in Comfort, Every Time",
     subheading: "Premium sedans and SUVs for every occasion, in every city we serve.",
   },
