@@ -26,7 +26,7 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
         <p className="mt-3 text-center text-slate-500">Real experiences from real travellers.</p>
         <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-amber-400" />
 
-        <Carousel opts={{ align: "start", loop: testimonials.length > 3 }} className="mt-12">
+        <Carousel opts={{ align: "start", loop: testimonials.length > 1 }} className="mt-12">
           <CarouselContent>
             {testimonials.map((t, i) => (
               // Index appended so a duplicated id (e.g. copy-pasted placeholder data)

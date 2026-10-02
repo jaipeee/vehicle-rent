@@ -2,11 +2,11 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { apiFetch } from "@/lib/api";
 import type { City, Vehicle, Testimonial } from "@/lib/types";
-import { dummyTestimonials } from "@/lib/dummyData";
+import { dummyCities, dummyTestimonials, dummyVehicles } from "@/lib/dummyData";
 import { VEHICLE_CATEGORIES } from "@/features/vehicles/vehicle-categories.config";
 import { EnquiryForm } from "@/features/enquiry";
 import {
-  PageHero,
+  Hero,
   About,
   HowItWorks,
   Categories,
@@ -58,16 +58,22 @@ export default async function VehicleCategoryPage({ params }: VehicleCategoryPag
     apiFetch<City[]>("/cities").catch(() => []),
     apiFetch<Testimonial[]>("/testimonials").catch(() => []),
   ]);
-  const filtered = vehicles.filter((v) => category.matches.includes(v.category));
+  const vehiclesData = vehicles.length > 0 ? vehicles : dummyVehicles;
+  const filtered = vehiclesData.filter((v) => category.matches.includes(v.category));
   const testimonialsData = testimonials.length > 0 ? testimonials : dummyTestimonials;
+  const citiesData = cities.length > 0 ? cities : dummyCities;
   const heroImage = filtered[0]?.imageUrl ?? FALLBACK_HERO_IMAGE;
 
   return (
     <main>
-      <PageHero
-        image={heroImage}
-        heading={`${category.label} on Rent`}
-        subheading={`Explore our full range of ${category.label.toLowerCase()} — transparent pricing and professional drivers, available across every city we serve.`}
+      <Hero
+        slides={[
+          {
+            image: heroImage,
+            heading: `${category.label} on Rent`,
+            subheading: `Explore our full range of ${category.label.toLowerCase()} — transparent pricing and professional drivers, available across every city we serve.`,
+          },
+        ]}
       />
 
       {/* Get a Quote — floats over the hero's bottom edge, same as the homepage */}
@@ -135,7 +141,7 @@ export default async function VehicleCategoryPage({ params }: VehicleCategoryPag
       <AdvisorBanner />
       <WhyChooseUs />
       <Testimonials testimonials={testimonialsData} />
-      <CitiesGrid cities={cities} />
+      <CitiesGrid cities={citiesData} />
       <BlogSection />
       <FAQ />
       <ContactSection />

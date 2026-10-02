@@ -1,6 +1,6 @@
 import type { City, Testimonial } from "@/lib/types";
 import { apiFetch } from "@/lib/api";
-import { dummyTestimonials } from "@/lib/dummyData";
+import { dummyCities, dummyTestimonials } from "@/lib/dummyData";
 import {
   About,
   AdvisorBanner,
@@ -34,7 +34,7 @@ export default async function HomePage() {
   ]);
 
   const testimonialsData = testimonials.length > 0 ? testimonials : dummyTestimonials;
-
+  const citiesData = cities.length > 0 ? cities : dummyCities;
   return (
     <main>
       <Hero />
@@ -67,7 +67,7 @@ export default async function HomePage() {
       <AdvisorBanner />
       <WhyChooseUs />
       <Testimonials testimonials={testimonialsData} />
-      <CitiesGrid cities={cities} />
+      <CitiesGrid cities={citiesData} />
       <BlogSection />
       <FAQ />
       <ContactSection />

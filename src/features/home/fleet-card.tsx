@@ -40,16 +40,16 @@ export function FleetCard({ service }: { service: FleetService }) {
     >
       <div
         className="relative flex h-[200px] overflow-hidden rounded-[18px]"
-        style={{ backgroundColor: "#E9F0FB" }}
+        style={{ backgroundColor: "#ea723646" }}
       >
         {/* Text panel — blurs and fades while the car sits over it */}
         <div
           className={cn(
-            "relative z-10 flex w-[46%] flex-col justify-between p-7 pl-8 transition-all duration-500",
+            "relative z-10 flex w-[56%] flex-col justify-between p-7 pl-6 transition-all duration-500",
             hovered && "opacity-20 blur-[2px]"
           )}
         >
-          <h3 className="text-xl font-bold leading-tight" style={{ color: "#1863E0" }}>
+          <h3 className="text-xl font-bold leading-tight" style={{ color: "#0B2A4A" }}>
             {service.title}
             <span className="block" style={{ color: "#0B2A4A" }}>
               {service.subtitle}

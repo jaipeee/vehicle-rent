@@ -1,5 +1,4 @@
-export { Hero } from "./hero";
-export { PageHero } from "./page-hero";
+export { Hero, type HeroSlide } from "./hero";
 export { About } from "./about";
 export { Categories } from "./categories";
 export { Fleet } from "./fleet";

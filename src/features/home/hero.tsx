@@ -1,5 +1,5 @@
 "use client";
- 
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
@@ -13,8 +13,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Playfair_Display } from "next/font/google";
 
-
-interface Slide {
+export interface HeroSlide {
   image: string;
   heading: string;
   subheading: string;
@@ -24,8 +23,9 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
 });
-// Placeholder slides — swap images for real vehicle photos, edit copy per slide.
-const SLIDES: Slide[] = [
+
+// Default homepage slides — used when no `slides` prop is passed.
+const DEFAULT_SLIDES: HeroSlide[] = [
   {
     image: "https://res.cloudinary.com/yhuaios0/image/upload/v1790181482/indiventra_hero_banner_convert.io.webp",
     heading: "Welcome to Indiventra Tour & Travel",
@@ -43,11 +43,21 @@ const SLIDES: Slide[] = [
   },
 ];
 
-export function Hero() {
+interface HeroProps {
+  // Pass a single-item array for city/vehicle pages — autoplay and the
+  // numbered pagination automatically disable themselves when there's
+  // nothing to cycle through.
+  slides?: HeroSlide[];
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+export function Hero({ slides = DEFAULT_SLIDES, ctaLabel = "Get a Quote", ctaHref = "#get-a-quote" }: HeroProps) {
   const autoplay = useRef(Autoplay({ delay: 4500, stopOnInteraction: false }));
   const [api, setApi] = useState<CarouselApi>();
   const [activeIndex, setActiveIndex] = useState(0);
- 
+  const isCarousel = slides.length > 1;
+
   useEffect(() => {
     if (!api) return;
     setActiveIndex(api.selectedScrollSnap());
@@ -55,13 +65,18 @@ export function Hero() {
   }, [api]);
 
   const goTo = useCallback((index: number) => api?.scrollTo(index), [api]);
-  const active = SLIDES[activeIndex];
+  const active = slides[activeIndex] ?? slides[0];
 
   return (
     <section className="relative pb-14 sm:pb-20">
-      <Carousel setApi={setApi} plugins={[autoplay.current]} opts={{ loop: true }} className="w-full">
+      <Carousel
+        setApi={setApi}
+        plugins={isCarousel ? [autoplay.current] : []}
+        opts={{ loop: isCarousel }}
+        className="w-full"
+      >
         <CarouselContent>
-          {SLIDES.map((slide) => (
+          {slides.map((slide) => (
             <CarouselItem key={slide.image}>
               <div className="relative h-[560px] w-full sm:h-[790px]">
                 <Image src={slide.image} alt={slide.heading} fill priority className="object-cover" />
@@ -71,67 +86,62 @@ export function Hero() {
           ))}
         </CarouselContent>
       </Carousel>
- 
+
       {/* Heading/subtext swap per active slide */}
-<div className="pointer-events-none absolute inset-0 flex items-center px-8 text-left text-white sm:px-20 lg:px-32">
-  <div className="max-w-xl">
-    <h1
-  className={`
-    ${playfair.className}
-    text-2xl
-    font-bold
-    leading-[1.1]
-    tracking-tight
-    text-white
-    drop-shadow-lg
-    sm:text-4xl
-    lg:text-6xl
-  `}
->
-  {active.heading}
-</h1>
+      <div className="pointer-events-none absolute inset-0 flex items-center px-8 text-left text-white sm:px-20 lg:px-32">
+        <div className="max-w-xl">
+          <h1
+            className={cn(
+              playfair.className,
+              "text-2xl font-bold leading-[1.1] tracking-tight text-white drop-shadow-lg sm:text-4xl lg:text-6xl"
+            )}
+          >
+            {active.heading}
+          </h1>
 
-<p className="mt-4 max-w-xl text-sm font-medium leading-relaxed tracking-wide text-white/90 sm:text-lg">
-  {active.subheading}
-</p>
+          <p className="mt-4 max-w-xl text-sm font-medium leading-relaxed tracking-wide text-white/90 sm:text-lg">
+            {active.subheading}
+          </p>
 
-    <Button
-      size="lg"
-      className="group pointer-events-auto w-30 h-10 relative mt-6 overflow-hidden rounded-xl bg-[#ea7236] text-emerald-100 hover:text-white"
-    >
-      <span className="absolute left-0 top-0 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
-      <span className="absolute bottom-0 left-1/4 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
-      <span className="absolute right-1/4 top-0 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
-      <span className="absolute bottom-0 right-0 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
-
-      <span className="relative z-10 text-xl">Get a Quote</span>
-    </Button>
-  </div>
-</div>
- 
-      {/* Vertical numbered pagination — shows current slide, clickable to jump */}
-      <div className="absolute left-4 top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center sm:flex lg:left-10">
-        {SLIDES.map((_, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <button
-              type="button"
-              aria-label={`Go to slide ${index + 1}`}
-              onClick={() => goTo(index)}
-              className={cn(
-                "flex h-9 w-9 items-center justify-center rounded-full border text-xl font-semibold transition-colors duration-300",
-                index === activeIndex
-                  ? "border-amber-400 bg-[#ea7236] text-emerald-950"
-                  : "border-white/50 bg-white/10 text-white hover:bg-white/20"
-              )}
-            >
-              {index + 1}
-            </button>
-            {index < SLIDES.length - 1 && <span className="h-8 w-px bg-white/40" />}
-          </div>
-        ))}
+          <Button
+            asChild
+            size="lg"
+            className="group pointer-events-auto relative mt-6 h-10 w-30 overflow-hidden rounded-xl bg-[#ea7236] text-emerald-100 hover:text-white"
+          >
+            <a href={ctaHref}>
+              <span className="absolute left-0 top-0 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
+              <span className="absolute bottom-0 left-1/4 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
+              <span className="absolute right-1/4 top-0 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
+              <span className="absolute bottom-0 right-0 h-0 w-1/4 bg-[#37d4d9] duration-500 group-hover:h-full" />
+              <span className="relative z-10 text-xl">{ctaLabel}</span>
+            </a>
+          </Button>
+        </div>
       </div>
 
-
+      {/* Vertical numbered pagination — only shown when there's more than one slide */}
+      {isCarousel && (
+        <div className="absolute left-4 top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center sm:flex lg:left-10">
+          {slides.map((_, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <button
+                type="button"
+                aria-label={`Go to slide ${index + 1}`}
+                onClick={() => goTo(index)}
+                className={cn(
+                  "flex h-9 w-9 items-center justify-center rounded-full border text-xl font-semibold transition-colors duration-300",
+                  index === activeIndex
+                    ? "border-amber-400 bg-[#ea7236] text-emerald-950"
+                    : "border-white/50 bg-white/10 text-white hover:bg-white/20"
+                )}
+              >
+                {index + 1}
+              </button>
+              {index < slides.length - 1 && <span className="h-8 w-px bg-white/40" />}
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

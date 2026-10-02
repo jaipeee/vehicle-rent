@@ -2,10 +2,10 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { apiFetch, ApiError } from "@/lib/api";
 import type { City, Testimonial } from "@/lib/types";
-import { dummyTestimonials } from "@/lib/dummyData";
+import { dummyCities, dummyTestimonials } from "@/lib/dummyData";
 import { EnquiryForm } from "@/features/enquiry";
 import {
-  PageHero,
+  Hero,
   About,
   HowItWorks,
   Categories,
@@ -61,6 +61,7 @@ export default async function CityPage({ params }: CityPageProps) {
     apiFetch<Testimonial[]>("/testimonials").catch(() => []),
   ]);
   const testimonialsData = testimonials.length > 0 ? testimonials : dummyTestimonials;
+  const citiesData = cities.length > 0 ? cities : dummyCities;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -74,10 +75,24 @@ export default async function CityPage({ params }: CityPageProps) {
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <PageHero
-        image={city.heroImage}
-        heading={`Vehicle Rentals in ${city.name}`}
-        subheading={city.description}
+      <Hero
+        slides={[
+          {
+            image: city.heroImage,
+            heading: `Vehicle Rentals in ${city.name}`,
+            subheading: city.description,
+          },
+           {
+            image: city.heroImage,
+            heading: `Vehicle Rentals in ${city.name}`,
+            subheading: city.description,
+          },
+           {
+            image: city.heroImage,
+            heading: `Vehicle Rentals in ${city.name}`,
+            subheading: city.description,
+          },
+        ]}
       />
 
       {/* Get a Quote — floats over the hero's bottom edge, same as the homepage */}
@@ -128,7 +143,7 @@ export default async function CityPage({ params }: CityPageProps) {
       <AdvisorBanner />
       <WhyChooseUs />
       <Testimonials testimonials={testimonialsData} />
-      <CitiesGrid cities={cities} />
+      <CitiesGrid cities={citiesData} />
       <BlogSection />
       <FAQ />
       <ContactSection />

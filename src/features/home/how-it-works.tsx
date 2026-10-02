@@ -76,7 +76,7 @@ const THEME_STYLES: Record<
 
 export function HowItWorks() {
   return (
-    <section className="bg-[#eef2fb] py-20">
+    <section className="bg-[#fe980a2d] py-20">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
           <div className="mb-4 flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-widest text-slate-400">
@@ -85,7 +85,7 @@ export function HowItWorks() {
           </div>
           <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
             Simple Steps to{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#eb6623] to-[#24d6dc] bg-clip-text text-transparent">
               Your Next Ride
             </span>
           </h2>

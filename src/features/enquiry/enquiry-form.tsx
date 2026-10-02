@@ -122,7 +122,7 @@ export function EnquiryForm() {
         p-4
         shadow-xl
         backdrop-blur-md
-        sm:p-7
+        sm:p-4
       "
     >
       <form
