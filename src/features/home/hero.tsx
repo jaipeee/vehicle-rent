@@ -27,17 +27,17 @@ const playfair = Playfair_Display({
 // Default homepage slides — used when no `slides` prop is passed.
 const DEFAULT_SLIDES: HeroSlide[] = [
   {
-    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1790181482/indiventra_hero_banner_convert.io.webp",
+    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791052249/Sunlit_Luxury_Coach_Fleet.png",
     heading: "Welcome to Indiventra Tour & Travel",
     subheading: "Comfortable, reliable rentals for corporate trips, events, and outstation travel.",
   },
   {
-    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1790713704/group-cars-_E2_80_A6ylish-reliable-honda-cars_1101683-2406.jpg",
+    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791052249/Copilot_20261002_232848.png",
     heading: "Travel in Comfort, Every Time",
     subheading: "Premium sedans and SUVs for every occasion, in every city we serve.",
   },
   {
-    image: "/assets/hero-3.png",
+    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791052249/Copilot_20261002_233518.png",
     heading: "Group Travel Made Easy",
     subheading: "Tempo travellers and buses for weddings, events, and large corporate trips.",
   },

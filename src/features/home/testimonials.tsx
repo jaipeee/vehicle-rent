@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -15,6 +17,8 @@ import type { Testimonial } from "@/lib/types";
 const FALLBACK_COVER = "/placeholder/testimonial-cover.jpg";
 
 export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) {
+  const autoplay = useRef(Autoplay({ delay: 4000, stopOnInteraction: false }));
+
   if (!testimonials.length) return null;
 
   return (
@@ -26,7 +30,11 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
         <p className="mt-3 text-center text-slate-500">Real experiences from real travellers.</p>
         <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-amber-400" />
 
-        <Carousel opts={{ align: "start", loop: testimonials.length > 1 }} className="mt-12">
+        <Carousel
+          opts={{ align: "start", loop: testimonials.length > 3 }}
+          plugins={testimonials.length > 1 ? [autoplay.current] : []}
+          className="mt-12"
+        >
           <CarouselContent>
             {testimonials.map((t, i) => (
               // Index appended so a duplicated id (e.g. copy-pasted placeholder data)

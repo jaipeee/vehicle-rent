@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 // Placeholder — swap /placeholder/advisor.jpg for a real photo of your team/advisor.
-const ADVISOR_PHOTO = "https://res.cloudinary.com/yhuaios0/image/upload/v1790181270/main-sample.png";
+const ADVISOR_PHOTO = "https://res.cloudinary.com/yhuaios0/image/upload/v1791056016/Friendly_Travel_Planning_Consultation.png";
 
 export function AdvisorBanner() {
   return (
@@ -25,7 +25,7 @@ export function AdvisorBanner() {
             </a>
           </div>
 
-          <div className="relative hidden h-full min-h-[280px] sm:block">
+          <div className="relative hidden w-full h-[350] min-h-[300px] sm:block">
             <Image src={ADVISOR_PHOTO} alt="Travel advisor" fill className="object-cover object-top" />
             <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#ea7236]to-transparent" />
           </div>

@@ -14,7 +14,7 @@ const CATEGORIES: Category[] = [
   { name: "Standard", icon: PiggyBank, gradient: "from-lime-400 to-lime-500", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789756966/ECONOMY_CATEGORY.png" },
   { name: "Preferred", icon: Briefcase, gradient: "from-emerald-600 to-emerald-700", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789757379/ChatGPT_Image_Sep_19_2026_12_18_57_AM_convert.io.webp" },
   { name: "Regal", icon: Gem, gradient: "from-rose-400 to-rose-500", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789757513/ChatGPT_Image_Sep_19_2026_12_21_32_AM_convert.io.webp" },
-  { name: "Imperial", icon: Crown, gradient: "from-violet-600 to-violet-700", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789757700/ChatGPT_Image_Sep_19_2026_12_24_42_AM_convert.io.webp" },
+  { name: "Maharaja", icon: Crown, gradient: "from-violet-600 to-violet-700", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789757700/ChatGPT_Image_Sep_19_2026_12_24_42_AM_convert.io.webp" },
 ];
 
 export function Categories() {
