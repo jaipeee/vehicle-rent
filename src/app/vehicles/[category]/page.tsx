@@ -136,7 +136,7 @@ export default async function VehicleCategoryPage({ params }: VehicleCategoryPag
       <About />
       <HowItWorks />
       <Categories />
-      <Fleet />
+      <Fleet categorySlug={category.slug} />
       <Services />
       <AdvisorBanner />
       <WhyChooseUs />

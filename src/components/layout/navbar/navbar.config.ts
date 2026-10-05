@@ -53,7 +53,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
 ];
 
-export const CITIES = ["Delhi", "Mumbai", "Bangalore", "Pune", "Hyderabad"];
+export const CITIES = ["Delhi", "Mumbai", "Haridwar", "Vanarasi"];
 
 export const CONTACT_PHONE = {
   display: "(+91) 83 6968 1231",

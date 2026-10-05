@@ -4,7 +4,7 @@ import type { City } from "@/lib/types";
 
 export function CitiesGrid({ cities }: { cities: City[] }) {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
+    <section className="mx-auto max-w-7xl px-4 py-16 lg:px-6">
       <h2 className="text-center text-2xl font-bold text-emerald-900 sm:text-3xl">Cities We Serve</h2>
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {cities.map((city) => (

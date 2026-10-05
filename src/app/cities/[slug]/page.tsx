@@ -60,7 +60,11 @@ export default async function CityPage({ params }: CityPageProps) {
     apiFetch<City[]>("/cities").catch(() => []),
     apiFetch<Testimonial[]>("/testimonials").catch(() => []),
   ]);
-  const testimonialsData = testimonials.length > 0 ? testimonials : dummyTestimonials;
+  const allTestimonials = testimonials.length > 0 ? testimonials : dummyTestimonials;
+  // Prefer testimonials from this specific city; fall back to all of them if
+  // none exist yet for this city, so the section is never empty.
+  const cityTestimonials = allTestimonials.filter((t) => t.cityName === city.name);
+  const testimonialsData = cityTestimonials.length > 0 ? cityTestimonials : allTestimonials;
   const citiesData = cities.length > 0 ? cities : dummyCities;
 
   const jsonLd = {
@@ -78,16 +82,6 @@ export default async function CityPage({ params }: CityPageProps) {
       <Hero
         slides={[
           {
-            image: city.heroImage,
-            heading: `Vehicle Rentals in ${city.name}`,
-            subheading: city.description,
-          },
-           {
-            image: city.heroImage,
-            heading: `Vehicle Rentals in ${city.name}`,
-            subheading: city.description,
-          },
-           {
             image: city.heroImage,
             heading: `Vehicle Rentals in ${city.name}`,
             subheading: city.description,
@@ -138,7 +132,7 @@ export default async function CityPage({ params }: CityPageProps) {
       <About />
       <HowItWorks />
       <Categories />
-      <Fleet />
+      <Fleet cityName={city.name} />
       <Services />
       <AdvisorBanner />
       <WhyChooseUs />

@@ -19,7 +19,8 @@ export interface FleetService {
   subtitle: string;
   description: string;
   images: string[]; // exactly 5 background photos, cycled every 1.6s on hover
-  vehicleImage: string; // transparent-background PNG cutout, floats over the panel
+  vehicleImage: string;
+  relatedCategorySlugs: string[]; 
   amenities: { label: string; icon: LucideIcon }[];
 }
 
@@ -39,6 +40,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80",
     ],
     vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1790712443/cars_SUVs.png",
+    relatedCategorySlugs: ["car-suv"],
     amenities: [
       { label: "AC Cabin", icon: Wind },
       { label: "Experienced Driver", icon: UserCheck },
@@ -61,6 +63,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80",
     ],
     vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1790712444/Luxury_Cars_SUVs.png",
+    relatedCategorySlugs: ["luxury-cars-suvs-vans"],
     amenities: [
       { label: "AC Cabin", icon: Wind },
       { label: "Experienced Driver", icon: UserCheck },
@@ -84,6 +87,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80",
     ],
     vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1790703115/Tempo_Traveller.png",
+    relatedCategorySlugs: ["tempo-traveller"],
     amenities: [
       { label: "AC Cabin", icon: Wind },
       { label: "Pushback Seats", icon: Armchair },
@@ -107,6 +111,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80",
     ],
     vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1790703115/Tempo_Traveller.png",
+    relatedCategorySlugs: ["tempo-traveller"],
     amenities: [
       { label: "AC Cabin", icon: Wind },
       { label: "Pushback Seats", icon: Armchair },
@@ -130,6 +135,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80",
     ],
     vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1790712443/Force_Urbania.png",
+    relatedCategorySlugs: ["urbania"],
     amenities: [
       { label: "AC Cabin", icon: Wind },
       { label: "Pushback Seats", icon: Armchair },
@@ -153,6 +159,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1494905998402-395d579af36f?auto=format&fit=crop&w=1200&q=80",
     ],
     vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1790703150/Force_Urbania.png",
+    relatedCategorySlugs: ["luxury-cars-suvs-vans"],
     amenities: [
       { label: "Premium Interiors", icon: Sparkles },
       { label: "Chauffeur Service", icon: UserCheck },
@@ -176,6 +183,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=80",
     ],
     vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1790703115/Minibus.png",
+    relatedCategorySlugs: ["mini-bus"],
     amenities: [
       { label: "AC & Non-AC", icon: Wind },
       { label: "Pushback Seats", icon: Armchair },
@@ -199,6 +207,7 @@ export const FLEET_SERVICES: FleetService[] = [
       "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=80",
     ],
     vehicleImage: "https://res.cloudinary.com/yhuaios0/image/upload/v1790712443/Sleeper_Bus.png",
+    relatedCategorySlugs: ["luxury-buses"],
     amenities: [
       { label: "AC & Non-AC", icon: Wind },
       { label: "Pushback Seats", icon: Armchair },

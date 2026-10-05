@@ -6,7 +6,12 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { FleetService } from "./fleet.config";
 
-export function FleetCard({ service }: { service: FleetService }) {
+interface FleetCardProps {
+  service: FleetService;
+  cityName?: string;
+}
+
+export function FleetCard({ service, cityName }: FleetCardProps) {
   const [hovered, setHovered] = useState(false);
   const [index, setIndex] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -55,6 +60,14 @@ export function FleetCard({ service }: { service: FleetService }) {
               {service.subtitle}
             </span>
           </h3>
+          {cityName && (
+  <span
+    className="mt-2 inline-block w-fit rounded-full px-2.5 py-1 text-[0.7rem] font-semibold"
+    style={{ backgroundColor: "#ffe4d6", color: "#ea7236" }}
+  >
+    Available in {cityName}
+  </span>
+)}
           <div
             className="flex h-[52px] w-[52px] items-center justify-center rounded-full bg-white"
             style={{ boxShadow: "0 6px 14px rgba(11,42,74,0.10)" }}

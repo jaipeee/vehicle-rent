@@ -6,7 +6,6 @@ interface Category {
   name: string;
   icon: LucideIcon;
   gradient: string;
-  // Placeholder — drop your own image at this path (or change the path) once ready.
   image: string;
 }
 
@@ -19,23 +18,30 @@ const CATEGORIES: Category[] = [
 
 export function Categories() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
+    <section className="mx-auto max-w-7xl px-2 py-8 lg:px-8">
       <h2 className="text-center text-2xl font-bold text-emerald-900 sm:text-3xl">
         4 Categories of Vehicles to Suit Every Budget
       </h2>
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {/* extra top margin + row gap so the overflowing images don't collide with the title/other cards */}
+      <div className="mt-20 grid gap-x-6 gap-y-20 sm:grid-cols-2 lg:grid-cols-4">
         {CATEGORIES.map(({ name, icon: Icon, gradient, image }) => (
           <div
             key={name}
             className={cn(
-              "flex flex-col items-center rounded-3xl bg-gradient-to-br p-2 text-center text-white shadow-lg transition-transform duration-300 hover:-translate-y-1",
+              "group relative flex flex-col items-center rounded-3xl bg-gradient-to-br px-5 pb-6 text-center text-white shadow-lg transition-transform duration-300 hover:-translate-y-1",
               gradient
             )}
           >
-            {/* Image slot — swap the placeholder path in CATEGORIES above for your real photo */}
-            <div className="relative h-70 w-full overflow-hidden ">
-              <Image src={image} alt={name} fill className="object-cover" />
+            {/* Image: ~30% of its height sits above the card */}
+            <div className="relative -mt-20 h-45 w-full">
+              <Image
+                src={image}
+                alt={name}
+                fill
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                className="object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:-translate-y-2 group-hover:scale-105"
+              />
             </div>
 
             <h3 className="mt-4 text-xl font-extrabold tracking-wide">{name.toUpperCase()}</h3>
