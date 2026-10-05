@@ -82,14 +82,12 @@ export function WhyChooseUs() {
           A reliable, customer-first travel partner across every city we serve.
         </p>
 
-        {/* 2 columns on phones => 4 cards visible per screen */}
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-6 lg:grid-cols-3">
+        <div className="mt-6 grid grid-cols-2 items-stretch gap-3 sm:mt-10 sm:gap-6 lg:grid-cols-3">
           {REASONS.map(({ icon: Icon, title, points, image }) => (
             <div
               key={title}
-              className="flex flex-col overflow-hidden rounded-xl border border-emerald-100 bg-white shadow-sm sm:rounded-2xl"
+              className="flex h-full flex-col overflow-hidden rounded-xl border border-emerald-100 bg-white shadow-sm sm:rounded-2xl"
             >
-              {/* Full image visible: aspect ratio box + object-contain (no cropping) */}
               <div className="relative aspect-[4/3] w-full bg-emerald-50/60">
                 <Image
                   src={image}
@@ -101,7 +99,7 @@ export function WhyChooseUs() {
               </div>
 
               <div className="flex flex-1 flex-col p-3 sm:p-6">
-                <div className="flex items-center gap-2 sm:block">
+                <div className="flex items-start gap-2 sm:block">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-100 sm:h-12 sm:w-12">
                     <Icon className="h-4 w-4 text-emerald-700 sm:h-6 sm:w-6" />
                   </div>
@@ -110,11 +108,14 @@ export function WhyChooseUs() {
                   </h3>
                 </div>
 
-                {/* Bullet points hidden on phones to keep cards compact */}
-                <ul className="mt-3 hidden space-y-2 sm:block">
+                {/* Visible on all screens, smaller on phones */}
+                <ul className="mt-2 space-y-1.5 sm:mt-3 sm:space-y-2">
                   {points.map((point) => (
-                    <li key={point} className="flex items-start gap-2 text-sm text-slate-600">
-                      <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
+                    <li
+                      key={point}
+                      className="flex items-start gap-1 text-[11px] leading-snug text-slate-600 sm:gap-2 sm:text-sm"
+                    >
+                      <ChevronRight className="mt-0.5 h-3 w-3 shrink-0 text-amber-500 sm:h-4 sm:w-4" />
                       {point}
                     </li>
                   ))}

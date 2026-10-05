@@ -18,37 +18,40 @@ const CATEGORIES: Category[] = [
 
 export function Categories() {
   return (
-    <section className="mx-auto max-w-7xl px-2 py-8 lg:px-8">
-      <h2 className="text-center text-2xl font-bold text-emerald-900 sm:text-3xl">
+    <section className="mx-auto max-w-7xl px-3 py-8 sm:px-2 lg:px-8">
+      <h2 className="text-center text-xl font-bold text-emerald-900 sm:text-3xl">
         4 Categories of Vehicles to Suit Every Budget
       </h2>
 
-      {/* extra top margin + row gap so the overflowing images don't collide with the title/other cards */}
-      <div className="mt-20 grid gap-x-6 gap-y-20 sm:grid-cols-2 lg:grid-cols-4">
+      {/* 2 per row on phones, 4 per row on large screens */}
+      <div className="mt-14 grid grid-cols-2 gap-x-3 gap-y-14 sm:mt-20 sm:gap-x-6 sm:gap-y-20 lg:grid-cols-4">
         {CATEGORIES.map(({ name, icon: Icon, gradient, image }) => (
           <div
             key={name}
             className={cn(
-              "group relative flex flex-col items-center rounded-3xl bg-gradient-to-br px-5 pb-6 text-center text-white shadow-lg transition-transform duration-300 hover:-translate-y-1",
+              "group relative flex flex-col items-center rounded-2xl bg-gradient-to-br px-3 pb-4 text-center text-white shadow-lg transition-transform duration-300 hover:-translate-y-1 sm:rounded-3xl sm:px-5 sm:pb-6",
               gradient
             )}
           >
-            {/* Image: ~30% of its height sits above the card */}
-            <div className="relative -mt-20 h-45 w-full">
+            {/* Image: part of it sits above the card */}
+            <div className="relative -mt-8 h-28 w-full sm:-mt-14 sm:h-48">
               <Image
                 src={image}
                 alt={name}
                 fill
-                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                className="object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:-translate-y-2 group-hover:scale-105"
+                sizes="(min-width: 1024px) 25vw, 50vw"
+                className="object-contain drop-shadow-[0_12px_12px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:-translate-y-2 group-hover:scale-105 sm:drop-shadow-[0_18px_18px_rgba(0,0,0,0.35)]"
               />
             </div>
 
-            <h3 className="mt-4 text-xl font-extrabold tracking-wide">{name.toUpperCase()}</h3>
-            <div className="mt-5 flex w-full items-center gap-2">
+            <h3 className="mt-2 text-sm font-extrabold tracking-wide sm:mt-4 sm:text-xl">
+              {name.toUpperCase()}
+            </h3>
+
+            <div className="mt-3 flex w-full items-center gap-2 sm:mt-5">
               <span className="h-px flex-1 bg-white/40" />
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/60">
-                <Icon className="h-4 w-4" />
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/60 sm:h-9 sm:w-9">
+                <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               </span>
               <span className="h-px flex-1 bg-white/40" />
             </div>
