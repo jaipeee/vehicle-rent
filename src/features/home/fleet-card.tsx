@@ -152,7 +152,6 @@ export function FleetCard({ service, cityName }: FleetCardProps) {
           
           <button
             type="button"
-            rel={external ? "noopener noreferrer" : undefined}
             className="rounded-xl border-[1.5px] px-[22px] py-[13px] text-sm font-semibold transition-colors text-[#ea7236] hover:text-[#e2eded] hover:bg-[#37d4d9] "
             style={{ borderColor: "#C9DAF3" }}
           >
