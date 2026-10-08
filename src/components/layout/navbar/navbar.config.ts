@@ -15,8 +15,8 @@ export interface NavItem {
 // Placeholder data — replace hrefs/labels/children once real site content is ready.
 export const NAV_ITEMS: NavItem[] = [
   {
-    label: "About Us",
-    href: "/about",
+    label: "Home",
+    href: "/",
     icon: Home,
   },
   {
@@ -47,13 +47,16 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/info",
     icon: Info,
     children: [
-      { label: "FAQ", href: "/info/faq" },
+      { label: "About Us", href: "/info/About Us" },
+      { label: "Blog", href: "/info/blog" },
       { label: "Terms & Conditions", href: "/info/terms" },
+      { label: "Privacy Policy", href: "/info/privacypolicy" },
+      { label: "Disclaimer", href: "/info/disclaimer" },
     ],
   },
 ];
 
-export const CITIES = ["Delhi", "Mumbai", "Haridwar", "Vanarasi"];
+export const CITIES = ["Delhi", "Mumbai", "Haridwar", "Vanarasi", "Chandigarh"];
 
 export const CONTACT_PHONE = {
   display: "(+91) 83 6968 1231",

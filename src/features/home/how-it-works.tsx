@@ -55,14 +55,14 @@ export function HowItWorks() {
     <section className="bg-[#fe980a2d] py-12 sm:py-20">
       <div className="mx-auto max-w-7xl px-3 sm:px-4 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
-          <div className="mb-3 flex items-center justify-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-slate-400 sm:mb-4 sm:gap-3 sm:text-xs">
+          <div className="mb-3 flex items-center justify-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-amber-500 sm:mb-4 sm:gap-3 sm:text-xs">
             <span className="h-px w-6 bg-slate-900 sm:w-9" /> Your Journey • Our Priority
             <span className="h-px w-6 bg-slate-900 sm:w-9" />
           </div>
           <h2 className="text-2xl font-extrabold text-slate-900 sm:text-4xl">
-            Simple Steps to{" "}
-            <span className="bg-gradient-to-r from-[#eb6623] to-[#24d6dc] bg-clip-text text-transparent">
-              Your Next Ride
+            Simple Steps to Your{" "}
+            <span className="text-amber-500">
+              Next Ride
             </span>
           </h2>
           <p className="mt-2 text-sm text-slate-500 sm:mt-3 sm:text-base">

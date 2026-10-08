@@ -22,6 +22,7 @@ export function FleetCard({ service, cityName }: FleetCardProps) {
       setIndex((prev) => (prev + 1) % service.images.length);
     }, 1600);
   };
+  const WHATSAPP_NUMBER = "918369681231";
 
   const handleLeave = () => {
     setHovered(false);
@@ -120,7 +121,7 @@ export function FleetCard({ service, cityName }: FleetCardProps) {
           {service.amenities.map(({ label, icon: Icon }) => (
             <li
               key={label}
-              style={{ backgroundColor: "#E9F0FB", color: "#0B2A4A" }}
+              style={{ backgroundColor: "#fe980a2d", color: "#0B2A4A" }}
               className="flex items-center gap-1.5 rounded-full px-3 py-2 text-[0.85rem] font-medium"
             >
               <Icon className="h-4 w-4" style={{ color: "#ea7236" }} />
@@ -148,6 +149,15 @@ export function FleetCard({ service, cityName }: FleetCardProps) {
             <span className="absolute bottom-0 right-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
             <span className="relative z-10 text-sm font-semibold text-white">Book Now</span>
           </button>
+          
+          <button
+            type="button"
+            rel={external ? "noopener noreferrer" : undefined}
+            className="rounded-xl border-[1.5px] px-[22px] py-[13px] text-sm font-semibold transition-colors text-[#ea7236] hover:text-[#e2eded] hover:bg-[#37d4d9] "
+            style={{ borderColor: "#C9DAF3" }}
+          >
+            Call Now
+          </button> 
         </div>
       </div>
     </div>

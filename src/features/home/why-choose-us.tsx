@@ -17,7 +17,7 @@ const REASONS: Reason[] = [
       "A fit for every occasion — trips, weddings, corporate travel",
       "Well-maintained interiors with premium amenities",
     ],
-    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053094/Select_Your_Vehicle.png",
+    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053514/Modern_Travel_Fleet_Adventure.png",
   },
   {
     icon: UserCheck,
@@ -27,7 +27,7 @@ const REASONS: Reason[] = [
       "Trained in safe, defensive driving",
       "Always on time for pickup",
     ],
-    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053095/Get_Instant_Quote.png",
+    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053514/Welcoming_Coach_Journey_Illustration.png",
   },
   {
     icon: Headset,
@@ -37,7 +37,7 @@ const REASONS: Reason[] = [
       "Real-time support during your trip",
       "Quick response to any query",
     ],
-    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053511/Confirmed_Journey_Booking_Illustration.png",
+    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053512/24_7_Travel_Support_Illustration.png",
   },
   {
     icon: ReceiptText,
@@ -47,7 +47,7 @@ const REASONS: Reason[] = [
       "Final bill matches your quote exactly",
       "Pay only for what you book",
     ],
-    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053438/Share_Trip_Details.png",
+    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053513/Travel_Booking_Quote_to_Receipt_Illustration.png",
   },
   {
     icon: Sparkles,
@@ -57,7 +57,7 @@ const REASONS: Reason[] = [
       "Regular maintenance checks",
       "Fresh, hygienic interiors",
     ],
-    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053512/24_7_Travel_Support_Illustration.png",
+    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053513/Luxury_Coach_Cleaning_and_Safety_Inspection.png",
   },
   {
     icon: ShieldCheck,
@@ -67,16 +67,21 @@ const REASONS: Reason[] = [
       "No surprise cancellations",
       "Reliable service you can plan around",
     ],
-    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053513/Travel_Booking_Quote_to_Receipt_Illustration.png",
+    image: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053511/Confirmed_Journey_Booking_Illustration.png",
   },
 ];
 
 export function WhyChooseUs() {
   return (
     <section className="bg-emerald-50 py-10 sm:py-16">
+      <div className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-amber-600 pb-2">
+            <span className="h-px w-8 bg-amber-400" />
+            Why Choose Us
+            <span className="h-px w-8 bg-amber-400" />
+          </div>
       <div className="mx-auto max-w-7xl px-3 sm:px-4 lg:px-8">
-        <h2 className="text-center text-xl font-bold text-emerald-900 sm:text-3xl">
-          Why Indiventra Is the Best Choice
+        <h2 className="text-center text-xl font-bold text-slate-900 sm:text-3xl">
+          Why <span className="text-amber-500">Indiventra</span> Is the Best Choice
         </h2>
         <p className="mx-auto mt-2 max-w-2xl text-center text-xs text-slate-600 sm:mt-3 sm:text-base">
           A reliable, customer-first travel partner across every city we serve.

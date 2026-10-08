@@ -11,12 +11,17 @@ export function Services() {
 
   return (
     <section className="mx-auto max-w-7xl px-3 py-10 sm:px-4 sm:py-16 lg:px-8">
+      <div className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-amber-600 pb-5">
+            <span className="h-px w-8 bg-amber-400" />
+            Services
+            <span className="h-px w-8 bg-amber-400" />
+          </div>
       <div className="text-center">
-        <span className="inline-block rounded-lg bg-[#ea7236] px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-emerald-100 sm:px-4 sm:py-1.5 sm:text-sm">
+        {/* <span className="inline-block rounded-lg bg-[#ea7236] px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-emerald-100 sm:px-4 sm:py-1.5 sm:text-sm">
           A Vehicle
-        </span>
-        <h2 className="mt-3 text-xl font-extrabold text-slate-900 sm:mt-4 sm:text-3xl">
-          For Every Occasion
+        </span> */}
+        <h2 className="mt-1 text-xl font-extrabold text-slate-900 sm:mt-4 sm:text-3xl">
+          For Every <span className="text-amber-500">Occasion</span>
         </h2>
         <p className="mt-2 text-xs text-slate-500 sm:text-base">
           Whatever the occasion for traveling, we have the right vehicle for you.
@@ -49,7 +54,7 @@ export function Services() {
         {active.examples.map((example) => (
           <div
             key={example.title}
-            className="flex h-full flex-col overflow-hidden rounded-xl border-2 border-emerald-600 bg-white sm:rounded-2xl"
+            className="flex h-full flex-col overflow-hidden rounded-xl border-2 border-amber-500 bg-white sm:rounded-2xl"
           >
             <div className="relative h-28 w-full sm:h-56">
               <Image

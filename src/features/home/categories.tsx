@@ -19,8 +19,13 @@ const CATEGORIES: Category[] = [
 export function Categories() {
   return (
     <section className="mx-auto max-w-7xl px-3 py-8 sm:px-2 lg:px-8">
-      <h2 className="text-center text-xl font-bold text-emerald-900 sm:text-3xl">
-        4 Categories of Vehicles to Suit Every Budget
+      <div className="flex items-center justify-center gap-3 p-2 text-xs font-bold uppercase tracking-[0.3em] text-amber-600">
+            <span className="h-px w-8 bg-amber-400 " />
+            Our Categories
+            <span className="h-px w-8 bg-amber-400" />
+          </div>
+      <h2 className="text-center text-xl font-bold text-slate-900 sm:text-3xl">
+        4 <span className="text-amber-500">Categories of Vehicles</span> to Suit Every Budget
       </h2>
 
       {/* 2 per row on phones, 4 per row on large screens */}
@@ -47,6 +52,7 @@ export function Categories() {
             <h3 className="mt-2 text-sm font-extrabold tracking-wide sm:mt-4 sm:text-xl">
               {name.toUpperCase()}
             </h3>
+            <p>ashish</p>
 
             <div className="mt-3 flex w-full items-center gap-2 sm:mt-5">
               <span className="h-px flex-1 bg-white/40" />

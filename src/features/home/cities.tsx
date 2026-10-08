@@ -5,7 +5,12 @@ import type { City } from "@/lib/types";
 export function CitiesGrid({ cities }: { cities: City[] }) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 lg:px-6">
-      <h2 className="text-center text-2xl font-bold text-emerald-900 sm:text-3xl">Cities We Serve</h2>
+      <div className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-amber-600 pb-4">
+            <span className="h-px w-8 bg-amber-400" />
+            Cities
+            <span className="h-px w-8 bg-amber-400" />
+          </div>
+      <h2 className="text-center text-2xl font-bold text-slate-900 sm:text-3xl"><span className="text-amber-500">Cities</span> We Serve</h2>
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {cities.map((city) => (
           <Link

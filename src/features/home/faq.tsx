@@ -61,9 +61,14 @@ export function FAQ() {
 
   return (
     <section className="bg-amber-50/60 py-16">
+      <div className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-amber-600 pb-4">
+            <span className="h-px w-8 bg-amber-400" />
+            F&Q
+            <span className="h-px w-8 bg-amber-400" />
+          </div>
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <h2 className="text-center text-2xl font-bold text-emerald-900 sm:text-3xl">
-          Frequently Asked Questions
+          Frequently Asked <span className="text-amber-500">Questions</span>
         </h2>
 
         <div className="mt-10 grid gap-x-8 lg:grid-cols-2">

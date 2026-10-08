@@ -25,10 +25,14 @@ const VIDEO_CHANNEL = "INDIVENTRA";
 const VIDEO_THUMBNAIL = `https://img.youtube.com/vi/${ABOUT_VIDEO_ID}/maxresdefault.jpg`;
 
 const LEFT_PARAGRAPH =
-  "Indiventra Tour & Travel has spent years building a fleet you can trust. Every vehicle is regularly serviced, well-maintained, and driven by experienced, verified drivers so your trip starts stress-free and stays that way.";
+  "Indiventra is a leading vehicle rental service provider in India, delivering reliable and comfortable Vehicle Rental solutions since 2018. With years of experience in the travel and mobility industry, we offer professional car rental, luxury bus rental and tempo traveller rental services for every type of journey. Our wide range of Vehicle Rental solutions for airport transfers, local sightseeing, outstation travel, corporate transportation, destination weddings, family vacations, group tours, and pilgrimage trips.";
 
 const RIGHT_PARAGRAPH =
-  "From a single sedan for a corporate meeting to a full luxury bus for a wedding party, we scale to suit your needs. Our goal is simple — easy, transparent, hassle-free travel planning, in every city we serve.";
+  "Our vehicle rental fleet is designed to match different travel requirements, including premium cars, SUVs, luxury cars, luxury vans, tempo travellers, Maharaja tempo travellers, Force Urbania, mini buses, luxury buses, Volvo buses, and sleeper buses. Every vehicle is carefully inspected and maintained before every journey to ensure a safe, comfortable, and smooth travel experience";
+
+const BUTTOM_PARAGRAPH = "We serve individuals, families, businesses, and large groups by providing well-managed vehicles on rent across major cities and travel destinations throughout India. Booking vehicle on rent with Indiventra is simple, transparent, and hassle-free."
+const BUTTOM_PARAGRAPH_1 = "Our vehicles come equipped with modern amenities such as comfortable seating, air conditioning, GPS tracking, entertainment systems, spacious interiors, and advanced safety features. Along with quality vehicles, our experienced professional drivers have excellent knowledge of highways, city routes, tourist destinations, and long-distance travel requirements."
+const BUTTOM_PARAGRAPH_2 = "Customers can easily explore available vehicles on rent, select the right option based on their travel needs, and hire  reliable Vehicle on rent with clear pricing and dedicated support. Indiventra delivers dependable travel solutions backed by professional service and customer-focused assistance."
 
 const FEATURES = [
   {
@@ -58,7 +62,7 @@ export function About() {
   const [playing, setPlaying] = useState(false);
 
   return (
-    <section className="bg-gradient-to-b from-amber-50 to-white py-16">
+    <section className="bg-gradient-to-b from-amber-50 to-white py-16 pb-5">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="text-center">
           <div className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-amber-600">
@@ -90,7 +94,7 @@ export function About() {
               Since Day One
             </p>
 
-            <p className="mt-4 text-sm leading-relaxed text-slate-600">
+            <p className="mt-4 text-[13px] leading-relaxed text-slate-600">
               {LEFT_PARAGRAPH}
             </p>
           </div>
@@ -184,7 +188,7 @@ export function About() {
         </div>
 
         {/* Feature Strip */}
-        <div className="mx-auto mt-10 flex max-w-4xl flex-col divide-y divide-slate-100 rounded-2xl bg-white p-6 shadow-md sm:flex-row sm:divide-x sm:divide-y-0">
+        <div className="mx-auto mt-10 flex max-w-4xl flex-col divide-y divide-slate-100 rounded-2xl bg-white p-6 pb-0 shadow-md sm:flex-row sm:divide-x sm:divide-y-0">
           {FEATURES.map(({ icon: Icon, title, desc, bg, color }) => (
             <div
               key={title}
@@ -203,6 +207,11 @@ export function About() {
             </div>
           ))}
         </div>
+          <div className=" mt-5 bg-amber-500/10 rounded-2xl">
+            <p className="p-3  text-sm leading-relaxed">{BUTTOM_PARAGRAPH}</p>
+            <p className="p-3  text-sm leading-relaxed">{BUTTOM_PARAGRAPH_1}</p>
+            <p className="p-3 text-sm leading-relaxed">{BUTTOM_PARAGRAPH_2}</p>
+          </div>
       </div>
     </section>
   );
