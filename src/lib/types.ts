@@ -19,6 +19,7 @@ export interface City {
   name: string;
   slug: string;
   heroImage: string;
+  cardImage?: string;
   description: string;
   spots: FamousSpot[];
 }

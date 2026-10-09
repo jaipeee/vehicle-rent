@@ -13,10 +13,11 @@ const SERVICE_LINKS = [
 
 const CITY_LINKS = [
   { label: "Delhi", href: "/cities/delhi" },
-  { label: "Mumbai", href: "/cities/mumbai" },
-  { label: "Pune", href: "/cities/pune" },
-  { label: "Bangalore", href: "/cities/bangalore" },
-  { label: "Hyderabad", href: "/cities/hyderabad" },
+  { label: "Haridwar", href: "/cities/haridwar" },
+  { label: "Amritsar", href: "/cities/amritsar" },
+  { label: "Chandigarh", href: "/cities/chandigarh" },
+  { label: "Dehradun", href: "/cities/dehradun" },
+  { label: "Varanasi", href: "/cities/varanasi" },
 ];
 
 const COMPANY_LINKS = [

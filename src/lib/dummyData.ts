@@ -153,12 +153,27 @@ export const dummyVehicles: Vehicle[] = [
 
 // Shared placeholder cities — matches the backend seed data (5 cities), used
 // as a fallback for the CitiesGrid and anywhere else that lists all cities.
+
+
+const CLOUDINARY = "https://res.cloudinary.com/yhuaios0/image/upload";
+
+const CARD_IMAGES = {
+  delhi: `${CLOUDINARY}/v1791056116/Delhi_Landmarks_Circular_Emblem.png`,
+  haridwar: `${CLOUDINARY}/v1791056117/Haridwar_Riverside_Ghat_Panorama.png`,
+  amritsar: `${CLOUDINARY}/v1791056118/Golden_Gateway_Cityscape_Emblem.png`,
+  chandigarh: `${CLOUDINARY}/v1791056118/Chandigarh_Open_Hand_Park_Badge.png`,
+  dehradun: `${CLOUDINARY}/v1791056119/Clock_Tower_Amid_Himalayan_Gardens.png`,
+  varanasi: `${CLOUDINARY}/v1791056119/Sunrise_on_the_Sacred_Ghats.png`,
+};
+
 export const dummyCities: City[] = [
   {
     id: "c1",
     name: "Delhi",
     slug: "delhi",
-    heroImage: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1600&q=80",
+    heroImage:
+      "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1600&q=80",
+    cardImage: CARD_IMAGES.delhi,
     description: "Reliable, comfortable travel across Delhi and nearby routes.",
     spots: [
       { id: "s1", name: "India Gate", imageUrl: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=800&q=80" },
@@ -168,50 +183,68 @@ export const dummyCities: City[] = [
   },
   {
     id: "c2",
-    name: "Mumbai",
-    slug: "mumbai",
-    heroImage: "https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?auto=format&fit=crop&w=1600&q=80",
-    description: "Reliable, comfortable travel across Mumbai and nearby routes.",
+    name: "Haridwar",
+    slug: "haridwar",
+    // TODO: replace heroImage and spot imageUrl values with real photos
+    heroImage: CARD_IMAGES.haridwar,
+    cardImage: CARD_IMAGES.haridwar,
+    description: "Reliable, comfortable travel across Haridwar and nearby routes.",
     spots: [
-      { id: "s4", name: "Gateway of India", imageUrl: "https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?auto=format&fit=crop&w=800&q=80" },
-      { id: "s5", name: "Marine Drive", imageUrl: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=800&q=80" },
-      { id: "s6", name: "Juhu Beach", imageUrl: "https://images.unsplash.com/photo-1580655653885-65763b2597d0?auto=format&fit=crop&w=800&q=80" },
+      { id: "s4", name: "Har Ki Pauri", imageUrl: CARD_IMAGES.haridwar },
+      { id: "s5", name: "Mansa Devi Temple", imageUrl: CARD_IMAGES.haridwar },
+      { id: "s6", name: "Chandi Devi Temple", imageUrl: CARD_IMAGES.haridwar },
     ],
   },
   {
     id: "c3",
-    name: "Pune",
-    slug: "pune",
-    heroImage: "https://images.unsplash.com/photo-1609948543331-e8bcb04199fc?auto=format&fit=crop&w=1600&q=80",
-    description: "Reliable, comfortable travel across Pune and nearby routes.",
+    name: "Amritsar",
+    slug: "amritsar",
+    heroImage: CARD_IMAGES.amritsar,
+    cardImage: CARD_IMAGES.amritsar,
+    description: "Reliable, comfortable travel across Amritsar and nearby routes.",
     spots: [
-      { id: "s7", name: "Shaniwar Wada", imageUrl: "https://images.unsplash.com/photo-1609948543331-e8bcb04199fc?auto=format&fit=crop&w=800&q=80" },
-      { id: "s8", name: "Sinhagad Fort", imageUrl: "https://images.unsplash.com/photo-1609948596990-c6d1fd6bb3d9?auto=format&fit=crop&w=800&q=80" },
-      { id: "s9", name: "Aga Khan Palace", imageUrl: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=800&q=80" },
+      { id: "s7", name: "Golden Temple", imageUrl: CARD_IMAGES.amritsar },
+      { id: "s8", name: "Jallianwala Bagh", imageUrl: CARD_IMAGES.amritsar },
+      { id: "s9", name: "Wagah Border", imageUrl: CARD_IMAGES.amritsar },
     ],
   },
   {
     id: "c4",
-    name: "Bangalore",
-    slug: "bangalore",
-    heroImage: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1600&q=80",
-    description: "Reliable, comfortable travel across Bangalore and nearby routes.",
+    name: "Chandigarh",
+    slug: "chandigarh",
+    heroImage: CARD_IMAGES.chandigarh,
+    cardImage: CARD_IMAGES.chandigarh,
+    description: "Reliable, comfortable travel across Chandigarh and nearby routes.",
     spots: [
-      { id: "s10", name: "Lalbagh", imageUrl: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80" },
-      { id: "s11", name: "Bangalore Palace", imageUrl: "https://images.unsplash.com/photo-1580655653885-65763b2597d0?auto=format&fit=crop&w=800&q=80" },
-      { id: "s12", name: "Cubbon Park", imageUrl: "https://images.unsplash.com/photo-1609948543331-e8bcb04199fc?auto=format&fit=crop&w=800&q=80" },
+      { id: "s10", name: "Rock Garden", imageUrl: CARD_IMAGES.chandigarh },
+      { id: "s11", name: "Sukhna Lake", imageUrl: CARD_IMAGES.chandigarh },
+      { id: "s12", name: "Rose Garden", imageUrl: CARD_IMAGES.chandigarh },
     ],
   },
   {
     id: "c5",
-    name: "Hyderabad",
-    slug: "hyderabad",
-    heroImage: "https://images.unsplash.com/photo-1572445271230-a78b5944a659?auto=format&fit=crop&w=1600&q=80",
-    description: "Reliable, comfortable travel across Hyderabad and nearby routes.",
+    name: "Dehradun",
+    slug: "dehradun",
+    heroImage: CARD_IMAGES.dehradun,
+    cardImage: CARD_IMAGES.dehradun,
+    description: "Reliable, comfortable travel across Dehradun and nearby routes.",
     spots: [
-      { id: "s13", name: "Charminar", imageUrl: "https://images.unsplash.com/photo-1572445271230-a78b5944a659?auto=format&fit=crop&w=800&q=80" },
-      { id: "s14", name: "Golconda Fort", imageUrl: "https://images.unsplash.com/photo-1587135941948-670b381f08ce?auto=format&fit=crop&w=800&q=80" },
-      { id: "s15", name: "Hussain Sagar", imageUrl: "https://images.unsplash.com/photo-1597040663342-45b6af1e4a67?auto=format&fit=crop&w=800&q=80" },
+      { id: "s13", name: "Robber's Cave", imageUrl: CARD_IMAGES.dehradun },
+      { id: "s14", name: "Sahastradhara", imageUrl: CARD_IMAGES.dehradun },
+      { id: "s15", name: "Mindrolling Monastery", imageUrl: CARD_IMAGES.dehradun },
+    ],
+  },
+  {
+    id: "c6",
+    name: "Varanasi",
+    slug: "varanasi",
+    heroImage: CARD_IMAGES.varanasi,
+    cardImage: CARD_IMAGES.varanasi,
+    description: "Reliable, comfortable travel across Varanasi and nearby routes.",
+    spots: [
+      { id: "s16", name: "Kashi Vishwanath Temple", imageUrl: CARD_IMAGES.varanasi },
+      { id: "s17", name: "Dashashwamedh Ghat", imageUrl: CARD_IMAGES.varanasi },
+      { id: "s18", name: "Sarnath", imageUrl: CARD_IMAGES.varanasi },
     ],
   },
 ];

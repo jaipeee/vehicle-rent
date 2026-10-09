@@ -19,11 +19,12 @@ export function CitiesGrid({ cities }: { cities: City[] }) {
             className="group relative block h-56 overflow-hidden rounded-2xl"
           >
             <Image
-              src={city.heroImage}
-              alt={city.name}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-            />
+  src={city.cardImage ?? city.heroImage}
+  alt={city.name}
+  fill
+  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+  className="object-cover transition-transform duration-500 group-hover:scale-110"
+/>
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-5">
               <h3 className="text-lg font-bold text-white">{city.name}</h3>

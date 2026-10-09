@@ -26,14 +26,19 @@ interface CityPageProps {
   params: Promise<{ slug: string }>;
 }
 
+const findDummyCity = (slug: string): City | null =>
+  dummyCities.find((c) => c.slug === slug) ?? null;
+
 export async function generateStaticParams() {
   const cities = await apiFetch<City[]>("/cities").catch(() => []);
-  return cities.map((c) => ({ slug: c.slug }));
+  const source = cities.length > 0 ? cities : dummyCities;
+  return source.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: CityPageProps) {
   const { slug } = await params;
-  const city = await apiFetch<City>(`/cities/${slug}`).catch(() => null);
+  const city =
+    (await apiFetch<City>(`/cities/${slug}`).catch(() => null)) ?? findDummyCity(slug);
   if (!city) return {};
 
   return {
@@ -47,13 +52,14 @@ export const revalidate = 3600;
 export default async function CityPage({ params }: CityPageProps) {
   const { slug } = await params;
 
-  // Only a real 404 from the backend (city genuinely doesn't exist) becomes
-  // Next's notFound(). Any other error is rethrown so it surfaces as a real
-  // error instead of a misleading 404.
-  const city = await apiFetch<City>(`/cities/${slug}`).catch((err) => {
+  // A real 404 from the backend falls back to the local dummy list; if the slug
+  // isn't there either, Next's notFound() is shown. Any other error is rethrown
+  // so it surfaces as a real error instead of a misleading 404.
+  const apiCity = await apiFetch<City>(`/cities/${slug}`).catch((err) => {
     if (err instanceof ApiError && err.status === 404) return null;
     throw err;
   });
+  const city = apiCity ?? findDummyCity(slug);
   if (!city) notFound();
 
   const [cities, testimonials] = await Promise.all([
@@ -92,26 +98,16 @@ export default async function CityPage({ params }: CityPageProps) {
       {/* Get a Quote — floats over the hero's bottom edge, same as the homepage */}
       <div
         id="get-a-quote"
-        className="
-          relative
-          z-20
-          mx-auto
-          -mt-16
-          w-full
-          max-w-6xl
-          px-4
-          sm:-mt-20
-          sm:px-6
-          lg:-mt-32
-          lg:px-8
-        "
+        className="relative z-20 mx-auto -mt-16 w-full max-w-6xl px-4 sm:-mt-20 sm:px-6 lg:-mt-32 lg:px-8"
       >
         <EnquiryForm />
       </div>
 
       {/* City-specific content */}
       <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
-        <h2 className="text-2xl font-bold text-emerald-900 sm:text-3xl">Famous Spots in {city.name}</h2>
+        <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+          Famous Spots in {city.name}
+        </h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {city.spots.map((spot) => (
             <div key={spot.id} className="group relative h-48 overflow-hidden rounded-2xl">
@@ -119,6 +115,7 @@ export default async function CityPage({ params }: CityPageProps) {
                 src={spot.imageUrl}
                 alt={spot.name}
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
