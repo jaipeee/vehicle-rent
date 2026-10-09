@@ -6,7 +6,7 @@ import type { IconType } from "react-icons";
 import { CONTACT_PHONE } from "@/components/layout/navbar/navbar.config";
 
 // Placeholders — update with your real WhatsApp number and support email.
-const WHATSAPP_NUMBER = "918369681231";
+const WHATSAPP_NUMBER = "918369687417";
 const CONTACT_EMAIL = "enquiry@indiventure.com";
 
 interface CtaAction {

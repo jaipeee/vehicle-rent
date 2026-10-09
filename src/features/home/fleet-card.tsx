@@ -12,8 +12,8 @@ interface FleetCardProps {
 }
 
 // Digits only, with country code (used for wa.me and tel:)
-const PHONE_NUMBER = "918369681231";
-const PHONE_DISPLAY = "+91 83696 81231";
+const PHONE_NUMBER = "918369687417";
+const PHONE_DISPLAY = "+91 83696 87417";
 
 function isMobileDevice() {
   if (typeof navigator === "undefined") return false;

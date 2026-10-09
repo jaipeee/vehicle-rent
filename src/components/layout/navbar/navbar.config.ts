@@ -60,7 +60,7 @@ export const CITIES = ["Delhi", "Mumbai", "Haridwar", "Vanarasi", "Chandigarh"];
 
 export const CONTACT_PHONE = {
   display: "(+91) 83 6968 1231",
-  href: "tel:+918369681231",
+  href: "tel:+918369687417",
 };
 
 // Placeholder — point this at your real logo file once you have one.
