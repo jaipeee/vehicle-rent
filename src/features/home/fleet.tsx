@@ -26,7 +26,7 @@ export function Fleet({ categorySlug, cityName }: FleetProps) {
           Vehicle For <span className="text-amber-500">Every Group</span> Size
           {cityName ? ` in ${cityName}` : ""}
         </h2>
-        <p className="text-center pt-2">hello this is ashish</p>
+        <p className="text-center pt-2">hello this is lorem</p>
 
         <div className={services.length === 1 ? "mx-auto mt-10 max-w-xl" : "mt-10 grid gap-10 lg:grid-cols-2"}>
           {services.map((service) => (

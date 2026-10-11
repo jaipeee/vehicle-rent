@@ -62,7 +62,7 @@ export function About() {
   const [playing, setPlaying] = useState(false);
 
   return (
-    <section className="bg-gradient-to-b from-amber-50 to-white py-16 pb-5">
+    <section className="bg-amber-100/20 py-16 pb-5">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="text-center">
           <div className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-amber-600">

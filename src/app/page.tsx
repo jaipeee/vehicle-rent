@@ -71,7 +71,7 @@ export default async function HomePage() {
       <BlogSection />
       <FAQ />
       <ContactSection />
-      <ConsultationBanner />
+      {/* <ConsultationBanner /> */}
     </main>
   );
 }

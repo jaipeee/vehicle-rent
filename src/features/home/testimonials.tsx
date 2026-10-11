@@ -22,7 +22,7 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
   if (!testimonials.length) return null;
 
   return (
-    <section className="bg-slate-50 py-16">
+    <section className="bg-amber-100/10 py-16">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <h2 className="text-center text-3xl font-extrabold text-slate-900 sm:text-4xl">
           What Our <span className="text-amber-500">Customers Say</span>

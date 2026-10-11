@@ -138,7 +138,7 @@ export default async function CityPage({ params }: CityPageProps) {
       <BlogSection />
       <FAQ />
       <ContactSection />
-      <ConsultationBanner />
+      {/* <ConsultationBanner /> */}
     </main>
   );
 }

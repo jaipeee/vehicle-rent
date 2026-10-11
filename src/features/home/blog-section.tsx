@@ -41,7 +41,7 @@ const POSTS: BlogPost[] = [
 
 export function BlogSection() {
   return (
-    <section className="bg-white py-16">
+    <section className="py-16 bg-amber-100/10">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">

@@ -68,7 +68,7 @@ export function Hero({ slides = DEFAULT_SLIDES, ctaLabel = "Get a Quote", ctaHre
   const active = slides[activeIndex] ?? slides[0];
 
   return (
-    <section className="relative pb-14 sm:pb-20">
+    <section className="relative bg-amber-100/10  pb-14 sm:pb-20">
       <Carousel
         setApi={setApi}
         plugins={isCarousel ? [autoplay.current] : []}

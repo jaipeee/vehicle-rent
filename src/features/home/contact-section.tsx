@@ -87,7 +87,7 @@ export function ContactSection() {
   }
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-amber-100/10 py-16">
       <div className="mx-auto max-w-6xl px-4 lg:px-8">
         <h2 className="text-center text-3xl font-extrabold text-slate-900 sm:text-4xl">
           Let&apos;s Plan Your <span className="text-amber-500">Next Trip</span>

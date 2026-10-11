@@ -4,6 +4,7 @@ import type { City } from "@/lib/types";
 
 export function CitiesGrid({ cities }: { cities: City[] }) {
   return (
+    <div className="bg-[#fe980a2d]">
     <section className="mx-auto max-w-7xl px-4 py-16 lg:px-6">
       <div className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-amber-600 pb-4">
             <span className="h-px w-8 bg-amber-400" />
@@ -16,7 +17,7 @@ export function CitiesGrid({ cities }: { cities: City[] }) {
           <Link
             key={city.slug}
             href={`/cities/${city.slug}`}
-            className="group relative block h-56 overflow-hidden rounded-2xl"
+            className="group relative block h-56 overflow-hidden rounded-full"
           >
             <Image
   src={city.cardImage ?? city.heroImage}
@@ -27,8 +28,8 @@ export function CitiesGrid({ cities }: { cities: City[] }) {
 />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-5">
-              <h3 className="text-lg font-bold text-white">{city.name}</h3>
-              <p className="mt-1 max-h-0 overflow-hidden text-sm text-white/80 opacity-0 transition-all duration-300 group-hover:max-h-20 group-hover:opacity-100">
+              <h3 className="text-lg ml-[35%] font-bold text-white">{city.name}</h3>
+              <p className="mt-1 ml-[17%] max-h-0 overflow-hidden text-sm text-white/80 opacity-0 transition-all duration-300 group-hover:max-h-20 group-hover:opacity-100">
                 Famous for {city.spots.slice(0, 2).map((s) => s.name).join(", ")}
               </p>
             </div>
@@ -36,5 +37,6 @@ export function CitiesGrid({ cities }: { cities: City[] }) {
         ))}
       </div>
     </section>
+    </div>
   );
 }

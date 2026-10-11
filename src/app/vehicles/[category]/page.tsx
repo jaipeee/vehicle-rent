@@ -145,7 +145,7 @@ export default async function VehicleCategoryPage({ params }: VehicleCategoryPag
       <BlogSection />
       <FAQ />
       <ContactSection />
-      <ConsultationBanner />
+      {/* <ConsultationBanner /> */}
     </main>
   );
 }

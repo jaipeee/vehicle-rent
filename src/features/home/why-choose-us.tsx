@@ -73,7 +73,7 @@ const REASONS: Reason[] = [
 
 export function WhyChooseUs() {
   return (
-    <section className="bg-emerald-50 py-10 sm:py-16">
+    <section className="bg-[#fe980a2d] py-10 sm:py-16">
       <div className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-amber-600 pb-2">
             <span className="h-px w-8 bg-amber-400" />
             Why Choose Us
