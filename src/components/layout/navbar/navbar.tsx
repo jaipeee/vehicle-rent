@@ -256,10 +256,10 @@ export function Navbar() {
           </div>
 
           {/* ---------- Content ---------- */}
-          <div className="relative mx-auto flex min-h-14 w-full max-w-[1360px] items-center justify-between gap-4 px-4 py-1.5 sm:px-5 lg:h-16 lg:gap-6 lg:px-6">
+          <div className="relative mx-auto flex min-h-14 w-full max-width: 1360px; items-center justify-between gap-4 px-4 py-1.5 sm:px-5 lg:h-15 lg:gap-6 lg:px-6">
             {/* Logo */}
             <Link href="/" className="group flex shrink-0 items-center">
-              <span className="relative flex h-10 w-28 items-center justify-center overflow-hidden rounded-xl transition-transform duration-300 ease-out group-hover:-translate-y-0.5 sm:h-11 lg:h-14 lg:w-32">
+              <span className="relative flex h-10 w-28 items-center justify-center overflow-hidden rounded-xl transition-transform duration-300 ease-out group-hover:-translate-y-0.5 sm:h-13 lg:h-16 lg:w-40">
                 <Image
                   src={LOGO_SRC}
                   alt={LOGO_ALT}

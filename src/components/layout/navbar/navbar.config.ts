@@ -64,5 +64,5 @@ export const CONTACT_PHONE = {
 };
 
 // Placeholder — point this at your real logo file once you have one.
-export const LOGO_SRC = "https://res.cloudinary.com/yhuaios0/image/upload/v1790619916/IN_LOGO_PNG.png";
+export const LOGO_SRC = "https://res.cloudinary.com/yhuaios0/image/upload/v1791662723/white_bg_indiventra_logo_png.png";
 export const LOGO_ALT = "Company logo";
