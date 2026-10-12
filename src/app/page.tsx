@@ -7,7 +7,6 @@ import {
   BlogSection,
   Categories,
   CitiesGrid,
-  ConsultationBanner,
   ContactSection,
   FAQ,
   Fleet,

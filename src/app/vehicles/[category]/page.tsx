@@ -19,7 +19,6 @@ import {
   BlogSection,
   FAQ,
   ContactSection,
-  ConsultationBanner,
 } from "@/features/home";
 
 interface VehicleCategoryPageProps {
