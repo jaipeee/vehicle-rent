@@ -7,7 +7,7 @@ import {
   BlogSection,
   Categories,
   CitiesGrid,
-  ContactSection,
+  // ContactSection,
   FAQ,
   Fleet,
   Hero,
@@ -17,6 +17,7 @@ import {
   WhyChooseUs,
 } from "@/features/home";
 import { EnquiryForm } from "@/features/enquiry";
+import { JourneyStartsHere } from "@/features/home/journeyStartsHere";
 
 export const revalidate = 3600; // ISR: refresh hourly
 
@@ -69,7 +70,7 @@ export default async function HomePage() {
       <CitiesGrid cities={citiesData} />
       <BlogSection />
       <FAQ />
-      <ContactSection />
+      {/* <ContactSection /> */}
       {/* <ConsultationBanner /> */}
     </main>
   );

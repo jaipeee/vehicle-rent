@@ -17,9 +17,6 @@ import { NAV_ITEMS, LOGO_SRC, LOGO_ALT, type NavItem } from "./navbar.config";
 import { PhoneBadge, CtaButton, CitySelector } from "./navbar-actions";
 import { MobileNav } from "./mobile-nav";
 
-// -----------------------------------------------------
-// Keyframes (desktop only: animated gradient, light sweep)
-// -----------------------------------------------------
 
 const NAV_KEYFRAMES = `
 @keyframes nav-gradient {
