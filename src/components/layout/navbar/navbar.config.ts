@@ -19,17 +19,17 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/",
     icon: Home,
   },
-  {
+   {
     label: "Our Vehicles",
-    href: "/vehicles/car-suv",
+    href: "/car-suv",
     icon: Car,
     children: [
-      { label: "Car & SUVs", href: "/vehicles/car-suv" },
-      { label: "Luxury Cars, SUVs, Vans", href: "/vehicles/luxury-cars-suvs-vans" },
-      { label: "Tempo Traveller", href: "/vehicles/tempo-traveller" },
-      { label: "Urbania", href: "/vehicles/urbania" },
-      { label: "Mini Bus", href: "/vehicles/mini-bus" },
-      { label: "Luxury Buses", href: "/vehicles/luxury-buses" },
+      { label: "Car & SUVs", href: "/car-suv" },
+      { label: "Luxury Cars, SUVs, Vans", href: "/luxury-cars-suvs-vans" },
+      { label: "Tempo Traveller", href: "/tempo-traveller" },
+      { label: "Urbania", href: "/urbania" },
+      { label: "Mini Bus", href: "/mini-bus" },
+      { label: "Luxury Buses", href: "/luxury-buses" },
     ],
   },
   {
@@ -56,7 +56,15 @@ export const NAV_ITEMS: NavItem[] = [
   },
 ];
 
-export const CITIES = ["Delhi", "Mumbai", "Haridwar", "Vanarasi", "Chandigarh"];
+export const CITIES = [
+  { name: "Delhi", slug: "delhi" },
+  { name: "Haridwar", slug: "haridwar" },
+  { name: "Amritsar", slug: "amritsar" },
+  { name: "Chandigarh", slug: "chandigarh" },
+  { name: "Dehradun", slug: "dehradun" },
+  { name: "Varanasi", slug: "varanasi" },
+  { name: "Mumbai", slug: "mumbai" } 
+];
 
 export const CONTACT_PHONE = {
   display: "(+91) 83 6968 7471",

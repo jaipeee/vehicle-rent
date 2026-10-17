@@ -3,8 +3,11 @@ import Image from "next/image";
 import { Caveat } from "next/font/google";
 import { Car, ChevronRight, Headset, Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter, FaYoutube } from "react-icons/fa6";
-import { CONTACT_PHONE, LOGO_ALT, LOGO_SRC } from "@/components/layout/navbar/navbar.config";
+import { CONTACT_PHONE, LOGO_ALT, LOGO_SRC, CITIES } from "@/components/layout/navbar/navbar.config";
 import { JourneyStartsHere } from "@/features/home/journeyStartsHere"; // adjust to where you saved it
+import { VEHICLE_CATEGORIES } from "@/features/vehicles/vehicle-categories.config";
+
+
 
 /* Handwritten accent font used for taglines ("Ride More. Worry Less.") */
 const script = Caveat({ subsets: ["latin"], weight: ["500", "700"], display: "swap" });
@@ -13,21 +16,8 @@ const script = Caveat({ subsets: ["latin"], weight: ["500", "700"], display: "sw
 /** Optional fleet photo for the top section (transparent PNG works best). Leave "" to hide. */
 const HERO_IMAGE = "https://res.cloudinary.com/yhuaios0/image/upload/v1791053514/Modern_Travel_Fleet_Adventure.png"
 
-const SERVICE_LINKS = [
-  { label: "Car on Rent with Driver", href: "/#fleet" },
-  { label: "Tempo Traveller on Rent", href: "/#fleet" },
-  { label: "Bus Rental Services", href: "/#fleet" },
-  { label: "Luxury Car Rental", href: "/#fleet" },
-];
-
-const CITY_LINKS = [
-  { label: "Delhi", href: "/cities/delhi" },
-  { label: "Haridwar", href: "/cities/haridwar" },
-  { label: "Amritsar", href: "/cities/amritsar" },
-  { label: "Chandigarh", href: "/cities/chandigarh" },
-  { label: "Dehradun", href: "/cities/dehradun" },
-  { label: "Varanasi", href: "/cities/varanasi" },
-];
+const SERVICE_LINKS = VEHICLE_CATEGORIES.map((c) => ({ label: c.label, href: `/${c.slug}` }));
+const CITY_LINKS = CITIES.map((c) => ({ label: c.name, href: `/${c.slug}` }));
 
 const SUPPORT_LINKS = [
   { label: "About Us", href: "/about" },
@@ -58,6 +48,7 @@ const SOCIALS = [
  * Example: { name: "Trustpilot", score: "4.8/5", note: "Reviews" }
  */
 const RATINGS: { name: string; score: string; note: string }[] = [];
+
 
 /* ------------------------------------------------------------------ */
 /* Small building blocks                                               */

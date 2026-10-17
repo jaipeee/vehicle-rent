@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, Copy, Check, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { FleetService } from "./fleet.config";
@@ -9,6 +10,7 @@ import type { FleetService } from "./fleet.config";
 interface FleetCardProps {
   service: FleetService;
   cityName?: string;
+  href?: string; // where the arrow button goes; defaults to the quote form
 }
 
 // Digits only, with country code (used for wa.me and tel:)
@@ -23,7 +25,7 @@ function isMobileDevice() {
   return ua || ipadOS;
 }
 
-export function FleetCard({ service, cityName }: FleetCardProps) {
+export function FleetCard({ service, cityName, href }: FleetCardProps) {
   const [hovered, setHovered] = useState(false);
   const [index, setIndex] = useState(0);
   const [showCall, setShowCall] = useState(false);
@@ -132,12 +134,15 @@ export function FleetCard({ service, cityName }: FleetCardProps) {
               </span>
             )}
           </div>
-          <div
+
+          <Link
+            href={href ?? "#get-a-quote"}
+            aria-label={`View ${service.title}`}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-white sm:h-[52px] sm:w-[52px]"
             style={{ boxShadow: "0 6px 14px rgba(11,42,74,0.10)" }}
           >
             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: "#1863E0" }} />
-          </div>
+          </Link>
         </div>
 
         {/* Photo panel — solid color at rest. The photo is only mounted while hovered. */}
@@ -211,7 +216,7 @@ export function FleetCard({ service, cityName }: FleetCardProps) {
             Check Price
           </button>
 
-          {/* Book Now → WhatsApp (app on phone, WhatsApp Web / app on desktop) */}
+          {/* Book Now → WhatsApp */}
           <a
             href={whatsappHref}
             target="_blank"

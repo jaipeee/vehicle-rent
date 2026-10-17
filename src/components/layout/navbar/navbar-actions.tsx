@@ -1,6 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { CalendarDays, ChevronDown, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,7 +10,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { buildPath } from "@/lib/page-context";
+import { useCitySlug } from "@/lib/use-city-scope";
 import { CITIES, CONTACT_PHONE } from "./navbar.config";
+import { currentVehicleSlug } from "./nav-utils";
 
 export function PhoneBadge() {
   return (
@@ -41,37 +43,38 @@ export function CtaButton({ className }: { className?: string }) {
 
 export function CitySelector() {
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "/";
+  const citySlug = useCitySlug();
+  const vehicle = currentVehicleSlug(pathname);
 
-  // Auto-detect the current city from the URL (e.g. /cities/delhi -> "Delhi"),
-  // so the button shows the right name on load/refresh, not just after a click.
-  const activeCity = useMemo(() => {
-    const match = pathname?.match(/^\/cities\/([^/]+)/);
-    if (!match) return null;
-    const slug = match[1];
-    return CITIES.find((city) => city.toLowerCase() === slug) ?? null;
-  }, [pathname]);
+  const activeCity = CITIES.find((c) => c.slug === citySlug) ?? null;
 
-  const handleSelect = (city: string) => {
-    router.push(`/cities/${city.toLowerCase()}`);
-  };
+  // Keeps the vehicle you're viewing: /mini-bus + Delhi -> /delhi/mini-bus
+  const go = (slug?: string) => router.push(buildPath(slug, vehicle));
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          className="gap-2 rounded-full border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white"
+          className="gap-2 rounded-full border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white data-[state=open]:bg-white/25"
         >
           <MapPin className="h-4 w-4" />
-          {activeCity ?? "Select City"}
+          {activeCity?.name ?? "Select City"}
           <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => go(undefined)} className={cn(!activeCity && "bg-accent font-semibold")}>
+          All cities
+        </DropdownMenuItem>
         {CITIES.map((city) => (
-          <DropdownMenuItem key={city} onClick={() => handleSelect(city)}>
-            {city}
+          <DropdownMenuItem
+            key={city.slug}
+            onClick={() => go(city.slug)}
+            className={cn(city.slug === citySlug && "bg-accent font-semibold")}
+          >
+            {city.name}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

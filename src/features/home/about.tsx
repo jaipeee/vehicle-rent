@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { FaYoutube } from "react-icons/fa6";
 import { Playfair_Display } from "next/font/google";
+import { fillTemplate, type PageContext } from "@/lib/page-context";
+import type { PageContent } from "@/lib/types";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -18,21 +20,24 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
-// YouTube video
+// Fallback video (used when the database has no aboutVideoId for the page)
 const ABOUT_VIDEO_ID = "MVYRGxM7NtU";
 const VIDEO_TITLE = "Sierra | Glimpse 1 | The Legend Returns";
 const VIDEO_CHANNEL = "INDIVENTRA";
-const VIDEO_THUMBNAIL = `https://img.youtube.com/vi/${ABOUT_VIDEO_ID}/maxresdefault.jpg`;
 
+// Fallback text. {city} becomes the city name (or "India"),
+// {category} becomes the vehicle category label (or "Vehicle").
 const LEFT_PARAGRAPH =
-  "Indiventra is a leading vehicle rental service provider in India, delivering reliable and comfortable Vehicle Rental solutions since 2018. With years of experience in the travel and mobility industry, we offer professional car rental, luxury bus rental and tempo traveller rental services for every type of journey. Our wide range of Vehicle Rental solutions for airport transfers, local sightseeing, outstation travel, corporate transportation, destination weddings, family vacations, group tours, and pilgrimage trips.";
+  "Indiventra is a leading vehicle rental service provider in {city}, delivering reliable and comfortable {category} Rental solutions since 2018. With years of experience in the travel and mobility industry, we offer professional car rental, luxury bus rental and tempo traveller rental services for every type of journey. Our wide range of {category} Rental solutions covers airport transfers, local sightseeing, outstation travel, corporate transportation, destination weddings, family vacations, group tours, and pilgrimage trips.";
 
 const RIGHT_PARAGRAPH =
-  "Our vehicle rental fleet is designed to match different travel requirements, including premium cars, SUVs, luxury cars, luxury vans, tempo travellers, Maharaja tempo travellers, Force Urbania, mini buses, luxury buses, Volvo buses, and sleeper buses. Every vehicle is carefully inspected and maintained before every journey to ensure a safe, comfortable, and smooth travel experience";
+  "Our vehicle rental fleet in {city} is designed to match different travel requirements, including premium cars, SUVs, luxury cars, luxury vans, tempo travellers, Maharaja tempo travellers, Force Urbania, mini buses, luxury buses, Volvo buses, and sleeper buses. Every vehicle is carefully inspected and maintained before every journey to ensure a safe, comfortable, and smooth travel experience.";
 
-const BUTTOM_PARAGRAPH = "We serve individuals, families, businesses, and large groups by providing well-managed vehicles on rent across major cities and travel destinations throughout India. Booking vehicle on rent with Indiventra is simple, transparent, and hassle-free."
-const BUTTOM_PARAGRAPH_1 = "Our vehicles come equipped with modern amenities such as comfortable seating, air conditioning, GPS tracking, entertainment systems, spacious interiors, and advanced safety features. Along with quality vehicles, our experienced professional drivers have excellent knowledge of highways, city routes, tourist destinations, and long-distance travel requirements."
-const BUTTOM_PARAGRAPH_2 = "Customers can easily explore available vehicles on rent, select the right option based on their travel needs, and hire  reliable Vehicle on rent with clear pricing and dedicated support. Indiventra delivers dependable travel solutions backed by professional service and customer-focused assistance."
+const BOTTOM_PARAGRAPHS = [
+  "We serve individuals, families, businesses, and large groups by providing well-managed vehicles on rent across {city} and major travel destinations. Booking a {category} on rent with Indiventra is simple, transparent, and hassle-free.",
+  "Our vehicles come equipped with modern amenities such as comfortable seating, air conditioning, GPS tracking, entertainment systems, spacious interiors, and advanced safety features. Along with quality vehicles, our experienced professional drivers have excellent knowledge of highways, city routes, tourist destinations, and long-distance travel requirements.",
+  "Customers can easily explore available vehicles on rent, select the right option based on their travel needs, and hire a reliable {category} on rent with clear pricing and dedicated support. Indiventra delivers dependable travel solutions backed by professional service and customer-focused assistance.",
+];
 
 const FEATURES = [
   {
@@ -58,8 +63,16 @@ const FEATURES = [
   },
 ];
 
-export function About() {
+export function About({ content, ctx }: { content?: PageContent; ctx?: PageContext }) {
   const [playing, setPlaying] = useState(false);
+  const fill = (s: string) => fillTemplate(s, ctx);
+
+  const videoId = content?.aboutVideoId || ABOUT_VIDEO_ID;
+  const videoTitle = fill(content?.aboutVideoTitle || VIDEO_TITLE);
+  const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  const left = fill(content?.aboutLeft || LEFT_PARAGRAPH);
+  const right = fill(content?.aboutRight || RIGHT_PARAGRAPH);
+  const bottom = (content?.aboutBottom?.length ? content.aboutBottom : BOTTOM_PARAGRAPHS).map(fill);
 
   return (
     <section className="bg-amber-100/20 py-16 pb-5">
@@ -72,31 +85,22 @@ export function About() {
           </div>
 
           <h2 className="mt-3 text-2xl font-extrabold text-slate-900 sm:text-4xl">
-            About <span className="text-amber-500">Indiventra</span> Tour &amp;
-            Travel
+            About <span className="text-amber-500">Indiventra</span> Tour &amp; Travel
           </h2>
 
-          <p className="mt-2 text-slate-500">
-            Your Journey. Our Commitment.
-          </p>
+          <p className="mt-2 text-slate-500">Your Journey. Our Commitment.</p>
         </div>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_minmax(0,480px)_1fr] lg:items-center">
           {/* Left Content */}
           <div>
-            <h3 className="text-xl font-extrabold text-slate-900">
-              Travel Made Easy,
-            </h3>
+            <h3 className="text-xl font-extrabold text-slate-900">Travel Made Easy,</h3>
 
-            <p
-              className={`${playfair.className} text-2xl italic text-amber-500`}
-            >
+            <p className={`${playfair.className} text-2xl italic text-amber-500`}>
               Since Day One
             </p>
 
-            <p className="mt-4 text-[13px] leading-relaxed text-slate-600">
-              {LEFT_PARAGRAPH}
-            </p>
+            <p className="mt-4 text-[13px] leading-relaxed text-slate-600">{left}</p>
           </div>
 
           {/* Video */}
@@ -106,8 +110,8 @@ export function About() {
                 {/* Thumbnail */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={VIDEO_THUMBNAIL}
-                  alt={VIDEO_TITLE}
+                  src={thumbnail}
+                  alt={videoTitle}
                   className="h-full w-full object-cover"
                 />
 
@@ -121,13 +125,8 @@ export function About() {
                   </span>
 
                   <div>
-                    <p className="text-sm font-semibold leading-tight">
-                      {VIDEO_TITLE}
-                    </p>
-
-                    <p className="text-xs text-white/80">
-                      {VIDEO_CHANNEL}
-                    </p>
+                    <p className="text-sm font-semibold leading-tight">{videoTitle}</p>
+                    <p className="text-xs text-white/80">{VIDEO_CHANNEL}</p>
                   </div>
                 </div>
 
@@ -148,7 +147,7 @@ export function About() {
 
                 {/* Watch on YouTube */}
                 <a
-                  href={`https://www.youtube.com/watch?v=${ABOUT_VIDEO_ID}`}
+                  href={`https://www.youtube.com/watch?v=${videoId}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-slate-900 transition-transform hover:scale-105"
@@ -163,8 +162,8 @@ export function About() {
             {playing && (
               <iframe
                 className="h-full w-full"
-                src={`https://www.youtube.com/embed/${ABOUT_VIDEO_ID}?autoplay=1`}
-                title={VIDEO_TITLE}
+                src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+                title={videoTitle}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
@@ -173,30 +172,17 @@ export function About() {
 
           {/* Right Content */}
           <div>
-            <h3 className="text-xl font-extrabold text-slate-900">
-              From Small Trips
-            </h3>
-
-            <p className="text-xl font-extrabold text-slate-900">
-              to Big Celebrations
-            </p>
-
-            <p className="mt-4 text-sm leading-relaxed text-slate-600">
-              {RIGHT_PARAGRAPH}
-            </p>
+            <h3 className="text-xl font-extrabold text-slate-900">From Small Trips</h3>
+            <p className="text-xl font-extrabold text-slate-900">to Big Celebrations</p>
+            <p className="mt-4 text-sm leading-relaxed text-slate-600">{right}</p>
           </div>
         </div>
 
         {/* Feature Strip */}
         <div className="mx-auto mt-10 flex max-w-4xl flex-col divide-y divide-slate-100 rounded-2xl bg-white p-6 pb-0 shadow-md sm:flex-row sm:divide-x sm:divide-y-0">
           {FEATURES.map(({ icon: Icon, title, desc, bg, color }) => (
-            <div
-              key={title}
-              className="flex flex-1 items-start gap-3 px-4 py-3"
-            >
-              <span
-                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${bg}`}
-              >
+            <div key={title} className="flex flex-1 items-start gap-3 px-4 py-3">
+              <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${bg}`}>
                 <Icon className={`h-5 w-5 ${color}`} />
               </span>
 
@@ -207,11 +193,15 @@ export function About() {
             </div>
           ))}
         </div>
-          <div className=" mt-5 bg-amber-500/10 rounded-2xl">
-            <p className="p-3  text-sm leading-relaxed">{BUTTOM_PARAGRAPH}</p>
-            <p className="p-3  text-sm leading-relaxed">{BUTTOM_PARAGRAPH_1}</p>
-            <p className="p-3 text-sm leading-relaxed">{BUTTOM_PARAGRAPH_2}</p>
-          </div>
+
+        {/* Bottom paragraphs */}
+        <div className="mt-5 rounded-2xl bg-amber-500/10">
+          {bottom.map((p, i) => (
+            <p key={i} className="p-3 text-sm leading-relaxed">
+              {p}
+            </p>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -34,3 +34,41 @@ export interface Testimonial {
   role?: string; // e.g. "CEO, PPM Logistics" or "Frequent Traveller"
   cityName?: string;
 }
+export interface PageContent {
+  heroImage?: string;
+  heroHeading?: string;
+  heroSubheading?: string;
+  aboutVideoId?: string;
+  aboutVideoTitle?: string;
+  aboutLeft?: string;
+  aboutRight?: string;
+  aboutBottom?: string[];
+  fleetSubtitle?: string;
+}
+
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  tag: string;
+  image: string;
+  publishedAt: string;
+}
+export interface HeroSlideData {
+  id: string;
+  image: string;
+  heading: string;
+  subheading: string;
+}
+
+export interface FleetItemData {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  vehicleImage: string;
+  images: string[];
+  amenities: { label: string; icon: string }[];
+  linkCategorySlug: string;
+}

@@ -1,6 +1,4 @@
-import type { City, Testimonial } from "@/lib/types";
-import { apiFetch } from "@/lib/api";
-import { dummyCities, dummyTestimonials } from "@/lib/dummyData";
+import { getPageData } from "@/lib/page-data";
 import {
   About,
   AdvisorBanner,
@@ -17,7 +15,7 @@ import {
   WhyChooseUs,
 } from "@/features/home";
 import { EnquiryForm } from "@/features/enquiry";
-import { JourneyStartsHere } from "@/features/home/journeyStartsHere";
+import { fillTemplate } from "@/lib/page-context";
 
 export const revalidate = 3600; // ISR: refresh hourly
 
@@ -28,47 +26,36 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const [cities, testimonials] = await Promise.all([
-    apiFetch<City[]>("/cities").catch(() => []),
-    apiFetch<Testimonial[]>("/testimonials").catch(() => []),
-  ]);
+  // No city / category -> global content, global blogs, all testimonials, all cities.
+    const data = await getPageData({});
+  const slides = data.heroSlides.map((s) => ({
+    image: s.image,
+    heading: fillTemplate(s.heading),
+    subheading: fillTemplate(s.subheading),
+  }));
 
-  const testimonialsData = testimonials.length > 0 ? testimonials : dummyTestimonials;
-  const citiesData = cities.length > 0 ? cities : dummyCities;
   return (
     <main>
-      <Hero />
+      <Hero slides={slides.length > 0 ? slides : undefined} />
 
-      {/* Get a Quote — floats over the hero's bottom edge, same technique as the navbar */}
+      {/* Get a Quote — floats over the hero's bottom edge */}
       <div
         id="get-a-quote"
-        className="
-          relative
-          z-20
-          mx-auto
-          -mt-16
-          w-full
-          max-w-6xl
-          px-4
-          sm:-mt-20
-          sm:px-6
-          lg:-mt-32
-          lg:px-8
-        "
+        className="relative z-20 mx-auto -mt-16 w-full max-w-6xl px-4 sm:-mt-20 sm:px-6 lg:-mt-32 lg:px-8"
       >
         <EnquiryForm />
       </div>
 
-      <About />
+      <About content={data.content} />
       <HowItWorks />
       <Categories />
-      <Fleet />
+       <Fleet items={data.fleet} />
       <Services />
       <AdvisorBanner />
       <WhyChooseUs />
-      <Testimonials testimonials={testimonialsData} />
-      <CitiesGrid cities={citiesData} />
-      <BlogSection />
+      <Testimonials testimonials={data.testimonials} />
+      <CitiesGrid cities={data.cities} />
+      <BlogSection posts={data.blogs} />
       <FAQ />
       {/* <ContactSection /> */}
       {/* <ConsultationBanner /> */}

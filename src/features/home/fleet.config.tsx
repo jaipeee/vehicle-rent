@@ -50,7 +50,7 @@ export const FLEET_SERVICES: FleetService[] = [
       { label: "24/7 Support", icon: Headset },
     ],
   },{
-    id: "car-with-driver",
+    id: "laxury-car-with-driver",
     title: "Luxury Car on Rent",
     subtitle: "with Driver",
     description:
@@ -98,7 +98,7 @@ export const FLEET_SERVICES: FleetService[] = [
     ],
   },
   {
-    id: "tempo-traveller",
+    id: "maharaja-tempo-traveller",
     title: "Maharaja Tempo Traveller",
     subtitle: "on Rent",
     description:
@@ -122,7 +122,7 @@ export const FLEET_SERVICES: FleetService[] = [
     ],
   },
   {
-    id: "tempo-traveller",
+    id: "urbania-traveller",
     title: "Urbania Traveller",
     subtitle: "on Rent",
     description:
@@ -194,7 +194,7 @@ export const FLEET_SERVICES: FleetService[] = [
     ],
   },
     {
-    id: "bus-rental",
+    id: "luxury-bus-rental",
     title: "Luxury Bus Rental",
     subtitle: "Services",
     description:

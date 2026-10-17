@@ -4,6 +4,7 @@ import { Jost } from "next/font/google";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer/footer";
 import { FloatingCta } from "@/components/layout/floating-cta";
+import { Chrome } from "@/components/layout/chrome";
 
 import "./globals.css";
 
@@ -30,11 +31,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={jost.className}>
-        <Navbar />
-        {children}
+  <Chrome
+    top={<Navbar />}
+    bottom={
+      <>
         <Footer />
         <FloatingCta />
-      </body>
+      </>
+    }
+  >
+    {children}
+  </Chrome>
+</body>
     </html>
   );
 }

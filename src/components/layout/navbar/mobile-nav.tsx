@@ -11,6 +11,11 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { usePathname } from "next/navigation";
+import { useScopedHref } from "@/lib/use-city-scope";
+import { isItemActive } from "./nav-utils";
+
+
 import { Button } from "@/components/ui/button";
 import {
   Collapsible,
@@ -60,6 +65,8 @@ interface MobileNavProps {
 
 export function MobileNav({ items, triggerClassName }: MobileNavProps) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname() ?? "/";
+const scoped = useScopedHref();
 
   return (
     <div className="lg:hidden">
@@ -117,10 +124,13 @@ export function MobileNav({ items, triggerClassName }: MobileNavProps) {
             <nav className="flex flex-1 flex-col gap-1.5 px-4 py-5">
               {items.map((item, i) => {
                 const Icon = item.icon;
+                // 3. top-level row: add `active` and use it in the class (inside items.map, after `const Icon`)
+const active = isItemActive(item, pathname);
+const rowClass = cn(
+  "flex w-full items-center justify-between rounded-xl border px-4 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-colors active:bg-white/20",
+  active ? "border-lime-300/60 bg-white/20" : "border-white/10 bg-white/5 hover:bg-white/15"
+);
                 const delay = { animationDelay: `${120 + i * 70}ms` };
-
-                const rowClass =
-                  "flex w-full items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/15 active:bg-white/20";
 
                 const iconBox = (
                   <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-lime-300">
@@ -141,13 +151,16 @@ export function MobileNav({ items, triggerClassName }: MobileNavProps) {
                       <div className="ml-6 mt-1.5 flex flex-col gap-1 border-l border-white/15 pl-4">
                         {item.children.map((child) => (
                           <Link
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => setOpen(false)}
-                            className="rounded-lg px-3 py-2.5 text-sm text-emerald-100/80 transition-colors hover:bg-white/10 hover:text-white"
-                          >
-                            {child.label}
-                          </Link>
+  key={child.href}
+  href={scoped(child.href)}
+  onClick={() => setOpen(false)}
+  className={cn(
+    "rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-white/10 hover:text-white",
+    pathname === scoped(child.href) ? "bg-white/15 font-semibold text-white" : "text-emerald-100/80"
+  )}
+>
+  {child.label}
+</Link>
                         ))}
                       </div>
                     </CollapsibleContent>
@@ -155,7 +168,7 @@ export function MobileNav({ items, triggerClassName }: MobileNavProps) {
                 ) : (
                   <Link
                     key={item.href}
-                    href={item.href}
+                    href={scoped(item.href)}
                     onClick={() => setOpen(false)}
                     className={cn("mnav-item", rowClass, "justify-start gap-3")}
                     style={delay}

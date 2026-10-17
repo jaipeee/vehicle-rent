@@ -76,8 +76,9 @@ export function Hero({ slides = DEFAULT_SLIDES, ctaLabel = "Get a Quote", ctaHre
         className="w-full"
       >
         <CarouselContent>
-          {slides.map((slide) => (
-            <CarouselItem key={slide.image}>
+          {slides.map((slide , index) => (
+            <CarouselItem key={index}>
+              
               <div className="relative h-[560px] w-full sm:h-[790px]">
                 <Image src={slide.image} alt={slide.heading} fill priority className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />

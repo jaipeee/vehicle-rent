@@ -1,22 +1,54 @@
 "use client";
 
-import { FLEET_SERVICES } from "./fleet.config";
+import { FLEET_SERVICES, type FleetService } from "./fleet.config";
 import { FleetCard } from "./fleet-card";
+import { buildPath } from "@/lib/page-context";
+import { getIcon } from "@/lib/icons";
+import type { FleetItemData } from "@/lib/types";
 
 interface FleetProps {
+  items?: FleetItemData[]; // from the database; empty -> built-in defaults
   categorySlug?: string;
+  citySlug?: string;
   cityName?: string;
+  subtitle?: string;
 }
 
-export function Fleet({ categorySlug, cityName }: FleetProps) {
-  const filtered = categorySlug
-    ? FLEET_SERVICES.filter((s) => s.relatedCategorySlugs.includes(categorySlug))
-    : FLEET_SERVICES;
-  const services = filtered.length > 0 ? filtered : FLEET_SERVICES;
+interface Entry {
+  service: FleetService;
+  linkSlug: string;
+}
+
+export function Fleet({ items = [], categorySlug, citySlug, cityName, subtitle }: FleetProps) {
+  let entries: Entry[];
+
+  if (items.length > 0) {
+    entries = items.map((it) => ({
+      linkSlug: it.linkCategorySlug,
+      service: {
+        id: it.id,
+        title: it.title,
+        subtitle: it.subtitle,
+        description: it.description,
+        vehicleImage: it.vehicleImage,
+        images: it.images.length > 0 ? it.images : [it.vehicleImage],
+        relatedCategorySlugs: it.linkCategorySlug ? [it.linkCategorySlug] : [],
+        amenities: it.amenities.map((a) => ({ label: a.label, icon: getIcon(a.icon) })),
+      },
+    }));
+  } else {
+    const filtered = categorySlug
+      ? FLEET_SERVICES.filter((s) => s.relatedCategorySlugs.includes(categorySlug))
+      : FLEET_SERVICES;
+    entries = (filtered.length > 0 ? filtered : FLEET_SERVICES).map((s) => ({
+      service: s,
+      linkSlug: s.relatedCategorySlugs[0] ?? "",
+    }));
+  }
 
   return (
     <section className="py-16" style={{ backgroundColor: "#fe980a2d" }}>
-      <div className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-amber-600 p-2">
+      <div className="flex items-center justify-center gap-3 p-2 text-xs font-bold uppercase tracking-[0.3em] text-amber-600">
         <span className="h-px w-8 bg-amber-400" />
         Our Fleet
         <span className="h-px w-8 bg-amber-400" />
@@ -26,11 +58,20 @@ export function Fleet({ categorySlug, cityName }: FleetProps) {
           Vehicle For <span className="text-amber-500">Every Group</span> Size
           {cityName ? ` in ${cityName}` : ""}
         </h2>
-        <p className="text-center pt-2">hello this is lorem</p>
+        <p className="pt-2 text-center text-slate-600">
+          {subtitle ?? "Choose from our well-maintained fleet."}
+        </p>
 
-        <div className={services.length === 1 ? "mx-auto mt-10 max-w-xl" : "mt-10 grid gap-10 lg:grid-cols-2"}>
-          {services.map((service) => (
-            <FleetCard key={service.id} service={service} cityName={cityName} />
+        <div className={entries.length === 1 ? "mx-auto mt-10 max-w-xl" : "mt-10 grid gap-10 lg:grid-cols-2"}>
+          {entries.map(({ service, linkSlug }) => (
+            <FleetCard
+              key={service.id}
+              service={service}
+              cityName={cityName}
+              // On a vehicle page the arrow does nothing special; elsewhere it goes to
+              // /vehicle (global) or /city/vehicle (inside a city).
+              href={categorySlug || !linkSlug ? undefined : buildPath(citySlug, linkSlug)}
+            />
           ))}
         </div>
       </div>

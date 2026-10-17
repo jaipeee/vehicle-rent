@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import type { City } from "@/lib/types";
 
-export function CitiesGrid({ cities }: { cities: City[] }) {
+import { buildPath } from "@/lib/page-context";
+
+export function CitiesGrid({ cities, categorySlug }: { cities: City[]; categorySlug?: string }) {
   return (
     <div className="bg-[#fe980a2d]">
     <section className="mx-auto max-w-7xl px-4 py-16 lg:px-6">

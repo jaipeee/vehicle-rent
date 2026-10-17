@@ -20,7 +20,7 @@ function getStep(track: HTMLDivElement | null) {
   return first.offsetWidth + gap;
 }
 
-export function Services() {
+export function Services({ cityName, categoryLabel }: { cityName?: string; categoryLabel?: string }) {
   const [activeId, setActiveId] = useState(OCCASIONS[0].id);
   const active = OCCASIONS.find((o) => o.id === activeId) ?? OCCASIONS[0];
 

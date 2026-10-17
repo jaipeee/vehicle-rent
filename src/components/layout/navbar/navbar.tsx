@@ -1,8 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 
 import {
@@ -13,10 +14,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { cn } from "@/lib/utils";
+import { useScopedHref } from "@/lib/use-city-scope";
 import { NAV_ITEMS, LOGO_SRC, LOGO_ALT, type NavItem } from "./navbar.config";
+import { isItemActive } from "./nav-utils";
 import { PhoneBadge, CtaButton, CitySelector } from "./navbar-actions";
 import { MobileNav } from "./mobile-nav";
-
 
 const NAV_KEYFRAMES = `
 @keyframes nav-gradient {
@@ -32,9 +34,7 @@ const NAV_KEYFRAMES = `
 }
 `;
 
-// -----------------------------------------------------
-// Sliding navigation indicator
-// -----------------------------------------------------
+/* ------------------------- Sliding active indicator ------------------------- */
 
 interface SliderRect {
   left: number;
@@ -56,7 +56,9 @@ function useNavSlider() {
     setRect({ left: el.offsetLeft, width: el.offsetWidth });
   }, []);
 
-  return { registerRef, moveTo, rect };
+  const clear = useCallback(() => setRect(null), []);
+
+  return { registerRef, moveTo, clear, rect };
 }
 
 function NavIndicator({ rect }: { rect: SliderRect | null }) {
@@ -70,50 +72,43 @@ function NavIndicator({ rect }: { rect: SliderRect | null }) {
   );
 }
 
-// -----------------------------------------------------
-// Navigation link
-// -----------------------------------------------------
+/* ------------------------------- Nav link ------------------------------- */
 
 interface NavLinkProps {
   item: NavItem;
   isActive: boolean;
-  onHover: (href: string) => void;
-  onLeave: () => void;
-  onActivate: (href: string) => void;
   registerRef: (href: string, el: HTMLLIElement | null) => void;
 }
 
-function NavLink({
-  item,
-  isActive,
-  onHover,
-  onLeave,
-  onActivate,
-  registerRef,
-}: NavLinkProps) {
+function NavLink({ item, isActive, registerRef }: NavLinkProps) {
+  const pathname = usePathname();
+  const scoped = useScopedHref();
   const [hovered, setHovered] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const Icon = item.icon;
   const hasChildren = !!item.children?.length;
-  const highlighted = isActive || hovered;
+  const lit = hovered || open; // hover OR dropdown open
 
   const content = (
     <span
       className={cn(
         "relative z-10 flex items-center gap-2 whitespace-nowrap px-4 py-2 text-sm font-semibold tracking-wide transition-colors duration-300",
-        highlighted
-          ? "text-emerald-950"
-          : "text-emerald-100/80 hover:text-emerald-50"
+        isActive ? "text-emerald-950" : lit ? "text-white" : "text-emerald-100/80"
       )}
     >
       <Icon
         className={cn(
           "h-4 w-4 shrink-0 transition-transform duration-300",
-          highlighted && "scale-110 -rotate-6"
+          (isActive || lit) && "scale-110 -rotate-6"
         )}
       />
       {item.label}
-      {hasChildren && <ChevronDown className="h-3.5 w-3.5 shrink-0" />}
+      {hasChildren && (
+        <ChevronDown
+          className={cn("h-3.5 w-3.5 shrink-0 transition-transform duration-300", open && "rotate-180")}
+        />
+      )}
     </span>
   );
 
@@ -121,36 +116,43 @@ function NavLink({
     <li
       ref={(el) => registerRef(item.href, el)}
       className="relative z-10 flex shrink-0 list-none items-center"
-      onMouseEnter={() => {
-        onHover(item.href);
-        setHovered(true);
-      }}
-      onMouseLeave={() => {
-        onLeave();
-        setHovered(false);
-      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
+      {/* Soft translucent highlight for hover / open dropdown (not for the active item) */}
+      <span
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute inset-x-0 inset-y-1.5 z-0 rounded-full bg-white/15 opacity-0 transition-opacity duration-200",
+          lit && !isActive && "opacity-100"
+        )}
+      />
+
       {hasChildren ? (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild onClick={() => onActivate(item.href)}>
+        <DropdownMenu open={open} onOpenChange={setOpen}>
+          <DropdownMenuTrigger asChild>
             <button type="button" className="flex items-center outline-none">
               {content}
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start" className="mt-2">
-            {item.children!.map((child) => (
-              <DropdownMenuItem key={child.href} asChild>
-                <Link href={child.href}>{child.label}</Link>
-              </DropdownMenuItem>
-            ))}
+            {item.children!.map((child) => {
+              const href = scoped(child.href);
+              const childActive = pathname === href;
+              return (
+                <DropdownMenuItem
+                  key={child.href}
+                  asChild
+                  className={cn(childActive && "bg-accent font-semibold")}
+                >
+                  <Link href={href}>{child.label}</Link>
+                </DropdownMenuItem>
+              );
+            })}
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
-        <Link
-          href={item.href}
-          onClick={() => onActivate(item.href)}
-          className="flex items-center"
-        >
+        <Link href={scoped(item.href)} className="flex items-center">
           {content}
         </Link>
       )}
@@ -158,42 +160,40 @@ function NavLink({
   );
 }
 
-// -----------------------------------------------------
-// Main Navbar
-// -----------------------------------------------------
+/* ------------------------------- Main navbar ------------------------------- */
 
 const DOCK_AFTER = 40; // px scrolled before the navbar docks to the top
 
 export function Navbar() {
-  const [activeHref, setActiveHref] = useState(NAV_ITEMS[0]?.href ?? "");
+  const pathname = usePathname();
   const [docked, setDocked] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const { registerRef, moveTo, rect } = useNavSlider();
+  const { registerRef, moveTo, clear, rect } = useNavSlider();
 
-  const handleActivate = (href: string) => {
-    setActiveHref(href);
-    moveTo(href);
-  };
-
-  useEffect(() => {
-    moveTo(activeHref);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // Active item comes from the URL, so it is right on load, refresh and back/forward.
+  const activeHref = useMemo(
+    () => NAV_ITEMS.find((item) => isItemActive(item, pathname ?? "/"))?.href ?? null,
+    [pathname]
+  );
 
   useEffect(() => {
-    const handleResize = () => moveTo(activeHref);
+    if (activeHref) moveTo(activeHref);
+    else clear();
+  }, [activeHref, moveTo, clear]);
+
+  useEffect(() => {
+    const handleResize = () => (activeHref ? moveTo(activeHref) : clear());
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [activeHref, moveTo]);
+  }, [activeHref, moveTo, clear]);
 
   useEffect(() => {
     let ticking = false;
 
     const update = () => {
       const y = window.scrollY;
-      const max =
-        document.documentElement.scrollHeight - window.innerHeight || 1;
+      const max = document.documentElement.scrollHeight - window.innerHeight || 1;
       setDocked(y > DOCK_AFTER);
       setProgress(Math.min(1, Math.max(0, y / max)));
       ticking = false;
@@ -224,9 +224,7 @@ export function Navbar() {
         <div
           className={cn(
             "pointer-events-auto relative w-full",
-            // MOBILE: simple solid bar
             "border-b border-white/10 bg-emerald-950 shadow-md",
-            // DESKTOP: glass pill / docked bar
             "lg:border-b-0 lg:bg-transparent lg:ring-1 lg:ring-white/20 lg:backdrop-blur-xl",
             "lg:transition-[max-width,border-radius,box-shadow] lg:duration-500 lg:ease-[cubic-bezier(0.22,1,0.36,1)]",
             docked
@@ -234,7 +232,7 @@ export function Navbar() {
               : "lg:max-w-[min(1360px,calc(100vw_-_2rem))] lg:rounded-3xl lg:shadow-xl"
           )}
         >
-          {/* ---------- Animated background (desktop only) ---------- */}
+          {/* Animated background (desktop only) */}
           <div className="absolute inset-0 hidden overflow-hidden rounded-[inherit] lg:block">
             <div
               className={cn(
@@ -252,8 +250,8 @@ export function Navbar() {
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
           </div>
 
-          {/* ---------- Content ---------- */}
-          <div className="relative mx-auto flex min-h-14 w-full max-width: 1360px; items-center justify-between gap-4 px-4 py-1.5 sm:px-5 lg:h-15 lg:gap-6 lg:px-6">
+          {/* Content */}
+          <div className="relative mx-auto flex min-h-14 w-full items-center justify-between gap-4 px-4 py-1.5 sm:px-5 lg:h-15 lg:gap-6 lg:px-6">
             {/* Logo */}
             <Link href="/" className="group flex shrink-0 items-center">
               <span className="relative flex h-10 w-28 items-center justify-center overflow-hidden rounded-xl transition-transform duration-300 ease-out group-hover:-translate-y-0.5 sm:h-13 lg:h-16 lg:w-40">
@@ -276,9 +274,6 @@ export function Navbar() {
                   key={item.href}
                   item={item}
                   isActive={activeHref === item.href}
-                  onHover={moveTo}
-                  onLeave={() => moveTo(activeHref)}
-                  onActivate={handleActivate}
                   registerRef={registerRef}
                 />
               ))}
@@ -300,7 +295,7 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* ---------- Scroll progress bar (desktop, docked) ---------- */}
+          {/* Scroll progress bar (desktop, docked) */}
           <div
             aria-hidden
             className={cn(
