@@ -4,16 +4,17 @@ import { cn } from "@/lib/utils";
 
 interface Category {
   name: string;
+  desc: string,
   icon: LucideIcon;
   gradient: string;
   image: string;
 }
 
 const CATEGORIES: Category[] = [
-  { name: "Standard", icon: PiggyBank, gradient: "from-lime-400 to-lime-500", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789756966/ECONOMY_CATEGORY.png" },
-  { name: "Preferred", icon: Briefcase, gradient: "from-emerald-600 to-emerald-700", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789757379/ChatGPT_Image_Sep_19_2026_12_18_57_AM_convert.io.webp" },
-  { name: "Regal", icon: Gem, gradient: "from-rose-400 to-rose-500", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789757513/ChatGPT_Image_Sep_19_2026_12_21_32_AM_convert.io.webp" },
-  { name: "Maharaja", icon: Crown, gradient: "from-violet-600 to-violet-700", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789757700/ChatGPT_Image_Sep_19_2026_12_24_42_AM_convert.io.webp" },
+  { name: "Standard",desc:"Clean, reliable vehicles with all essential comforts — best value for everyday travel.", icon: PiggyBank, gradient: "from-lime-400 to-lime-500", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789756966/ECONOMY_CATEGORY.png" },
+  { name: "Preferred",desc:"Upgraded vehicles with pushback seats, powerful AC & extra comfort for longer journeys.", icon: Briefcase, gradient: "from-emerald-600 to-emerald-700", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789757379/ChatGPT_Image_Sep_19_2026_12_18_57_AM_convert.io.webp" },
+  { name: "Regal",desc:"New-age modified vehicles with premium interiors & best-in-class amenities.", icon: Gem, gradient: "from-rose-400 to-rose-500", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789757513/ChatGPT_Image_Sep_19_2026_12_21_32_AM_convert.io.webp" },
+  { name: "IMPERIAL",desc:"Ultra-luxury, custom-designed vehicles with 1x1 Maharaja seats & VIP feels.", icon: Crown, gradient: "from-violet-600 to-violet-700", image: "https://res.cloudinary.com/yhuaios0/image/upload/v1789757700/ChatGPT_Image_Sep_19_2026_12_24_42_AM_convert.io.webp" },
 ];
 
 export function Categories() {
@@ -25,12 +26,13 @@ export function Categories() {
             <span className="h-px w-8 bg-amber-400" />
           </div>
       <h2 className="text-center text-xl font-bold text-slate-900 sm:text-3xl">
-        4 <span className="text-amber-500">Categories of Vehicles</span> to Suit Every Budget
+      Every <span className="text-amber-500"> Budget.</span> Every <span className="text-amber-500">Occasion. </span>One Perfect Ride.
       </h2>
+      <p className="pt-3 text-center">From budget-friendly to ultra-luxury — transparent pricing and guaranteed quality in every category.</p>
 
       {/* 2 per row on phones, 4 per row on large screens */}
       <div className="mt-14 grid grid-cols-2 gap-x-3 gap-y-14 sm:mt-20 sm:gap-x-6 sm:gap-y-20 lg:grid-cols-4">
-        {CATEGORIES.map(({ name, icon: Icon, gradient, image }) => (
+        {CATEGORIES.map(({ name, desc, icon: Icon, gradient, image }) => (
           <div
             key={name}
             className={cn(
@@ -52,7 +54,7 @@ export function Categories() {
             <h3 className="mt-2 text-sm font-extrabold tracking-wide sm:mt-4 sm:text-xl">
               {name.toUpperCase()}
             </h3>
-            <p>lorem</p>
+            <p>{desc}</p>
 
             <div className="mt-3 flex w-full items-center gap-2 sm:mt-5">
               <span className="h-px flex-1 bg-white/40" />

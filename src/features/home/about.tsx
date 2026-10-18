@@ -80,12 +80,12 @@ export function About({ content, ctx }: { content?: PageContent; ctx?: PageConte
         <div className="text-center">
           <div className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-amber-600">
             <span className="h-px w-8 bg-amber-400" />
-            About Us
+            About Indiventra
             <span className="h-px w-8 bg-amber-400" />
           </div>
 
           <h2 className="mt-3 text-2xl font-extrabold text-slate-900 sm:text-4xl">
-            About <span className="text-amber-500">Indiventra</span> Tour &amp; Travel
+            Affordable &amp; <span className="text-amber-500">Trusted Vehicle Rental</span> Services in India
           </h2>
 
           <p className="mt-2 text-slate-500">Your Journey. Our Commitment.</p>

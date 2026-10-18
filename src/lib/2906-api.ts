@@ -8,7 +8,7 @@ export const setToken = (t: string) => localStorage.setItem(KEY, t);
 export const clearToken = () => localStorage.removeItem(KEY);
 
 export async function adminLogin(password: string) {
-  const res = await fetch(`${BASE}/admin/login`, {
+  const res = await fetch(`${BASE}/2906/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ password }),

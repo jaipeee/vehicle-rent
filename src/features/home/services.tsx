@@ -204,10 +204,10 @@ export function Services({ cityName, categoryLabel }: { cityName?: string; categ
       </div>
       <div className="text-center">
         <h2 className="mt-1 text-xl font-extrabold text-slate-900 sm:mt-4 sm:text-3xl">
-          For Every <span className="text-amber-500">Occasion</span>
+        <span className="text-amber-500">India on Wheels:  </span>Your Journey, Your Way 🚐
         </h2>
         <p className="mt-2 text-xs text-slate-500 sm:text-base">
-          Whatever the occasion for traveling, we have the right vehicle for you.
+         Every occasion deserves the perfect ride. Indiventra’s Vehicle rental service is ideal for every occasion — weddings, pilgrimage trips, corporate events & tours, and Pune Darshan.
         </p>
       </div>
 

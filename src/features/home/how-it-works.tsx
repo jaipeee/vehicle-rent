@@ -12,29 +12,29 @@ interface Step {
 const STEPS: Step[] = [
   {
     number: "01",
-    title: "Select Your Vehicle",
-    description: "Choose a traveller based on your group size and preferences.",
+    title: "Enquiry",
+    description: "Tell us your plan. Call us, message on WhatsApp or use the quote form. Share the date, pickup point, route, number of people and the luggage you carry.",
     img: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053094/Select_Your_Vehicle.png",
     theme: "pink",
   },
   {
     number: "02",
-    title: "Share Trip Details",
-    description: "Tell us your destination, dates, and duration via call, WhatsApp, or Email.",
+    title: "Select Your Vehicle",
+    description: "We suggest a vehicle on rent and a price that fits your trip requirement and budget. If a smaller vehicle will work, we will tell you.",
     img: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053438/Share_Trip_Details.png",
     theme: "teal",
   },
   {
     number: "03",
     title: "Get Instant Quote",
-    description: "Get pricing quotes for vehicle rental or a custom trip.",
+    description: "Confirm your booking. Pay the advance through multiple payment methods. We then send the vehicle & driver's details. Our team stays available until you reach your destination safely.",
     img: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053095/Get_Instant_Quote.png",
     theme: "blue",
   },
   {
     number: "04",
     title: "Confirm & Ride",
-    description: "Book and enjoy the ride, we will handle the rest.",
+    description: "Book & enjoy the ride — no last-minute cancellations from us, ever. Service so good, you'll book again.",
     img: "https://res.cloudinary.com/yhuaios0/image/upload/v1791053095/Travel_Booking_Confirmed.png",
     theme: "amber",
   },
@@ -56,17 +56,17 @@ export function HowItWorks() {
       <div className="mx-auto max-w-7xl px-3 sm:px-4 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
           <div className="mb-3 flex items-center justify-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-amber-500 sm:mb-4 sm:gap-3 sm:text-xs">
-            <span className="h-px w-6 bg-slate-900 sm:w-9" /> Your Journey • Our Priority
+            <span className="h-px w-6 bg-slate-900 sm:w-9" /> BOOKING STEPS
             <span className="h-px w-6 bg-slate-900 sm:w-9" />
           </div>
-          <h2 className="text-2xl font-extrabold text-slate-900 sm:text-4xl">
-            Simple Steps to Your{" "}
+          <h2 className="text-2xl font-extrabold text-slate-900 sm:text-3xl">
+            Book Vehicle on rent{" "}
             <span className="text-amber-500">
-              Next Ride
+              With Indiventra
             </span>
           </h2>
           <p className="mt-2 text-sm text-slate-500 sm:mt-3 sm:text-base">
-            From choosing to riding, we make it easy, fast and comfortable.
+            Want to hire vehicle on rent, A simple 3-step process designed to save your time and budget.
           </p>
         </div>
 
@@ -109,7 +109,7 @@ export function HowItWorks() {
                 <h3 className="text-sm font-bold leading-tight text-slate-900 sm:text-lg">
                   {step.title}
                 </h3>
-                <p className="mt-1 text-[11px] leading-snug text-slate-500 sm:text-sm">
+                <p className="mt-1 text-justify text-[11px] leading-snug text-slate-500 sm:text-sm">
                   {step.description}
                 </p>
 

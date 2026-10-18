@@ -55,11 +55,11 @@ export function Fleet({ items = [], categorySlug, citySlug, cityName, subtitle }
       </div>
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <h2 className="text-center text-2xl font-bold sm:text-3xl" style={{ color: "#0B2A4A" }}>
-          Vehicle For <span className="text-amber-500">Every Group</span> Size
+          Right Hire Vehicle For <span className="text-amber-500">Every Group</span> & <span className="text-amber-500">Occasion</span>
           {cityName ? ` in ${cityName}` : ""}
         </h2>
         <p className="pt-2 text-center text-slate-600">
-          {subtitle ?? "Choose from our well-maintained fleet."}
+          {subtitle ?? "From luxury cars to luxury buses, choose a rented vehicle by group size and luggage. Every booking comes with a chauffeur, a clean vehicle and a written quote."}
         </p>
 
         <div className={entries.length === 1 ? "mx-auto mt-10 max-w-xl" : "mt-10 grid gap-10 lg:grid-cols-2"}>

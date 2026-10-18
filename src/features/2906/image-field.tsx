@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { adminFetch } from "@/lib/admin-api";
+import { adminFetch } from "@/lib/2906-api";
 
 export function ImageField({
   value,
