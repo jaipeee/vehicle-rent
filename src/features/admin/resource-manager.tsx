@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { AdminAuthError, adminFetch, revalidateSite } from "@/lib/2906-api";
+import { AdminAuthError, adminFetch, revalidateSite } from "@/lib/admin-api";
 import { ICON_NAMES } from "@/lib/icons";
 import { ImageField } from "./image-field";
 import type { Field, ResourceDef } from "./resources";
@@ -45,7 +45,7 @@ export function ResourceManager({ def, onAuthError }: { def: ResourceDef; onAuth
 
   const load = useCallback(async () => {
     try {
-      setRows(await adminFetch<Row[]>(`/2906/${def.endpoint}`));
+      setRows(await adminFetch<Row[]>(`/admin/${def.endpoint}`));
     } catch (e) {
       fail(e);
     } finally {
@@ -60,7 +60,7 @@ export function ResourceManager({ def, onAuthError }: { def: ResourceDef; onAuth
   // City dropdown options (only for tabs that have a city field)
   useEffect(() => {
     if (!def.fields.some((f) => f.type === "citySelect")) return;
-    adminFetch<Row[]>("/2906/cities")
+    adminFetch<Row[]>("/admin/cities")
       .then((c) => setCityOptions(c.map((x) => ({ label: x.name, value: x.slug }))))
       .catch(() => {});
   }, [def]);
@@ -98,7 +98,7 @@ export function ResourceManager({ def, onAuthError }: { def: ResourceDef; onAuth
     try {
       const isNew = selectedId === "new";
       const saved = await adminFetch<Row>(
-        isNew ? `/2906/${def.endpoint}` : `/2906/${def.endpoint}/${selectedId}`,
+        isNew ? `/admin/${def.endpoint}` : `/admin/${def.endpoint}/${selectedId}`,
         { method: isNew ? "POST" : "PUT", body: JSON.stringify(form) }
       );
       await load();
@@ -118,7 +118,7 @@ export function ResourceManager({ def, onAuthError }: { def: ResourceDef; onAuth
     if (!confirm("Delete this record permanently?")) return;
     setBusy(true);
     try {
-      await adminFetch(`/2906/${def.endpoint}/${selectedId}`, { method: "DELETE" });
+      await adminFetch(`/admin/${def.endpoint}/${selectedId}`, { method: "DELETE" });
       setSelectedId(null);
       await load();
       await revalidateSite();

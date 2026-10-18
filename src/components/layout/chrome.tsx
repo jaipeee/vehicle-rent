@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-// Renders the site navbar/footer/floating button everywhere except /2906.
+// Renders the site navbar/footer/floating button everywhere except /admin.
 export function Chrome({
   top,
   bottom,
@@ -12,7 +12,7 @@ export function Chrome({
   bottom: React.ReactNode;
   children: React.ReactNode;
 }) {
-  const isAdmin = (usePathname() ?? "").startsWith("/2906");
+  const isAdmin = (usePathname() ?? "").startsWith("/admin");
   if (isAdmin) return <>{children}</>;
   return (
     <>

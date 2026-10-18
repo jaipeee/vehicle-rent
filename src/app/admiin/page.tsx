@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { adminLogin, clearToken, getToken } from "@/lib/2906-api";
-import { RESOURCES } from "@/features/2906/resources";
-import { ResourceManager } from "@/features/2906/resource-manager";
+import { adminLogin, clearToken, getToken } from "@/lib/admin-api";
+import { RESOURCES } from "@/features/admin/resources";
+import { ResourceManager } from "@/features/admin/resource-manager";
 
 export default function AdminPage() {
   const [ready, setReady] = useState(false);
