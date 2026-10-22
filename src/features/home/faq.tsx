@@ -65,15 +65,16 @@ const FAQS = [
 ];
 
 export function FAQ() {
-  const [left, right] = [FAQS.slice(0, 6), FAQS.slice(6)];
+  // Split array into equal halves (7 items in each column)
+  const [left, right] = [FAQS.slice(0, 7), FAQS.slice(7)];
 
   return (
     <section className="bg-[#fe980a2d] py-16">
       <div className="flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-amber-600 pb-4">
-            <span className="h-px w-8 bg-amber-400" />
-            F&Q
-            <span className="h-px w-8 bg-amber-400" />
-          </div>
+        <span className="h-px w-8 bg-amber-400" />
+        FAQ
+        <span className="h-px w-8 bg-amber-400" />
+      </div>
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <h2 className="text-center text-2xl font-bold text-emerald-900 sm:text-3xl">
           Frequently Asked <span className="text-amber-500">Questions</span>

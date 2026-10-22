@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Caveat } from "next/font/google";
 import { Car, ChevronRight, Headset, Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter, FaYoutube } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaRedditAlien, FaQuora, FaXTwitter, FaYoutube } from "react-icons/fa6";
 import { CONTACT_PHONE, LOGO_ALT, LOGO_SRC, CITIES } from "@/components/layout/navbar/navbar.config";
 import { JourneyStartsHere } from "@/features/home/journeyStartsHere"; // adjust to where you saved it
 import { VEHICLE_CATEGORIES } from "@/features/vehicles/vehicle-categories.config";
@@ -31,16 +31,17 @@ const SUPPORT_LINKS = [
 ];
 
 const SOCIALS = [
-  { icon: FaFacebookF, href: "https://facebook.com", label: "Facebook", className: "bg-[#1877f2] text-white" },
+  { icon: FaFacebookF, href: "https://www.facebook.com/people/Indiventra/61594950119130", label: "Facebook", className: "bg-[#1877f2] text-white" },
   {
     icon: FaInstagram,
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/indiventra",
     label: "Instagram",
     className: "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white",
   },
   { icon: FaYoutube, href: "https://youtube.com", label: "YouTube", className: "bg-[#ff0000] text-white" },
-  { icon: FaLinkedinIn, href: "https://linkedin.com", label: "LinkedIn", className: "bg-[#0a66c2] text-white" },
-  { icon: FaXTwitter, href: "https://twitter.com", label: "X", className: "bg-black text-white ring-1 ring-white/30" },
+  { icon: FaRedditAlien, href: "https://www.reddit.com/user/indiventra", label: "Reddit", className: "bg-[#0a66c2] text-white" },
+  { icon: FaXTwitter, href: "https://www.youtube.com/@Indiventra", label: "X", className: "bg-black text-white ring-1 ring-white/30" },
+  { icon: FaQuora, href: "https://www.quora.com/profile/Indiventra", label: "Quora", className: "bg-black text-white ring-1 ring-white/30" },
 ];
 
 /**
@@ -167,17 +168,25 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:enquiry@indiventure.com"
+                  href="mailto:indiventra@gmail.com"
                   className="flex items-center gap-3 text-white hover:text-orange-300"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#0a1f44]">
                     <Mail className="h-4 w-4" />
                   </span>
                   <span className="min-w-0">
-                    <span className="block break-all font-semibold">enquiry@indiventure.com</span>
+                    <span className="block break-all font-semibold">indiventra@gmail.com</span>
                     <span className="block text-xs text-blue-100/70">Send Us an Email</span>
                   </span>
                 </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#0a1f44]">
+                  <MapPin className="h-4 w-4" />
+                </span>
+                <p className="text-xs leading-relaxed text-blue-100/85">
+                  6th Floor, 307, Chincholi Bunder Rd, Malad, Rajan Pada, Mindspace, Malad West, Mumbai, Maharashtra 400064
+                </p>
               </li>
               <li className="flex items-start gap-3">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#0a1f44]">

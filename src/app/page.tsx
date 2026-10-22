@@ -21,7 +21,7 @@ import type { ServiceCardData } from "@/lib/types";
 export const revalidate = 3600; // ISR: refresh hourly
 
 export const metadata = {
-  title: "Indiventure Tour & Travel | Tempo Traveller, Bus & Car Rentals",
+  title: "indiventra Tour & Travel | Tempo Traveller, Bus & Car Rentals",
   description:
     "Reliable tempo traveller, luxury car, and bus rentals for corporate events, weddings, and outstation trips across India.",
 };

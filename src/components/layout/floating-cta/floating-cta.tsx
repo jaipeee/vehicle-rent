@@ -7,7 +7,7 @@ import { CONTACT_PHONE } from "@/components/layout/navbar/navbar.config";
 
 // Placeholders — update with your real WhatsApp number and support email.
 const WHATSAPP_NUMBER = "918369687417";
-const CONTACT_EMAIL = "enquiry@indiventure.com";
+const CONTACT_EMAIL = "indiventra@gmail.com";
 
 interface CtaAction {
   label: string;

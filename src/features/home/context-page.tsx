@@ -36,7 +36,7 @@ export async function ContextPage({ ctx }: { ctx: PageContext }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Indiventure Tour & Travel",
+    name: "indiventra Tour & Travel",
     ...(city && { areaServed: city.name }),
     description: fill(content.heroSubheading) ?? defaultSub,
   };

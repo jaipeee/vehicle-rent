@@ -117,7 +117,7 @@ export function ContactSection() {
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" />
                 <div>
                   <p className="font-semibold text-slate-900">Email</p>
-                  <p className="mt-1">enquiry@indiventure.com</p>
+                  <p className="mt-1">indiventra@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-2">

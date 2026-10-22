@@ -57,17 +57,19 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const CITIES = [
+  { name: "Mumbai", slug: "mumbai" },
+  { name: "Navi Mumbai", slug: "navimumbai" },
   { name: "Delhi", slug: "delhi" },
+  { name: "Pune", slug: "pune" },
+  { name: "Dehradun", slug: "dehradun" },
   { name: "Haridwar", slug: "haridwar" },
   { name: "Amritsar", slug: "amritsar" },
   { name: "Chandigarh", slug: "chandigarh" },
-  { name: "Dehradun", slug: "dehradun" },
   { name: "Varanasi", slug: "varanasi" },
-  { name: "Mumbai", slug: "mumbai" } 
 ];
 
 export const CONTACT_PHONE = {
-  display: "(+91) 83 6968 7471",
+  display: "(+91) 83 6968 7417",
   href: "tel:+918369687417",
 };
 
