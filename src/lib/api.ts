@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000/api/v1";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // Carries the real HTTP status so callers can distinguish "genuinely not
 // found" (404) from other failures (backend down, 500, etc.) instead of

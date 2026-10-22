@@ -16,6 +16,7 @@ import {
 } from "@/features/home";
 import { EnquiryForm } from "@/features/enquiry";
 import { fillTemplate } from "@/lib/page-context";
+import type { ServiceCardData } from "@/lib/types";
 
 export const revalidate = 3600; // ISR: refresh hourly
 
@@ -25,9 +26,15 @@ export const metadata = {
     "Reliable tempo traveller, luxury car, and bus rentals for corporate events, weddings, and outstation trips across India.",
 };
 
+
 export default async function HomePage() {
   // No city / category -> global content, global blogs, all testimonials, all cities.
     const data = await getPageData({});
+     const serviceItems = data.serviceCards.map((c: ServiceCardData) => ({
+    ...c,
+    title: fillTemplate(c.title),
+    description: fillTemplate(c.description),
+  }));
   const slides = data.heroSlides.map((s) => ({
     image: s.image,
     heading: fillTemplate(s.heading),
@@ -50,7 +57,12 @@ export default async function HomePage() {
       <HowItWorks />
       <Categories />
        <Fleet items={data.fleet} />
-      <Services />
+      <Services
+  items={serviceItems}
+  titleAccent={data.content.servicesTitleAccent}
+  title={data.content.servicesTitle}
+  subheading={data.content.servicesSubheading}
+/>
       <AdvisorBanner />
       <WhyChooseUs />
       <Testimonials testimonials={data.testimonials} />

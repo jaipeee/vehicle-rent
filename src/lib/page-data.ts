@@ -8,6 +8,7 @@ import type {
   PageContent,
   Testimonial,
   Vehicle,
+  ServiceCardData
 } from "@/lib/types";
 import type { PageContext } from "./page-context";
 
@@ -24,7 +25,7 @@ export async function getPageData({ city, category }: PageContext) {
   const testimonialQs = new URLSearchParams({ city: city?.name ?? "", category: category?.slug ?? "" });
 
   // Each fallback is typed, so the results are plain arrays, never `X[] | never[]`.
-  const [vehicles, cities, testimonials, content, blogs, heroSlides, fleet] = await Promise.all([
+  const [vehicles, cities, testimonials, content, blogs, heroSlides, fleet,serviceCards, ] = await Promise.all([
     apiFetch<Vehicle[]>("/vehicles").catch((): Vehicle[] => []),
     apiFetch<City[]>("/cities").catch((): City[] => []),
     apiFetch<Testimonial[]>(`/testimonials?${testimonialQs}`).catch((): Testimonial[] => []),
@@ -32,6 +33,7 @@ export async function getPageData({ city, category }: PageContext) {
     apiFetch<BlogPost[]>(`/blogs?${contentQs}`).catch((): BlogPost[] => []),
     apiFetch<HeroSlideData[]>(`/hero-slides?${contentQs}`).catch((): HeroSlideData[] => []),
     apiFetch<FleetItemData[]>(`/fleet?${contentQs}`).catch((): FleetItemData[] => []),
+    apiFetch<ServiceCardData[]>(`/service-cards?${contentQs}`).catch((): ServiceCardData[] => []),
   ]);
 
   const allVehicles = vehicles.length > 0 ? vehicles : dummyVehicles;
@@ -51,5 +53,6 @@ export async function getPageData({ city, category }: PageContext) {
     categoryVehicles,
     testimonials: testimonialsData,
     cities: cities.length > 0 ? cities : dummyCities,
+    serviceCards,
   };
 }

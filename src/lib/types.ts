@@ -44,6 +44,9 @@ export interface PageContent {
   aboutRight?: string;
   aboutBottom?: string[];
   fleetSubtitle?: string;
+    servicesTitleAccent?: string;
+  servicesTitle?: string;
+  servicesSubheading?: string;
 }
 
 export interface BlogPost {
@@ -71,4 +74,11 @@ export interface FleetItemData {
   images: string[];
   amenities: { label: string; icon: string }[];
   linkCategorySlug: string;
+}
+export interface ServiceCardData {
+  id: string;
+  occasion: string;
+  title: string;
+  description: string;
+  image: string;
 }

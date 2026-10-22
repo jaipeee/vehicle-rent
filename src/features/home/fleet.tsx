@@ -58,7 +58,7 @@ export function Fleet({ items = [], categorySlug, citySlug, cityName, subtitle }
           Right Hire Vehicle For <span className="text-amber-500">Every Group</span> & <span className="text-amber-500">Occasion</span>
           {cityName ? ` in ${cityName}` : ""}
         </h2>
-        <p className="pt-2 text-center text-slate-600">
+        <p className="pt-2 text-center  text-slate-600">
           {subtitle ?? "From luxury cars to luxury buses, choose a rented vehicle by group size and luggage. Every booking comes with a chauffeur, a clean vehicle and a written quote."}
         </p>
 

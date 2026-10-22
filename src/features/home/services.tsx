@@ -5,7 +5,20 @@ import type { PointerEvent as ReactPointerEvent } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { OCCASIONS } from "./services.config";
+import { OCCASIONS, type OccasionCategory } from "./services.config";
+import type { ServiceCardData } from "@/lib/types";
+
+const DEFAULT_ACCENT = "India on Wheels:";
+const DEFAULT_TITLE = "Your Journey, Your Way 🚐";
+const DEFAULT_SUB =
+  "Every occasion deserves the perfect ride. Indiventra’s Vehicle rental service is ideal for every occasion — weddings, pilgrimage trips, corporate events & tours, and local sightseeing.";
+
+interface ServicesProps {
+  items?: ServiceCardData[]; // from the database; empty -> services.config.ts
+  titleAccent?: string;
+  title?: string;
+  subheading?: string;
+}
 
 const AUTOPLAY_MS = 4000; // time between automatic slides
 const PAUSE_AFTER_INTERACTION_MS = 6000; // autoplay waits this long after any touch/click/drag
@@ -19,10 +32,24 @@ function getStep(track: HTMLDivElement | null) {
   const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
   return first.offsetWidth + gap;
 }
+function groupByOccasion(items: ServiceCardData[]): OccasionCategory[] {
+  const map = new Map<string, OccasionCategory>();
+  for (const it of items) {
+    let group = map.get(it.occasion);
+    if (!group) {
+      group = { id: it.occasion, label: it.occasion, examples: [] };
+      map.set(it.occasion, group);
+    }
+    group.examples.push({ title: it.title, description: it.description, image: it.image });
+  }
+  return Array.from(map.values());
+}
 
-export function Services({ cityName, categoryLabel }: { cityName?: string; categoryLabel?: string }) {
-  const [activeId, setActiveId] = useState(OCCASIONS[0].id);
-  const active = OCCASIONS.find((o) => o.id === activeId) ?? OCCASIONS[0];
+export function Services({ items = [], titleAccent, title, subheading }: ServicesProps) {
+  const occasions = items.length > 0 ? groupByOccasion(items) : OCCASIONS;
+  const [activeId, setActiveId] = useState(occasions[0].id);
+  const active = occasions.find((o) => o.id === activeId) ?? occasions[0];
+  const activeKey = occasions.some((o) => o.id === activeId) ? activeId : occasions[0].id;
 
   const trackRef = useRef<HTMLDivElement>(null);
   const hoverRef = useRef(false);
@@ -153,14 +180,14 @@ export function Services({ cityName, categoryLabel }: { cityName?: string; categ
       slide(1);
     }, AUTOPLAY_MS);
     return () => clearInterval(id);
-  }, [activeId, slide]);
+  }, [activeKey, slide]);
 
   // Start from the first card whenever the occasion tab changes.
   useEffect(() => {
     const track = trackRef.current;
     if (track) track.scrollLeft = 0;
     measure();
-  }, [activeId, measure]);
+  }, [activeKey, measure]);
 
   useEffect(() => {
     window.addEventListener("resize", measure);
@@ -204,24 +231,23 @@ export function Services({ cityName, categoryLabel }: { cityName?: string; categ
       </div>
       <div className="text-center">
         <h2 className="mt-1 text-xl font-extrabold text-slate-900 sm:mt-4 sm:text-3xl">
-        <span className="text-amber-500">India on Wheels:  </span>Your Journey, Your Way 🚐
-        </h2>
-        <p className="mt-2 text-xs text-slate-500 sm:text-base">
-         Every occasion deserves the perfect ride. Indiventra’s Vehicle rental service is ideal for every occasion — weddings, pilgrimage trips, corporate events & tours, and Pune Darshan.
-        </p>
+  <span className="text-amber-500">{titleAccent ?? DEFAULT_ACCENT} </span>
+  {title ?? DEFAULT_TITLE}
+</h2>
+<p className="mt-2 text-xs text-slate-500 sm:text-base">{subheading ?? DEFAULT_SUB}</p>
       </div>
 
       {/* Occasion tabs: scrollable on phones, centered on larger screens */}
       <div className="mt-5 flex overflow-x-auto pb-1 [scrollbar-width:none] sm:mt-4 sm:justify-center [&::-webkit-scrollbar]:hidden">
         <div className="inline-flex shrink-0 overflow-hidden rounded-full border border-emerald-900">
-          {OCCASIONS.map((occasion) => (
+          {occasions.map((occasion) => (
             <button
               key={occasion.id}
               type="button"
               onClick={() => setActiveId(occasion.id)}
               className={cn(
                 "whitespace-nowrap px-3 py-2 text-[11px] font-bold uppercase tracking-wide transition-colors sm:py-2.5 sm:text-sm",
-                activeId === occasion.id
+                activeKey === occasion.id
                   ? "bg-[#37d4d9] text-emerald-950"
                   : "bg-[#ea7236] text-white hover:bg-[#37d4d9]"
               )}
@@ -260,9 +286,9 @@ export function Services({ cityName, categoryLabel }: { cityName?: string; categ
               dragging ? "cursor-grabbing snap-none" : "snap-x snap-mandatory"
             )}
           >
-            {active.examples.map((example) => (
-              <div
-                key={example.title}
+            {active.examples.map((example, i) => (
+  <div
+    key={`${example.title}-${i}`}
                 className="flex basis-full shrink-0 snap-start flex-col overflow-hidden rounded-xl border-2 border-amber-500 bg-white sm:basis-[calc((100%-2rem)/2)] sm:rounded-2xl"
               >
                 <div className="relative h-52 w-full sm:h-56">

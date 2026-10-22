@@ -184,7 +184,7 @@ export function FleetCard({ service, cityName, href }: FleetCardProps) {
       {/* Description + amenities — always visible */}
       <div className="px-1 pb-1.5 pt-5 sm:px-3">
         <p
-          className="max-w-[62ch] text-sm leading-relaxed sm:text-[0.98rem]"
+          className="max-w-[62ch] text-sm text-justify leading-relaxed sm:text-[0.98rem]"
           style={{ color: "#5C7089" }}
         >
           {service.description}
