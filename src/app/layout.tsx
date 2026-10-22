@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   },
   description:
     "Reliable tempo traveller, luxury car, and bus rentals for corporate events, weddings, and outstation trips across India.",
+     icons: {
+    icon: "https://res.cloudinary.com/yhuaios0/image/upload/v1790619916/WHITE_BG_SOICAL_MEDIA_IN.jpg.jpg",
+     }
 };
 
 export default function RootLayout({

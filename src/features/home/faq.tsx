@@ -7,52 +7,60 @@ import {
 
 const FAQS = [
   {
-    q: "What types of vehicles are available for rental?",
-    a: "We offer sedans, SUVs, tempo travellers, mini buses, and luxury buses across every city we serve — from a 4-seater for a quick city trip to a 40-seater for a large group.",
+    q: "What types of vehicles does Indiventra offer across India?",
+    a: "Indiventra offers a diverse Pan-India fleet including premium cars, SUVs, Force Urbania, Tempo Travellers, Mini Buses, Luxury Buses, Volvo, and Sleeper Buses to suit all travel needs across the country.",
   },
   {
-    q: "How can I book a vehicle rental?",
-    a: "Fill out the Get a Quote form on our homepage or any city page with your details, and our team will get back to you shortly to confirm your booking.",
+    q: "Can I book a Tempo Traveller or Maharaja Tempo for group travel?",
+    a: "Yes, we provide 9 to 26-seater Tempo Travellers and Maharaja Tempos. They feature premium pushback seating, AC vents, and ample luggage space, making them perfect for comfortable, memorable group travel across India.",
   },
   {
-    q: "What are the rental rates?",
-    a: "Rates depend on vehicle type, trip distance, and duration. Some vehicles show a starting price; for others, submit an enquiry and we'll send a transparent quote with no hidden charges.",
+    q: "What seating capacities are available for Mini Buses and Luxury Buses?",
+    a: "Our luxury buses offer spacious seating capacities from 40 to 56 passengers. Available in 2x1 and 2x2 reclining configurations, they are ideal for large corporate groups, weddings, and events across India.",
   },
   {
-    q: "Can I rent a vehicle for an outstation trip?",
-    a: "Yes, outstation trips are one of our core services — just mention your route and dates in the enquiry form.",
+    q: "Do you offer Sleeper Buses for overnight journeys?",
+    a: "Yes, Indiventra provides comfortable Sleeper Buses designed specifically for long-distance, overnight journeys across India. They offer spacious berths and a smooth ride, ensuring travelers arrive at their destination well-rested and refreshed.",
   },
   {
-    q: "What's the difference between our vehicle categories?",
-    a: "Economy is budget-friendly for everyday travel, Premium adds extra comfort and amenities, Luxury offers a top-tier ride experience, and Maharaja is our most exclusive, fully appointed class.",
+    q: "Which destinations are covered for pilgrimage travel?",
+    a: "Indiventra covers all major pilgrimage routes and spiritual destinations across India. Our verified, experienced drivers ensure a safe, peaceful, and reliable travel experience for all your sacred family excursions and religious tours.",
   },
   {
-    q: "Are rentals available for corporate events?",
-    a: "Yes — we regularly support corporate meetings, offsites, and employee transport with reliable, on-time service.",
+    q: "Do you provide drivers with all vehicle rentals?",
+    a: "Absolutely. Every Indiventra rental includes a verified, background-checked, and highly trained driver. They are experts in defensive driving, always punctual, and dedicated to ensuring a safe, smooth journey across any Indian route.",
   },
   {
-    q: "Do you provide vehicles for weddings?",
-    a: "Yes, we offer decorated cars and group transport (tempo travellers, buses) for wedding parties and guests.",
+    q: "Are AC and luxury amenities available in all vehicles?",
+    a: "Yes, our entire fleet features excellent air-conditioning. Premium vehicles like Force Urbania and Luxury Buses include individual AC vents, USB charging points, reclining seats, and advanced music systems for ultimate travel comfort.",
   },
   {
-    q: "Do you provide vehicles for pilgrimage tours?",
-    a: "Yes, we regularly serve pilgrimage routes with comfortable, well-maintained vehicles suited for longer journeys.",
+    q: "Can I rent a vehicle for weddings, corporate events, or airport transfers?",
+    a: "Yes, Indiventra specializes in rentals for weddings, corporate events, airport transfers, and family trips. Our transparent booking process ensures you get the perfect vehicle and punctual driver for any occasion anywhere in India.",
   },
   {
-    q: "How many types of buses are available?",
-    a: "We offer mini buses and luxury buses in a range of seating capacities, suitable for group tours, weddings, and corporate events.",
+    q: "How can I book a vehicle with Indiventra?",
+    a: "Booking is a simple 3-step process: submit your enquiry via call, WhatsApp, or our website, select the ideal vehicle we suggest, and pay a small advance to instantly confirm your Pan-India ride.",
   },
   {
-    q: "How many types of luxury cars and SUVs are available?",
-    a: "Our Luxury and Maharaja categories include premium sedans and SUVs — ask in your enquiry and we'll recommend the best fit for your trip.",
+    q: "What are the per km rates for vehicle rentals?",
+    a: "We offer highly competitive, transparent per-kilometer rates starting from ₹18/km for Tempo Travellers up to ₹50/km for Luxury Buses. Indiventra guarantees zero hidden charges, so your final bill perfectly matches your initial quote.",
   },
   {
-    q: "Which cities do you serve?",
-    a: "We currently operate in Delhi, Mumbai, Pune, Bangalore, and Hyderabad, with more cities being added regularly.",
+    q: "Are Sleeper Buses suitable for overnight or pilgrimage travel?",
+    a: "Yes, our Sleeper Buses are perfect for long overnight and pilgrimage trips across India. They provide spacious, comfortable berths, ensuring passengers rest properly while our expert drivers navigate the long-distance routes safely.",
   },
   {
-    q: "Is there a cancellation fee?",
-    a: "Once a booking is confirmed, it's guaranteed on our end. Reach out to our support team as early as possible if your plans change.",
+    q: "Do you offer buses with washrooms?",
+    a: "Yes, select large luxury buses and sleeper coaches in our fleet are equipped with onboard washrooms. Please specify this requirement during your initial enquiry, and we will arrange the ideal vehicle for you.",
+  },
+  {
+    q: "Are there any hidden charges in your rental service?",
+    a: "Indiventra strictly maintains a transparent pricing policy with absolutely zero hidden charges. The final bill matches your exact quote. You only pay standard tolls, parking, and state permits directly during the journey.",
+  },
+  {
+    q: "Why should I choose Indiventra for vehicle rentals across India?",
+    a: "Indiventra guarantees transparent pricing, well-maintained vehicles, and zero last-minute cancellations. Our verified drivers and reliable Pan-India service ensure a safe, comfortable, and premium travel experience that makes us the best choice for you.",
   },
 ];
 
