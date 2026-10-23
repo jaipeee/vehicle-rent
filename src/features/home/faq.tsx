@@ -11,8 +11,8 @@ const FAQS = [
     a: "Indiventra offers a diverse Pan-India fleet including premium cars, SUVs, Force Urbania, Tempo Travellers, Mini Buses, Luxury Buses, Volvo, and Sleeper Buses to suit all travel needs across the country.",
   },
   {
-    q: "Can I book a Tempo Traveller or Maharaja Tempo for group travel?",
-    a: "Yes, we provide 9 to 26-seater Tempo Travellers and Maharaja Tempos. They feature premium pushback seating, AC vents, and ample luggage space, making them perfect for comfortable, memorable group travel across India.",
+    q: "Can I book a Tempo Traveller or Maharaja Tempo Traveller for group travel?",
+    a: "Yes, we provide 9 to 26-seater Tempo Travellers and Maharaja Tempos Traveller. They feature premium pushback seating, AC vents, and ample luggage space, making them perfect for comfortable, memorable group travel across India.",
   },
   {
     q: "What seating capacities are available for Mini Buses and Luxury Buses?",

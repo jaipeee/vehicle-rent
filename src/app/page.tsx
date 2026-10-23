@@ -16,25 +16,34 @@ import {
 } from "@/features/home";
 import { EnquiryForm } from "@/features/enquiry";
 import { fillTemplate } from "@/lib/page-context";
+import { pageMeta, SITE_DESCRIPTION } from "@/lib/seo";
 import type { ServiceCardData } from "@/lib/types";
 
 export const revalidate = 3600; // ISR: refresh hourly
 
 export const metadata = {
-  title: "indiventra Tour & Travel | Tempo Traveller, Bus & Car Rentals",
-  description:
-    "Reliable tempo traveller, luxury car, and bus rentals for corporate events, weddings, and outstation trips across India.",
+  ...pageMeta({
+    title: "Indiventra | Luxury Vehicle Rental Service in India @Best Price",
+    description: SITE_DESCRIPTION,
+    path: "/",
+    absoluteTitle: true, // skips the "| Indiventra Tour & Travel" suffix
+  }),
+  alternates: {
+    canonical: "/",
+    languages: { "en-IN": "/", "x-default": "/" },
+  },
 };
-
 
 export default async function HomePage() {
   // No city / category -> global content, global blogs, all testimonials, all cities.
-    const data = await getPageData({});
-     const serviceItems = data.serviceCards.map((c: ServiceCardData) => ({
+  const data = await getPageData({});
+
+  const serviceItems = data.serviceCards.map((c: ServiceCardData) => ({
     ...c,
     title: fillTemplate(c.title),
     description: fillTemplate(c.description),
   }));
+
   const slides = data.heroSlides.map((s) => ({
     image: s.image,
     heading: fillTemplate(s.heading),
@@ -56,13 +65,13 @@ export default async function HomePage() {
       <About content={data.content} />
       <HowItWorks />
       <Categories />
-       <Fleet items={data.fleet} />
+      <Fleet items={data.fleet} />
       <Services
-  items={serviceItems}
-  titleAccent={data.content.servicesTitleAccent}
-  title={data.content.servicesTitle}
-  subheading={data.content.servicesSubheading}
-/>
+        items={serviceItems}
+        titleAccent={data.content.servicesTitleAccent}
+        title={data.content.servicesTitle}
+        subheading={data.content.servicesSubheading}
+      />
       <AdvisorBanner />
       <WhyChooseUs />
       <Testimonials testimonials={data.testimonials} />
