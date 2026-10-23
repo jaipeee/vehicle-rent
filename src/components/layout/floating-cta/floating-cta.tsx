@@ -25,19 +25,22 @@ const ACTIONS: CtaAction[] = [
 
 export function FloatingCta() {
   return (
-    <div className="fixed bottom-1/2 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="pointer-events-none fixed bottom-1/2 right-4 z-50 flex flex-col items-end gap-3 sm:right-6">
       {ACTIONS.map(({ label, href, icon: Icon, external }) => (
         <a
           key={label}
           href={href}
+          aria-label={label}
           target={external ? "_blank" : undefined}
           rel={external ? "noopener noreferrer" : undefined}
-          className="group flex items-center gap-3"
+          className="group pointer-events-auto relative block h-12 w-12 shrink-0"
         >
-          <span className="translate-x-2 whitespace-nowrap rounded-lg bg-emerald-950 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-md transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+          {/* Label: out of the layout, so it adds no tap area. Only on devices with hover. */}
+          <span className="pointer-events-none absolute right-full top-1/2 mr-3 hidden -translate-y-1/2 translate-x-2 whitespace-nowrap rounded-lg bg-emerald-950 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-md transition-all duration-200 [@media(hover:hover)]:block group-hover:translate-x-0 group-hover:opacity-100">
             {label}
           </span>
-          <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#ea7236] text-white shadow-lg transition-transform duration-200 group-hover:scale-110">
+
+          <span className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-[#ea7236] text-white shadow-lg transition-transform duration-200 group-hover:scale-110">
             <span className="absolute left-0 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
             <span className="absolute bottom-0 left-1/4 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
             <span className="absolute right-1/4 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
