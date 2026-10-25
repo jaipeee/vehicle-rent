@@ -238,7 +238,7 @@ export function Services({ items = [], titleAccent, title, subheading }: Service
   <span className="text-amber-500">{titleAccent ?? DEFAULT_ACCENT} </span>
   {title ?? DEFAULT_TITLE}
 </h2>
-<p className="mt-2 text-xs text-slate-500 sm:text-base">{subheading ?? DEFAULT_SUB}</p>
+<p className="mt-2 text-xs text-center text-slate-500 sm:text-base">{subheading ?? DEFAULT_SUB}</p>
       </div>
 
       {/* Occasion tabs: scrollable on phones, centered on larger screens */}

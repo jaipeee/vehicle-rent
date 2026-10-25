@@ -91,14 +91,14 @@ export function Hero({ slides = DEFAULT_SLIDES, ctaLabel = "Get a Quote", ctaHre
       {/* Heading/subtext swap per active slide */}
       <div className="pointer-events-none absolute inset-0 flex items-center px-8 text-left text-white sm:px-20 lg:px-32">
         <div className="max-w-xl">
-          <h1
+          <h3
             className={cn(
               playfair.className,
               "text-2xl font-bold leading-[1.1] tracking-tight text-white drop-shadow-lg sm:text-4xl lg:text-6xl"
             )}
           >
             {active.heading}
-          </h1>
+          </h3>
 
           <p className="mt-4 max-w-xl text-sm font-medium leading-relaxed tracking-wide text-white/90 sm:text-lg">
             {active.subheading}

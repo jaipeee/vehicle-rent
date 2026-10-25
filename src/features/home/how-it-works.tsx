@@ -65,7 +65,7 @@ export function HowItWorks() {
               With Indiventra
             </span>
           </h2>
-          <p className="mt-2 text-sm text-slate-500 sm:mt-3 sm:text-base">
+          <p className="mt-2 text-center text-sm text-slate-500 sm:mt-3 sm:text-base">
             Want to hire vehicle on rent, A simple 3-step process designed to save your time and budget.
           </p>
         </div>

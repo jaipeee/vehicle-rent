@@ -162,6 +162,7 @@ export function EnquiryForm() {
   return (
     <div className={wrapper}>
       <div className="mx-auto w-full max-w-6xl rounded-2xl border border-white/70 bg-white/95 p-4 shadow-xl backdrop-blur-md">
+      <h1 className="text-2xl border-amber-900 text-center pb-2 text-amber-600">Get a Quick Call</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="grid grid-cols-2 gap-x-3 gap-y-6 pt-2 lg:flex lg:flex-row lg:items-start lg:gap-3 lg:pt-0"

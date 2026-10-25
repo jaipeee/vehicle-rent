@@ -84,11 +84,11 @@ export function About({ content, ctx }: { content?: PageContent; ctx?: PageConte
             <span className="h-px w-8 bg-amber-400" />
           </div>
 
-          <h2 className="mt-3 text-2xl font-extrabold text-slate-900 sm:text-4xl">
+          <h1 className="mt-3 text-2xl font-extrabold text-slate-900 sm:text-4xl">
             Affordable &amp; <span className="text-amber-500">Trusted Vehicle Rental</span> Services in India
-          </h2>
+          </h1>
 
-          <p className="mt-2 text-slate-500">Your Journey. Our Commitment.</p>
+          <p className="mt-2 text-center text-slate-500">Your Journey. Our Commitment.</p>
         </div>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_minmax(0,480px)_1fr] lg:items-center">
