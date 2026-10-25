@@ -5,7 +5,7 @@ import { getPageData } from "@/lib/page-data";
 import type { HeroSlideData, ServiceCardData, FaqData } from "@/lib/types";
 import {
   Hero, About, HowItWorks, Categories, Fleet, Services, AdvisorBanner,
-  WhyChooseUs, Testimonials, CitiesGrid, BlogSection, FAQ, ContactSection,
+  WhyChooseUs, Testimonials, CitiesGrid, BlogSection, FAQ,
 } from "@/features/home";
 
 const FALLBACK_HERO_IMAGE =
@@ -154,7 +154,7 @@ export async function ContextPage({ ctx }: { ctx: PageContext }) {
       <CitiesGrid cities={data.cities} categorySlug={category?.slug} />
       <BlogSection posts={data.blogs} />
       <FAQ items={faqItems} />
-      <ContactSection />
+
     </main>
   );
 }

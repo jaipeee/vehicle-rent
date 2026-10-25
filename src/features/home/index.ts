@@ -9,6 +9,5 @@ export { WhyChooseUs } from "./why-choose-us";
 export { Testimonials } from "./testimonials";
 export { CitiesGrid } from "./cities";
 export { BlogSection } from "./blog-section";
-export { ContactSection } from "./contact-section";
 // export { ConsultationBanner } from "./consultation-banner";
 export { FAQ } from "./faq";
