@@ -188,7 +188,7 @@ const rowClass = cn(
               <div className="flex flex-col gap-3 whitespace-nowrap rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
                 <CitySelector />
                 <PhoneBadge />
-                <CtaButton className="w-full justify-center" />
+                <CtaButton className="w-full justify-center" onClick={() => setOpen(false)} />
               </div>
             </div>
           </div>

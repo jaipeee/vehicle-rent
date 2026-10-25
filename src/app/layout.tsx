@@ -1,20 +1,22 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Jost } from "next/font/google";
+import { Poppins } from "next/font/google";
 
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer/footer";
 import { FloatingCta } from "@/components/layout/floating-cta";
 import { Chrome } from "@/components/layout/chrome";
+import { QuoteProvider } from "@/features/quote/quote-context";
 import { OG_IMAGE, SITE_DESCRIPTION, SITE_URL } from "@/lib/seo";
 
 import "./globals.css";
 
 const GTM_ID = "GTM-MNCHT5XT";
 
-const jost = Jost({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-jost",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -41,7 +43,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   verification: { google: "AFVKPHmXsBaIxXgOCKMITL6FzihkI70YI7hhpxP4GWI" },
   icons: {
-    icon: "https://res.cloudinary.com/yhuaios0/image/upload/v1790619916/SOICAL_MEDIA_IN_LOGO.jpg.jpg",
+    icon: "https://res.cloudinary.com/yhuaios0/image/upload/v1790619916/WHITE_BG_SOICAL_MEDIA_IN.jpg.jpg",
     apple: "https://res.cloudinary.com/yhuaios0/image/upload/v1790619916/SOICAL_MEDIA_IN_LOGO.jpg.jpg",
   },
   openGraph: {
@@ -76,7 +78,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${GTM_ID}');`}
         </Script>
       </head>
-      <body className={jost.className}>
+      <body className={poppins.className}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -87,17 +89,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
 
-        <Chrome
-          top={<Navbar />}
-          bottom={
-            <>
-              <Footer />
-              <FloatingCta />
-            </>
-          }
-        >
-          {children}
-        </Chrome>
+        <QuoteProvider>
+          <Chrome
+            top={<Navbar />}
+            bottom={
+              <>
+                <Footer />
+                <FloatingCta />
+              </>
+            }
+          >
+            {children}
+          </Chrome>
+        </QuoteProvider>
       </body>
     </html>
   );

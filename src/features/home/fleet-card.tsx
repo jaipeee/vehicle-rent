@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight, Copy, Check, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { FleetService } from "./fleet.config";
+import { FaWhatsapp } from "react-icons/fa6";
 
 interface FleetCardProps {
   service: FleetService;
@@ -206,81 +207,83 @@ export function FleetCard({ service, cityName, href }: FleetCardProps) {
           ))}
         </ul>
 
-        {/* Buttons: 3 equal columns on mobile, natural width in a row on larger screens */}
-        <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-3">
-          <button
-            type="button"
-            className="flex items-center justify-center whitespace-nowrap rounded-xl border-[1.5px] px-2 py-3 text-[0.8rem] font-semibold transition-colors hover:bg-[#E9F0FB] sm:px-[22px] sm:py-[13px] sm:text-sm"
-            style={{ borderColor: "#C9DAF3", color: "#1863E0" }}
-          >
-            Check Price
-          </button>
+       {/* Buttons: 3 equal columns on mobile, natural width in a row on larger screens */}
+<div className="grid grid-cols-3 gap-2 sm:flex sm:gap-3">
+  <button
+    type="button"
+    className="flex items-center justify-center whitespace-nowrap rounded-xl border-[1.5px] px-2 py-3 text-[0.8rem] font-semibold transition-colors hover:bg-[#E9F0FB] sm:px-[22px] sm:py-[13px] sm:text-sm"
+    style={{ borderColor: "#C9DAF3", color: "#1863E0" }}
+  >
+    Check Price
+  </button>
 
-          {/* Book Now → WhatsApp */}
-          <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex items-center justify-center overflow-hidden whitespace-nowrap rounded-xl px-2 py-3 shadow-md transition-all hover:shadow-lg sm:px-[22px] sm:py-[13px]"
-            style={{ backgroundColor: "#ea7236" }}
-          >
-            <span className="absolute left-0 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
-            <span className="absolute bottom-0 left-1/4 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
-            <span className="absolute right-1/4 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
-            <span className="absolute bottom-0 right-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
-            <span className="relative z-10 text-[0.8rem] font-semibold text-white sm:text-sm">
-              Book Now
-            </span>
-          </a>
+  {/* Book Now → dialer on phone, number popover on desktop */}
+  <div ref={callWrapRef} className="relative">
+    <a
+      href={`tel:+${PHONE_NUMBER}`}
+      onClick={handleCallClick}
+      aria-expanded={showCall}
+      className="group relative flex w-full items-center justify-center gap-1.5 overflow-hidden whitespace-nowrap rounded-xl px-2 py-3 shadow-md transition-all hover:shadow-lg sm:px-[22px] sm:py-[13px]"
+      style={{ backgroundColor: "#ea7236" }}
+    >
+      <span className="absolute left-0 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+      <span className="absolute bottom-0 left-1/4 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+      <span className="absolute right-1/4 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+      <span className="absolute bottom-0 right-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+      <Phone className="relative z-10 h-4 w-4 text-white" />
+      <span className="relative z-10 text-[0.8rem] font-semibold text-white sm:text-sm">
+        Book Now
+      </span>
+    </a>
 
-          {/* Call Now → dialer on phone, number popover on desktop */}
-          <div ref={callWrapRef} className="relative">
-            <a
-              href={`tel:+${PHONE_NUMBER}`}
-              onClick={handleCallClick}
-              aria-expanded={showCall}
-              className="flex w-full items-center justify-center whitespace-nowrap rounded-xl border-[1.5px] px-2 py-3 text-[0.8rem] font-semibold text-[#ea7236] transition-colors hover:bg-[#37d4d9] hover:text-[#e2eded] sm:px-[22px] sm:py-[13px] sm:text-sm"
-              style={{ borderColor: "#C9DAF3" }}
-            >
-              Call Now
-            </a>
+    {showCall && (
+      <div
+        role="dialog"
+        aria-label="Call us"
+        className="absolute bottom-full left-0 z-30 mb-2 w-60 rounded-xl bg-white p-4 shadow-xl ring-1 ring-black/5"
+      >
+        <p className="text-xs font-medium" style={{ color: "#5C7089" }}>
+          Call us on
+        </p>
+        <p
+          className="mt-1 flex items-center gap-2 text-lg font-bold"
+          style={{ color: "#0B2A4A" }}
+        >
+          <Phone className="h-4 w-4" style={{ color: "#ea7236" }} />
+          {PHONE_DISPLAY}
+        </p>
+        <button
+          type="button"
+          onClick={handleCopy}
+          className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+          style={{ backgroundColor: "#ea7236" }}
+        >
+          {copied ? (
+            <>
+              <Check className="h-4 w-4" /> Copied
+            </>
+          ) : (
+            <>
+              <Copy className="h-4 w-4" /> Copy number
+            </>
+          )}
+        </button>
+      </div>
+    )}
+  </div>
 
-            {showCall && (
-              <div
-                role="dialog"
-                aria-label="Call us"
-                className="absolute bottom-full right-0 z-30 mb-2 w-60 rounded-xl bg-white p-4 shadow-xl ring-1 ring-black/5"
-              >
-                <p className="text-xs font-medium" style={{ color: "#5C7089" }}>
-                  Call us on
-                </p>
-                <p
-                  className="mt-1 flex items-center gap-2 text-lg font-bold"
-                  style={{ color: "#0B2A4A" }}
-                >
-                  <Phone className="h-4 w-4" style={{ color: "#ea7236" }} />
-                  {PHONE_DISPLAY}
-                </p>
-                <button
-                  type="button"
-                  onClick={handleCopy}
-                  className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-                  style={{ backgroundColor: "#ea7236" }}
-                >
-                  {copied ? (
-                    <>
-                      <Check className="h-4 w-4" /> Copied
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="h-4 w-4" /> Copy number
-                    </>
-                  )}
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
+  {/* WhatsApp */}
+  <a
+    href={whatsappHref}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border-[1.5px] px-2 py-3 text-[0.8rem] font-semibold text-[#ea7236] transition-colors hover:bg-[#37d4d9] hover:text-[#e2eded] sm:px-[22px] sm:py-[13px] sm:text-sm"
+    style={{ borderColor: "#C9DAF3" }}
+  >
+    <FaWhatsapp className="h-4 w-4 shrink-0 text-[#25D366]" />
+    WhatsApp
+  </a>
+</div>
       </div>
     </div>
   );

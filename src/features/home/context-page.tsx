@@ -2,7 +2,7 @@ import Image from "next/image";
 import { EnquiryForm } from "@/features/enquiry";
 import { fillTemplate, type PageContext } from "@/lib/page-context";
 import { getPageData } from "@/lib/page-data";
-import type { HeroSlideData, ServiceCardData } from "@/lib/types";
+import type { HeroSlideData, ServiceCardData, FaqData } from "@/lib/types";
 import {
   Hero, About, HowItWorks, Categories, Fleet, Services, AdvisorBanner,
   WhyChooseUs, Testimonials, CitiesGrid, BlogSection, FAQ, ContactSection,
@@ -44,6 +44,7 @@ export async function ContextPage({ ctx }: { ctx: PageContext }) {
     ...c,
     title: fillTemplate(c.title, ctx),
     description: fillTemplate(c.description, ctx),
+    
   }));
     const slides =
     data.heroSlides.length > 0
@@ -59,6 +60,12 @@ export async function ContextPage({ ctx }: { ctx: PageContext }) {
             subheading: fill(content.heroSubheading) ?? defaultSub,
           },
         ];
+
+      const faqItems = data.faqs.map((f: FaqData) => ({
+    ...f,
+    question: fillTemplate(f.question, ctx),
+    answer: fillTemplate(f.answer, ctx),
+  }));
 
   return (
     <main>
@@ -146,7 +153,7 @@ export async function ContextPage({ ctx }: { ctx: PageContext }) {
       <Testimonials testimonials={data.testimonials} />
       <CitiesGrid cities={data.cities} categorySlug={category?.slug} />
       <BlogSection posts={data.blogs} />
-      <FAQ />
+      <FAQ items={faqItems} />
       <ContactSection />
     </main>
   );

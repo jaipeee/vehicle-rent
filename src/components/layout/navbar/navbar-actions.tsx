@@ -14,6 +14,7 @@ import { buildPath } from "@/lib/page-context";
 import { useCitySlug } from "@/lib/use-city-scope";
 import { CITIES, CONTACT_PHONE } from "./navbar.config";
 import { currentVehicleSlug } from "./nav-utils";
+import { useQuote } from "@/features/quote/quote-context";
 
 export function PhoneBadge() {
   return (
@@ -27,9 +28,23 @@ export function PhoneBadge() {
   );
 }
 
-export function CtaButton({ className }: { className?: string }) {
+export function CtaButton({ className, onClick }: { className?: string; onClick?: () => void }) {
+  const { open } = useQuote();
+
+  const handleClick = () => {
+    if (onClick) {
+      // e.g. the mobile menu: let it finish closing first, so its scroll lock
+      // doesn't block clicks inside the popup
+      onClick();
+      setTimeout(open, 300);
+    } else {
+      open();
+    }
+  };
+
   return (
     <Button
+      onClick={handleClick}
       className={cn(
         "group gap-2 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-emerald-950 shadow-[0_0_16px_rgba(251,191,36,0.45)] transition-all duration-300 hover:scale-105 hover:from-amber-300 hover:to-amber-400 hover:shadow-[0_0_26px_rgba(251,191,36,0.65)]",
         className

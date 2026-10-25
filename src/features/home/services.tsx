@@ -7,6 +7,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { OCCASIONS, type OccasionCategory } from "./services.config";
 import type { ServiceCardData } from "@/lib/types";
+import { FaWhatsapp } from "react-icons/fa6";
+
+
 
 const DEFAULT_ACCENT = "India on Wheels:";
 const DEFAULT_TITLE = "Your Journey, Your Way 🚐";
@@ -24,6 +27,7 @@ const AUTOPLAY_MS = 4000; // time between automatic slides
 const PAUSE_AFTER_INTERACTION_MS = 6000; // autoplay waits this long after any touch/click/drag
 const HOLD_DELAY_MS = 450; // how long you hold an arrow before it starts repeating
 const HOLD_REPEAT_MS = 450; // repeat speed while an arrow is held
+const WHATSAPP_NUMBER = "918369687417";
 
 /** Distance between the start of one card and the start of the next (card width + gap). */
 function getStep(track: HTMLDivElement | null) {
@@ -310,18 +314,23 @@ export function Services({ items = [], titleAccent, title, subheading }: Service
 
                   <div className="mt-auto flex gap-3 pt-5">
                     <a
-                      href="#get-a-quote"
-                      draggable={false}
-                      className="group relative flex-1 overflow-hidden rounded-xl bg-[#ea7236] px-5 py-2.5 text-center shadow-md transition-all hover:shadow-lg"
-                    >
-                      <span className="absolute left-0 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
-                      <span className="absolute bottom-0 left-1/4 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
-                      <span className="absolute right-1/4 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
-                      <span className="absolute bottom-0 right-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
-                      <span className="relative z-10 whitespace-nowrap text-sm font-bold text-white">
-                        Book Now
-                      </span>
-                    </a>
+  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    `Hi, I'd like to book "${example.title}". Please share availability and price.`
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  draggable={false}
+  className="group relative flex-1 overflow-hidden rounded-xl bg-[#ea7236] px-5 py-2.5 text-center shadow-md transition-all hover:shadow-lg"
+>
+  <span className="absolute left-0 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+  <span className="absolute bottom-0 left-1/4 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+  <span className="absolute right-1/4 top-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+  <span className="absolute bottom-0 right-0 h-0 w-1/4 bg-[#37d4d9] transition-all duration-500 group-hover:h-full" />
+  <span className="relative z-10 inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-bold text-white">
+    <FaWhatsapp className="h-4 w-4" />
+    Book Now
+  </span>
+</a>
                     <a
                       href="#get-a-quote"
                       draggable={false}

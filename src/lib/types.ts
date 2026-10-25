@@ -82,3 +82,8 @@ export interface ServiceCardData {
   description: string;
   image: string;
 }
+export interface FaqData {
+  id: string;
+  question: string;
+  answer: string;
+}

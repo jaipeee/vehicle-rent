@@ -17,7 +17,7 @@ import {
 import { EnquiryForm } from "@/features/enquiry";
 import { fillTemplate } from "@/lib/page-context";
 import { pageMeta, SITE_DESCRIPTION } from "@/lib/seo";
-import type { ServiceCardData } from "@/lib/types";
+import type { FaqData, ServiceCardData } from "@/lib/types";
 
 export const revalidate = 3600; // ISR: refresh hourly
 
@@ -49,6 +49,11 @@ export default async function HomePage() {
     heading: fillTemplate(s.heading),
     subheading: fillTemplate(s.subheading),
   }));
+    const faqItems = data.faqs.map((f: FaqData) => ({
+    ...f,
+    question: fillTemplate(f.question),
+    answer: fillTemplate(f.answer),
+  }));
 
   return (
     <main>
@@ -77,7 +82,7 @@ export default async function HomePage() {
       <Testimonials testimonials={data.testimonials} />
       <CitiesGrid cities={data.cities} />
       <BlogSection posts={data.blogs} />
-      <FAQ />
+      <FAQ items={faqItems} />
       {/* <ContactSection /> */}
       {/* <ConsultationBanner /> */}
     </main>

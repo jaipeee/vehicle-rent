@@ -197,4 +197,20 @@ export const RESOURCES: ResourceDef[] = [
       { key: "imageUrl", label: "Image", type: "image", help: IMG_HELP },
     ],
   },
+    {
+    id: "faqs",
+    label: "FAQs",
+    endpoint: "faqs",
+    duplicable: true,
+    title: (r) => r.question,
+    subtitle: (r) => `${scope(r)} · #${r.sortOrder}${r.active ? "" : " · hidden"}`,
+    blank: { citySlug: "", categorySlug: "", sortOrder: 0, active: true },
+    fields: [
+      ...SCOPE_FIELDS,
+      { key: "question", label: "Question", type: "text", help: "You can use {city} and {category}." },
+      { key: "answer", label: "Answer", type: "textarea", help: "You can use {city} and {category}." },
+      { key: "sortOrder", label: "Order", type: "number", help: "Lower numbers come first. The list splits into two columns automatically." },
+      { key: "active", label: "Show this question", type: "checkbox" },
+    ],
+  },
 ];

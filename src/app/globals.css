@@ -215,6 +215,15 @@
     font-family: var(--font-jost), sans-serif;
   }
 }
+@layer base {
+  body {
+    color: #5c7089;
+    font-size: 15px;
+  }
+  p {
+    text-align: justify;
+  }
+}
 
 /* =========================================================
    Optional Typography Helpers
